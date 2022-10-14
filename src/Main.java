@@ -1,5 +1,5 @@
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Denzyl's d is huge!");
+        System.out.println("Eldrick's d is huge!");
     }
 }
