@@ -44,7 +44,7 @@ public class MOBLIMA {
                 "       contain 1 uppercase letters\n" +
                 "       contain 1 lowercase letters\n" +
                 "       contain 1 non-alpha numeric number\n" +
-                "       be 8-16 characters long with no space\n");
+                "       be 8-16 characters long\n");
         System.out.print("Username: ");
         String username = scanner.next();
         System.out.print("Email: ");
