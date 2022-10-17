@@ -41,6 +41,6 @@ public class User extends Person {
                 "Email=" + this.email + ", " +
                 "Password=" + this.password + ", " +
                 "F_Name=" + super.getF_name() + ", " +
-                "Email=" + super.getL_name();
+                "L_Name=" + super.getL_name() + "\n";
     }
 }

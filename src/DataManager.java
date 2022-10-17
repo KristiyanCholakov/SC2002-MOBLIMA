@@ -4,6 +4,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -17,7 +18,8 @@ public class DataManager {
 
     public static boolean addUser (User user) {
         try {
-            Files.writeString(users_path, user.toString(), StandardCharsets.UTF_8);
+            Files.writeString(users_path, user.toString(), StandardOpenOption.APPEND);
+            System.out.println("User successfully registered!");
             return true;
         } catch (IOException exception) {
             System.out.println("Error: Invalid Path! User is not saved to the database.");
@@ -30,15 +32,19 @@ public class DataManager {
             List<String> lines = Files.readAllLines(users_path);
             for (int i = 0; i < lines.size(); i++) {
                 String line = lines.get(i);
+                if (line.equals("")) continue;
 
                 Pattern r = Pattern.compile(get_data_entry_regex);
                 Matcher m = r.matcher(line);
-
-                String line_username = m.group("username");
-                String line_email = m.group("email");
-
-                if (line_username.equals(user.getUsername()) || line_email.equals(user.getEmail())) {
-                    return 1;
+                if (m.find()) {
+                    String line_username = m.group("username");
+                    String line_email = m.group("email");
+                    if (line_username.equals(user.getUsername()) || line_email.equals(user.getEmail())) {
+                        return 1;
+                    }
+                } else {
+                    System.out.println("Wrong entry format or Regex!");
+                    return -1;
                 }
             }
             return 0;
@@ -53,16 +59,22 @@ public class DataManager {
             List<String> lines = Files.readAllLines(users_path);
             for (int i = 0; i < lines.size(); i++) {
                 String line = lines.get(i);
+                if (line.equals("")) continue;
 
                 Pattern r = Pattern.compile(get_data_entry_regex);
                 Matcher m = r.matcher(line);
 
-                String line_username = m.group("username");
-                String line_email = m.group("email");
-                String line_password = m.group("password");
+                if (m.find()) {
+                    String line_username = m.group("username");
+                    String line_email = m.group("email");
+                    String line_password = m.group("password");
 
-                if ((line_username.equals(username) || line_email.equals(username)) && line_password.equals(password)) {
-                    return 1;
+                    if ((line_username.equals(username) || line_email.equals(username)) && line_password.equals(password)) {
+                        return 1;
+                    }
+                } else {
+                    System.out.println("Wrong entry format or Regex!");
+                    return -1;
                 }
             }
             return 0;

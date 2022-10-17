@@ -17,7 +17,7 @@ public class MOBLIMA {
     }
 
     public static void printLine() {
-        System.out.println("\n------------------------------------------------------------");
+        System.out.println("\n------------------------------------------------------------\n");
     }
 
     public static boolean login() {
@@ -38,13 +38,13 @@ public class MOBLIMA {
 
     public static boolean register() {
         System.out.println("REGISTRATION\n");
-        System.out.println("Username must contain only letters, digits or '_'");
-        System.out.println("Password Must:\n" +
-                "contain 1 number (0-9)\n" +
-                "contain 1 uppercase letters\n" +
-                "contain 1 lowercase letters\n" +
-                "contain 1 non-alpha numeric number\n" +
-                "be 8-16 characters long with no space\n");
+        System.out.println("*** Username must contain only letters, digits or '_'");
+        System.out.println("*** Password Must:\n" +
+                "       contain 1 number (0-9)\n" +
+                "       contain 1 uppercase letters\n" +
+                "       contain 1 lowercase letters\n" +
+                "       contain 1 non-alpha numeric number\n" +
+                "       be 8-16 characters long with no space\n");
         System.out.print("Username: ");
         String username = scanner.next();
         System.out.print("Email: ");

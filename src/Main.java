@@ -6,7 +6,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             MOBLIMA.printHeader();
-
+            MOBLIMA.login();
             MOBLIMA.printLine();
         }
     }
