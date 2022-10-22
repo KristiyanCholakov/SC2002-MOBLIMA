@@ -11,6 +11,7 @@ public class Main {
 
             switch (state) {
                 case "loginOptions":
+                    current_user = null;
                     state = MOBLIMA.selectLoginOption();
                     break;
                 case "register":
@@ -22,6 +23,26 @@ public class Main {
                     current_user = MOBLIMA.login();
                     if (current_user != null) state = "";
                     else state = "loginOptions";
+                    break;
+                case "adminLogin":
+                    current_user = MOBLIMA.adminLogin();
+                    if (current_user != null) state = "";
+                    else state = "loginOptions";
+                    break;
+                case "masterLogin":
+                    if (MOBLIMA.masterLogin()) state = "masterPortal";
+                    else state = "loginOptions";
+                    break;
+                case "masterPortal":
+                    state = MOBLIMA.masterPortal();
+                    break;
+                case "createAdmin":
+                    MOBLIMA.createAdmin();
+                    state = "masterPortal";
+                    break;
+                case "showAdmins":
+                    MOBLIMA.showAdmins();
+                    state = "masterPortal";
                     break;
             }
 
