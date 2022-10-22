@@ -40,7 +40,7 @@ public class User extends Person {
         return "Username=" + this.username + ", " +
                 "Email=" + this.email + ", " +
                 "Password=" + this.password + ", " +
-                "F_Name=" + super.getF_name() + ", " +
-                "L_Name=" + super.getL_name() + "\n";
+                "F_Name=" + super.getfName() + ", " +
+                "L_Name=" + super.getlName() + "\n";
     }
 }

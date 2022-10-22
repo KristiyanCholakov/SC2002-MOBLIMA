@@ -1,25 +1,25 @@
 public abstract class Person {
-    private String f_name;
-    private String l_name;
+    private String fName;
+    private String lName;
 
-    public Person(String f_name, String l_name) {
-        this.f_name = f_name;
-        this.l_name = l_name;
+    public Person(String fName, String lName) {
+        this.fName = fName;
+        this.lName = lName;
     }
 
-    public String getF_name() {
-        return f_name;
+    public String getfName() {
+        return fName;
     }
 
-    public void setF_name(String f_name) {
-        this.f_name = f_name;
+    public void setfName(String fName) {
+        this.fName = fName;
     }
 
-    public String getL_name() {
-        return l_name;
+    public String getlName() {
+        return lName;
     }
 
-    public void setL_name(String l_name) {
-        this.l_name = l_name;
+    public void setlName(String lName) {
+        this.lName = lName;
     }
 }
