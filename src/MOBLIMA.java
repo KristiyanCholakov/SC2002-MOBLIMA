@@ -11,7 +11,7 @@ public class MOBLIMA {
 
     public static void printHeader() {
 
-        System.out.println("------------------------------------------------------------");
+        System.out.println("\n------------------------------------------------------------");
         System.out.println("                     WELCOME TO MOBLIMA                     ");
         System.out.println("------------------------------------------------------------\n");
     }
@@ -20,23 +20,45 @@ public class MOBLIMA {
         System.out.println("\n------------------------------------------------------------\n");
     }
 
-    public static boolean login() {
+    public static void printEmptySpace() {
+        System.out.println("\n\n\n\n\n\n\n\n\n\n");
+    }
+
+    public static String selectLoginOption () {
+        System.out.println("Select how you want to enter the system:\n" +
+                "(Type the number of the choice)\n" +
+                "       1 - Log Into an Existing Account\n" +
+                "       2 - Register New Account\n" +
+                "       3 - Admin Portal");
+        System.out.print("Choice: ");
+        int choice = scanner.nextInt();
+        switch (choice) {
+            case 1:
+                return "login";
+            case 2:
+                return "register";
+            case 3:
+                return "admin";
+            default:
+                return "loginOptions";
+        }
+    }
+
+    public static User login() {
         System.out.println("LOGIN");
         System.out.print("Email/Username: ");
         String username = scanner.next();
         System.out.print("Password: ");
         String password = scanner.next();
-        int validCredentials = DataManager.checkCredentials(username, password);
-        if (validCredentials == 1) {
-            System.out.println("Successful Login!");
-            return true;
-        } else if (validCredentials == 0){
-            System.out.println("Wrong Credentials!");
+        User loggedUser = DataManager.checkCredentials(username, password);
+        if (loggedUser != null) {
+            printConsoleMessage("Successful Login!");
+            return loggedUser;
         }
-        return false;
+        return null;
     }
 
-    public static boolean register() {
+    public static User register() {
         System.out.println("REGISTRATION\n");
         System.out.println("*** Username must contain only letters, digits or '_'");
         System.out.println("*** Password Must:\n" +
@@ -64,14 +86,22 @@ public class MOBLIMA {
                         User user = new User(f_name, l_name, username, email, password1);
                         int exists = DataManager.ifUserExists(user);
                         if (exists == 0) {
-                            return DataManager.addUser(user);
+                            if (DataManager.addUser(user)) return user;
+                            else return null;
                         } else if (exists == 1) {
-                            System.out.println("Error: The user already exists.");
+                            printConsoleMessage("Error: The user already exists.");
                         }
-                    } else System.out.println("Error: The username is not in wanted format.");
-                } else System.out.println("Error: The password is not in wanted format.");
-            } else System.out.println("Error: The email is invalid.");
-        } else System.out.println("Error: Passwords don't match.");
-        return false;
+                    } else printConsoleMessage("Error: The username is not in wanted format.");
+                } else printConsoleMessage("Error: The password is not in wanted format.");
+            } else printConsoleMessage("Error: The email is invalid.");
+        } else printConsoleMessage("Error: Passwords don't match.");
+        return null;
+    }
+
+    public static void printConsoleMessage(String message) {
+        MOBLIMA.printLine();
+        System.out.println("Console Message:");
+        System.out.println(message);
+        MOBLIMA.printLine();
     }
 }

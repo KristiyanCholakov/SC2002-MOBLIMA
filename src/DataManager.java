@@ -19,10 +19,10 @@ public class DataManager {
     public static boolean addUser (User user) {
         try {
             Files.writeString(users_path, user.toString(), StandardOpenOption.APPEND);
-            System.out.println("User successfully registered!");
+            MOBLIMA.printConsoleMessage("User successfully registered!");
             return true;
         } catch (IOException exception) {
-            System.out.println("Error: Invalid Path! User is not saved to the database.");
+            MOBLIMA.printConsoleMessage("Error: Invalid Path! User is not saved to the database.");
             return false;
         }
     }
@@ -43,18 +43,18 @@ public class DataManager {
                         return 1;
                     }
                 } else {
-                    System.out.println("Wrong entry format or Regex!");
+                    MOBLIMA.printConsoleMessage("Wrong entry format or Regex!");
                     return -1;
                 }
             }
             return 0;
         } catch (IOException exception) {
-            System.out.println("Error: Invalid Path! Can't be checked if the user exists.");
+            MOBLIMA.printConsoleMessage("Error: Invalid Path! Can't be checked if the user exists.");
             return -1;
         }
     }
 
-    public static int checkCredentials(String username, String password) {
+    public static User checkCredentials(String username, String password) {
         try {
             List<String> lines = Files.readAllLines(users_path);
             for (int i = 0; i < lines.size(); i++) {
@@ -70,17 +70,21 @@ public class DataManager {
                     String line_password = m.group("password");
 
                     if ((line_username.equals(username) || line_email.equals(username)) && line_password.equals(password)) {
-                        return 1;
+                        String f_name = m.group("fname");
+                        String l_name = m.group("lname");
+                        User loggedUser = new User(f_name, l_name, line_username, line_email, line_password);
+                        return loggedUser;
                     }
                 } else {
-                    System.out.println("Wrong entry format or Regex!");
-                    return -1;
+                    MOBLIMA.printConsoleMessage("Wrong entry format or Regex!");
+                    return null;
                 }
             }
-            return 0;
+            MOBLIMA.printConsoleMessage("Wrong credentials!");
+            return null;
         } catch (IOException exception) {
-            System.out.println("Error: Invalid Path! Can't be checked if the user exists.");
-            return -1;
+            MOBLIMA.printConsoleMessage("Error: Invalid Path! Can't be checked if the user exists.");
+            return null;
         }
     }
 
