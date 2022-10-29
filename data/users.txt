@@ -1,4 +1,0 @@
-Username=Kris33, Email=krischolakov33@gmail.com, Password=Kris!2345, F_Name=Kris, L_Name=Cholakov
-Username=Kris3, Email=krischolakov3@gmail.com, Password=Kris!!!123, F_Name=Kris2, L_Name=Cholakov2
-Username=testusername, Email=testuser@test.test, Password=Test!234, F_Name=Test, L_Name=User
-Username=username, Email=email@mail.com, Password=Username!234, F_Name=User, L_Name=Name

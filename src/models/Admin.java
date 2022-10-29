@@ -1,4 +1,6 @@
-public class Admin extends User{
+package models;
+
+public class Admin extends User {
 
 
     public Admin(String fNmae, String lName, String username, String email, String password) {

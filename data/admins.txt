@@ -1,2 +1,0 @@
-Username=admin, Email=admin@mail.com, Password=Admin!23, F_Name=Admin, L_Name=Admin
-Username=Admin2, Email=admin2@mail.com, Password=Admin!234, F_Name=Admin2, L_Name=Admin2

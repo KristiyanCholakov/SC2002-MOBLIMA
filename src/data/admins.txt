@@ -1,0 +1,3 @@
+Username=admin, Email=admin@mail.com, Password=models.Admin!23, F_Name=models.Admin, L_Name=models.Admin
+Username=Admin2, Email=admin2@mail.com, Password=models.Admin!234, F_Name=Admin2, L_Name=Admin2
+Username=Krisi, Email=krisi1@mail.com, Password=Krisi!23, F_Name=Krisi, L_Name=Pisi

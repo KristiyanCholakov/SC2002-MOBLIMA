@@ -1,3 +1,5 @@
+package models;
+
 public abstract class Person {
     private String fName;
     private String lName;

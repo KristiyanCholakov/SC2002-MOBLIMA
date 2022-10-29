@@ -1,3 +1,5 @@
+package models;
+
 public class User extends Person {
     private String username;
     private String email;

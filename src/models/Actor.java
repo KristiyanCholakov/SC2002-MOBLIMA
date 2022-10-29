@@ -1,4 +1,6 @@
-public class Actor extends Person{
+package models;
+
+public class Actor extends Person {
     private int number_of_oscars;
 
     public Actor(String fName, String lName) {

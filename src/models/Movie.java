@@ -1,4 +1,5 @@
-import java.util.Collections;
+package models;
+
 import java.util.List;
 
 public class Movie {

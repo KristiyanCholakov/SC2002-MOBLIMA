@@ -1,0 +1,7 @@
+Username=Kris33, Email=krischolakov33@gmail.com, Password=Kris!2345, F_Name=Kris, L_Name=Cholakov
+Username=Kris3, Email=krischolakov3@gmail.com, Password=Kris!!!123, F_Name=Kris2, L_Name=Cholakov2
+Username=testusername, Email=testuser@test.test, Password=Test!234, F_Name=Test, L_Name=models.User
+Username=username, Email=email@mail.com, Password=Username!234, F_Name=models.User, L_Name=Name
+Username=Krisi, Email=kris1@mail.com, Password=Krisi!23, F_Name=Krisi, L_Name=Pisi
+Username=Sean, Email=sean1@mail.com, Password=Sean!234, F_Name=Sean, L_Name=Who
+Username=Molly1, Email=molly1@mail.com, Password=Molly!23, F_Name=Molly, L_Name=Who

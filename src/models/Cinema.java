@@ -1,3 +1,5 @@
+package models;
+
 public class Cinema {
     private String name;
     private String address;
