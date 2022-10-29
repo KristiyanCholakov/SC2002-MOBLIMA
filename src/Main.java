@@ -26,7 +26,7 @@ public class Main {
                     break;
                 case "adminLogin":
                     current_user = MOBLIMA.adminLogin();
-                    if (current_user != null) state = "";
+                    if (current_user != null) state = "adminPortal";
                     else state = "loginOptions";
                     break;
                 case "masterLogin":
@@ -43,6 +43,9 @@ public class Main {
                 case "showAdmins":
                     MOBLIMA.showAdmins();
                     state = "masterPortal";
+                    break;
+                case "adminPortal":
+                    state = MOBLIMA.adminPortal();
                     break;
             }
 

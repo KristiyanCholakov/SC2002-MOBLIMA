@@ -92,6 +92,33 @@ public class MOBLIMA {
         }
     }
 
+    public static String adminPortal() {
+        System.out.println("Select the action you want:\n" +
+                "(Type the number of the choice)\n" +
+                "       1 - Movies Editor\n" +
+                "       2 - Cinemas Editor\n" +
+                "       3 - Showtime Editor\n" +
+                "       4 - Reviews Editor\n" +
+                "       5 - Back to Start Page");
+        System.out.print("Choice: ");
+        int choice = scanner.nextInt();
+        switch (choice) {
+            case 1:
+                return "movieEditor";
+            case 2:
+                return "cinemasEditor";
+            case 3:
+                return "showtimeEditor";
+            case 4:
+                return "reviewsEditor";
+            case 5:
+                return "loginOptions";
+            default:
+                printConsoleMessage("Invalid Choice!");
+                return "masterPortal";
+        }
+    }
+
     public static void showAdmins() {
         System.out.println("SHOW ADMINS\n");
         DataManager.showAdmins();
