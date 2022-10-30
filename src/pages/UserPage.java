@@ -72,7 +72,7 @@ public class UserPage {
         String l_name = scanner.next();
 
         User user = new User(f_name, l_name, username, email, password1);
-        if (UserManager.ifUserExists(user)) {
+        if (!UserManager.ifUserExists(user)) {
             if (UserManager.writeUser(user));
         } else {
             PageElements.printConsoleMessage("Error: The user already exists.");

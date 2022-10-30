@@ -1,16 +1,10 @@
 package data_managers;
 
-import constants.Paths;
-import constants.Regexes;
 import models.Admin;
 import pages.PageElements;
 
 import java.io.*;
-import java.nio.file.Files;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class AdminManager {
 
