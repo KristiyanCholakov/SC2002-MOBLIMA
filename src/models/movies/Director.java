@@ -1,4 +1,6 @@
-package models;
+package models.movies;
+
+import models.Person;
 
 public class Director extends Person {
     private int numberOfOscars;
@@ -14,4 +16,5 @@ public class Director extends Person {
     public void setNumberOfOscars(int numberOfOscars) {
         this.numberOfOscars = numberOfOscars;
     }
+
 }

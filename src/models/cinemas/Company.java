@@ -1,4 +1,6 @@
-package models;
+package models.cinemas;
+
+import models.cinemas.Cinema;
 
 import java.io.Serializable;
 import java.util.ArrayList;

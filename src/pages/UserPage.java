@@ -2,7 +2,7 @@ package pages;
 
 import constants.Regexes;
 import data_managers.UserManager;
-import models.User;
+import models.accounts.User;
 
 import java.util.Scanner;
 

@@ -1,6 +1,6 @@
 package data_managers;
 
-import models.Admin;
+import models.accounts.Admin;
 import pages.PageElements;
 
 import java.io.*;

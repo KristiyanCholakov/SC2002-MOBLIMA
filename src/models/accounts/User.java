@@ -1,4 +1,6 @@
-package models;
+package models.accounts;
+
+import models.Person;
 
 public class User extends Person {
     private String username;
@@ -39,10 +41,11 @@ public class User extends Person {
 
     @Override
     public String toString() {
-        return "Username=" + this.username + ", " +
-                "Email=" + this.email + ", " +
-                "Password=" + this.password + ", " +
-                "F_Name=" + super.getfName() + ", " +
+        return "User:\n" +
+                "Username=" + this.username + "\n" +
+                "Email=" + this.email + "\n" +
+                "Password=" + this.password + "\n" +
+                "F_Name=" + super.getfName() + "\n" +
                 "L_Name=" + super.getlName() + "\n";
     }
 }

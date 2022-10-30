@@ -1,4 +1,4 @@
-package models;
+package models.cinemas;
 
 import java.io.Serializable;
 import java.time.LocalDate;

@@ -1,7 +1,7 @@
 package pages;
 
 import data_managers.AdminManager;
-import models.Admin;
+import models.accounts.Admin;
 
 import java.util.Scanner;
 
@@ -94,8 +94,6 @@ public class AdminPage {
             System.out.println("Select the action you want:\n" +
                     "(Type the number of the choice)\n" +
                     "       1 - Movies Editor\n" +
-                    "       2 - Actors Editor\n" +
-                    "       3 - Directors Editor\n" +
                     "       4 - Companies Editor\n" +
                     "       5 - Cinemas Editor\n" +
                     "       6 - Reviews Editor\n" +
@@ -104,7 +102,7 @@ public class AdminPage {
             int choice = scanner.nextInt();
             switch (choice) {
                 case 1:
-                    movieEditorPage();
+                    MovieEditorPage.movieEditorPage();
                     break;
                 case 2:
                     cinemaEditorPage();
@@ -123,61 +121,3 @@ public class AdminPage {
             }
         }
     }
-
-    public static void movieEditorPage() {
-        Scanner scanner = new Scanner(System.in);
-        PageElements.printHeader();
-        boolean running = true;
-        while (running) {
-            System.out.println("Select the action you want:\n" +
-                    "(Type the number of the choice)\n" +
-                    "       1 - Add\n" +
-                    "       2 - Edit\n" +
-                    "       3 - Delete\n" +
-                    "       4 - Back to Editor Portal");
-            System.out.print("Choice: ");
-            int choice = scanner.nextInt();
-            switch (choice) {
-                case 1:
-                    addMoviePage();
-                    break;
-                case 2:
-                    editMoviePage();
-                    break;
-                case 3:
-                    deleteMoviePage();
-                    break;
-                case 4:
-                    running = false;
-                    break;
-                default:
-                    PageElements.printConsoleMessage("Invalid Choice!");
-            }
-        }
-    }
-
-
-    public static void cinemaEditorPage() {
-
-    }
-    public static void showtimeEditorPage() {
-
-    }
-    public static void reviewEditorPage() {
-
-    }
-
-    public static void showMoviesPage() {
-
-    }
-
-    public static void showCinemasPage() {
-
-    }
-    public static void showShowtimePage() {
-
-    }
-    public static void showReviewsPage() {
-
-    }
-}

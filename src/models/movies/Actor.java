@@ -1,4 +1,6 @@
-package models;
+package models.movies;
+
+import models.Person;
 
 public class Actor extends Person {
     private int number_of_oscars;
