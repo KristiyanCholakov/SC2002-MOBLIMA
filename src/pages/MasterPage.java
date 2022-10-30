@@ -88,10 +88,9 @@ public class MasterPage {
         String l_name = scanner.next();
 
         Admin admin = new Admin(f_name, l_name, username, email, password1);
-        int exists = AdminManager.ifAdminExists(admin);
-        if (exists == 0) {
-            if(AdminManager.addAdmin(admin)) return;
-        } else if (exists == 1) {
+        if (AdminManager.ifAdminExists(admin)) {
+            if (AdminManager.writeAdmin(admin));
+        } else {
             PageElements.printConsoleMessage("Error: The admin already exists.");
         }
     }

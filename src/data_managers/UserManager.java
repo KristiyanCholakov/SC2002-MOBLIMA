@@ -1,88 +1,67 @@
 package data_managers;
 
-import constants.Paths;
-import constants.Regexes;
+import models.Admin;
 import models.User;
 import pages.PageElements;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.StandardOpenOption;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.io.*;
+import java.util.ArrayList;
 
 public class UserManager {
 
-    public static boolean addUser (User user) {
+    private static final String USERS_PATH = "src/data/users.txt";
+
+
+    public static ArrayList<User> readUsers () {
         try {
-            Files.writeString(Paths.users_path, user.toString(), StandardOpenOption.APPEND);
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(USERS_PATH));
+            ArrayList<User> users = (ArrayList<User>) ois.readObject();
+            ois.close();
+            return users;
+        } catch (ClassNotFoundException | IOException e) {
+            PageElements.printConsoleMessage("Error: Invalid Path! User is not saved to the database.");
+        }
+        return new ArrayList<User>();
+    }
+
+    public static boolean writeUser (User user) {
+        File file = new File(USERS_PATH);
+        ArrayList<User> allUsers = readUsers();
+        allUsers.add(user);
+        if(file.exists()) file.delete();
+        try {
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(USERS_PATH));
+            out.writeObject(allUsers);
+            out.flush();
+            out.close();
             PageElements.printConsoleMessage("User successfully registered!");
             return true;
-        } catch (IOException exception) {
+        } catch (IOException e) {
             PageElements.printConsoleMessage("Error: Invalid Path! User is not saved to the database.");
             return false;
         }
     }
 
-    public static int ifUserExists(User user) {
-        try {
-            List<String> lines = Files.readAllLines(Paths.users_path);
-            for (int i = 0; i < lines.size(); i++) {
-                String line = lines.get(i);
-                if (line.equals("")) continue;
-
-                Pattern r = Pattern.compile(Regexes.user_entry_regex);
-                Matcher m = r.matcher(line);
-                if (m.find()) {
-                    String line_username = m.group("username");
-                    String line_email = m.group("email");
-                    if (line_username.equals(user.getUsername()) || line_email.equals(user.getEmail())) {
-                        return 1;
-                    }
-                } else {
-                    PageElements.printConsoleMessage("Wrong entry format or Regex!");
-                    return -1;
-                }
+    public static boolean ifUserExists(User user) {
+        ArrayList<User> allUsers = readUsers();
+        for (int i = 0; i < allUsers.size(); i++) {
+            User currentUser = allUsers.get(i);
+            if (currentUser.toString().equals(user.toString())) {
+                return true;
             }
-            return 0;
-        } catch (IOException exception) {
-            PageElements.printConsoleMessage("Error: Invalid Path! Can't be checked if the user exists.");
-            return -1;
         }
+        return false;
     }
 
     public static User checkCredentials(String username, String password) {
-        try {
-            List<String> lines = Files.readAllLines(Paths.users_path);
-            for (int i = 0; i < lines.size(); i++) {
-                String line = lines.get(i);
-                if (line.equals("")) continue;
-
-                Pattern r = Pattern.compile(Regexes.user_entry_regex);
-                Matcher m = r.matcher(line);
-
-                if (m.find()) {
-                    String line_username = m.group("username");
-                    String line_email = m.group("email");
-                    String line_password = m.group("password");
-
-                    if ((line_username.equals(username) || line_email.equals(username)) && line_password.equals(password)) {
-                        String f_name = m.group("fname");
-                        String l_name = m.group("lname");
-                        User loggedUser = new User(f_name, l_name, line_username, line_email, line_password);
-                        return loggedUser;
-                    }
-                } else {
-                    PageElements.printConsoleMessage("Wrong entry format or Regex!");
-                    return null;
-                }
+        ArrayList<User> allUsers = readUsers();
+        for (int i = 0; i < allUsers.size(); i++) {
+            User currentUser = allUsers.get(i);
+            if ((currentUser.getEmail().equals(username) || currentUser.getUsername().equals(username)) && currentUser.getPassword().equals(password)) {
+                return currentUser;
             }
-            PageElements.printConsoleMessage("Wrong credentials!");
-            return null;
-        } catch (IOException exception) {
-            PageElements.printConsoleMessage("Error: Invalid Path! Can't be checked if the user exists.");
-            return null;
         }
+        PageElements.printConsoleMessage("Wrong credentials!");
+        return null;
     }
 }

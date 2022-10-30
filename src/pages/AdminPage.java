@@ -15,7 +15,7 @@ public class AdminPage {
         String username = scanner.next();
         System.out.print("Password: ");
         String password = scanner.next();
-        Admin loggedUser = AdminManager.checkAdminCredentials(username, password);
+        Admin loggedUser = AdminManager.checkCredentials(username, password);
         if (loggedUser != null) {
             PageElements.printConsoleMessage("Successful Login!");
             adminPage();
