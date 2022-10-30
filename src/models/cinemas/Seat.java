@@ -13,4 +13,31 @@ public class Seat implements Serializable {
         this.occupied = occupied;
     }
 
+    public String getRow() {
+        return row;
+    }
+
+    public int getColumn() {
+        return column;
+    }
+
+    public boolean isOccupied() {
+        return occupied;
+    }
+
+    public boolean bookSeat() {
+        if (!occupied) {
+            occupied = true;
+            return true;
+        }
+        return false;
+    }
+
+    public boolean cancelSeat() {
+        if (occupied) {
+            occupied = false;
+            return true;
+        }
+        return false;
+    }
 }
