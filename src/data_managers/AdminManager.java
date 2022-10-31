@@ -42,7 +42,7 @@ public class AdminManager {
         return false;
     }
 
-    public static boolean writeAdmin (Admin admin) {
+    public static void writeAdmin (Admin admin) {
         File file = new File(ADMINS_PATH);
         ArrayList<Admin> allAdmins = readAdmins();
         allAdmins.add(admin);
@@ -53,10 +53,8 @@ public class AdminManager {
             out.flush();
             out.close();
             PageElements.printConsoleMessage("Admin successfully registered!");
-            return true;
         } catch (IOException e) {
             PageElements.printConsoleMessage("Error: Invalid Path! Admin is not saved to the database.");
-            return false;
         }
     }
 

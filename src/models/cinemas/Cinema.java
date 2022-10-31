@@ -8,10 +8,10 @@ import java.util.HashMap;
 public class Cinema implements Serializable {
     private String name;
     private String address;
-    private HashMap<LocalDate, ArrayList<Screening>> schedules;
+    private HashMap<LocalDate, ArrayList<ShowTime>> schedules;
     private ArrayList<Screen> screens;
 
-    public Cinema(String name, String address, HashMap<LocalDate, ArrayList<Screening>> schedules, ArrayList<Screen> screens) {
+    public Cinema(String name, String address, HashMap<LocalDate, ArrayList<ShowTime>> schedules, ArrayList<Screen> screens) {
         this.name = name;
         this.address = address;
         this.schedules = schedules;
@@ -26,7 +26,7 @@ public class Cinema implements Serializable {
         return address;
     }
 
-    public HashMap<LocalDate, ArrayList<Screening>> getSchedules() {
+    public HashMap<LocalDate, ArrayList<ShowTime>> getSchedules() {
         return schedules;
     }
 

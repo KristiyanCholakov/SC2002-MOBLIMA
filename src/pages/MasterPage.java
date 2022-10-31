@@ -89,7 +89,7 @@ public class MasterPage {
 
         Admin admin = new Admin(f_name, l_name, username, email, password1);
         if (!AdminManager.ifAdminExists(admin)) {
-            if (AdminManager.writeAdmin(admin));
+            AdminManager.writeAdmin(admin);
         } else {
             PageElements.printConsoleMessage("Error: The admin already exists.");
         }

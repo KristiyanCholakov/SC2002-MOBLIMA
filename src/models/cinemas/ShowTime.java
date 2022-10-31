@@ -1,6 +1,5 @@
 package models.cinemas;
 
-import models.cinemas.Screen;
 import models.movies.Movie;
 
 import java.io.Serializable;
@@ -9,7 +8,7 @@ import java.time.LocalTime;
 import java.util.HashMap;
 import java.util.List;
 
-public class Screening implements Serializable {
+public class ShowTime implements Serializable {
     private LocalDate date;
     private Screen screen;
     private LocalTime startTime;
@@ -17,7 +16,7 @@ public class Screening implements Serializable {
     private Movie movie;
     private HashMap<Character, List<Seat>> seatOccupancy;
 
-    public Screening(LocalDate date, Screen screen, LocalTime startTime, LocalTime endTime, Movie movie, HashMap<Character, List<Seat>> seatOccupancy) {
+    public ShowTime(LocalDate date, Screen screen, LocalTime startTime, LocalTime endTime, Movie movie, HashMap<Character, List<Seat>> seatOccupancy) {
         this.date = date;
         this.screen = screen;
         this.startTime = startTime;
