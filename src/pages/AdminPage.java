@@ -102,16 +102,16 @@ public class AdminPage {
             int choice = scanner.nextInt();
             switch (choice) {
                 case 1:
-                    MovieEditorPage.movieEditorPage();
+                    MovieEditorPages.movieEditorPage();
                     break;
                 case 2:
-//                    cinemaEditorPage();
+                    CineplexEditorPages.cinemaEditorPage();
                     break;
                 case 3:
-//                    showtimeEditorPage();
+                    ShowTimeEditorPages.showtimeEditorPage();
                     break;
                 case 4:
-//                    reviewEditorPage();
+                    ReviewEditorPages.reviewEditorPage();
                     break;
                 case 5:
                     running = false;

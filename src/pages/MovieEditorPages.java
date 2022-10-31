@@ -2,7 +2,7 @@ package pages;
 
 import java.util.Scanner;
 
-public class MovieEditorPage {
+public class MovieEditorPages {
     public static void movieEditorPage() {
         Scanner scanner = new Scanner(System.in);
         PageElements.printHeader();
