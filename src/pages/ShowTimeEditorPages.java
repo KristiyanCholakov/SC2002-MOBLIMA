@@ -16,7 +16,7 @@ public class ShowTimeEditorPages {
             System.out.print("Choice: ");
             int cineplex = scanner.nextInt();
             if (cineplex < 1 || cineplex > 3) {
-                System.out.println("Invalid Choice!");
+                PageElements.printConsoleMessage("Invalid Choice. Enter a valid choice.");
                 continue;
             }
 
@@ -28,7 +28,7 @@ public class ShowTimeEditorPages {
             System.out.print("Choice: ");
             int location = scanner.nextInt();
             if (location < 1 || location > 3) {
-                System.out.println("Invalid Choice!");
+                PageElements.printConsoleMessage("Invalid Choice. Enter a valid choice.");
                 continue;
             }
 
@@ -40,7 +40,7 @@ public class ShowTimeEditorPages {
             System.out.print("Choice: ");
             int screen = scanner.nextInt();
             if (screen < 1 || screen > 3) {
-                System.out.println("Invalid Choice!");
+                PageElements.printConsoleMessage("Invalid Choice. Enter a valid choice.");
                 continue;
             }
 
@@ -67,7 +67,7 @@ public class ShowTimeEditorPages {
                     running = false;
                     break;
                 default:
-                    PageElements.printConsoleMessage("Invalid Choice!");
+                    PageElements.printConsoleMessage("Invalid Choice. Enter a valid choice.");
             }
         }
     }
