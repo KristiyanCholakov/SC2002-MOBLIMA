@@ -123,8 +123,8 @@ public class MovieEditorPages {
                 PageElements.printConsoleMessage("Error: The restriction is not in wanted format.");
                 return;
         }
-        System.out.print("Synopsys: ");
-        String synopsys = scanner.nextLine();
+        System.out.print("Synopsis: ");
+        String synopsis = scanner.nextLine();
         System.out.print("Director: ");
         System.out.print("***First Name: ");
         String directorFName = scanner.nextLine();
@@ -161,7 +161,7 @@ public class MovieEditorPages {
         }
         double rating = 0.0;
         ArrayList<Review> reviews = new ArrayList<Review>();
-        Movie movie = new Movie(title, genre, duration, status, type, restriction, synopsys, director, actors, rating, reviews);
+        Movie movie = new Movie(title, genre, duration, status, type, restriction, synopsis, director, actors, rating, reviews);
         MovieManager.writeMovie(movie);
     }
 
