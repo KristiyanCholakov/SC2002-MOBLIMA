@@ -19,7 +19,7 @@ public class MovieManager {
             ois.close();
             return movies;
         } catch (ClassNotFoundException | IOException e) {
-            PageElements.printConsoleMessage("Error: Invalid Path! User is not saved to the database.");
+            PageElements.printConsoleMessage("Error: Invalid Path! Movie is not saved to the database.");
         }
         return new ArrayList<Movie>();
     }
