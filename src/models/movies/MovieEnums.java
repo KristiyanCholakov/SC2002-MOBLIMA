@@ -4,11 +4,12 @@ import java.io.Serializable;
 
 public class MovieEnums implements Serializable {
     public enum MovieRestriction {
-        G("General", "All ages admitted"),
-        PG("Parental Guidance Suggested", "Some material may not be suitable for children"),
-        PG13("Parental Strongly Cautioned", "Some material maybe inappropriate for children under 13"),
-        R("Restricted", "Under 17 requires accompany paren or adult guardian"),
-        NC17("No one 17 and under admitted", "No one 17 and under admitted");
+        G("General", "Suitable for all ages."),
+        PG("Parental Guidance", "SSuitable for all, but parents should guide their young."),
+        PG13("Parental Guidance 13", "Suitable for persons aged 13 and above but parental guidance is advised for children below 13."),
+        R21("Restricted 21", "Restricted to persons aged 21 and above."),
+        NC16("No Children Under 16", "Suitable for persons aged 16 and above."),
+        M18("Mature 18", "Suitable for persons aged 18 and above.");
 
         private String restriction;
         private String description;

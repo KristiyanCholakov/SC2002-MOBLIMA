@@ -94,10 +94,10 @@ public class AdminPage {
             System.out.println("Select the action you want:\n" +
                     "(Type the number of the choice)\n" +
                     "       1 - Movies Editor\n" +
-                    "       4 - Companies Editor\n" +
-                    "       5 - Cinemas Editor\n" +
-                    "       6 - Reviews Editor\n" +
-                    "       7 - Back to Admin Portal");
+                    "       2 - Cineplex Editor\n" +
+                    "       3 - Showtime Editor\n" +
+                    "       4 - Reviews Editor\n" +
+                    "       5 - Back to Admin Portal");
             System.out.print("Choice: ");
             int choice = scanner.nextInt();
             switch (choice) {

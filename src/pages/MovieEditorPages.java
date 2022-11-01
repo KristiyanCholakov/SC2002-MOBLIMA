@@ -100,7 +100,7 @@ public class MovieEditorPages {
                 PageElements.printConsoleMessage("Error: The type is not in wanted format.");
                 return;
         }
-        System.out.print("Restriction (G, PG, PG13, R, NC17): ");
+        System.out.print("Restriction (G, PG, PG13, NC16, M18, R21): ");
         String restrictionStr = scanner.nextLine();
         MovieEnums.MovieRestriction restriction;
         switch (restrictionStr) {
@@ -113,11 +113,14 @@ public class MovieEditorPages {
             case "PG13":
                 restriction = MovieEnums.MovieRestriction.PG13;
                 break;
-            case "R":
-                restriction = MovieEnums.MovieRestriction.R;
+            case "NC16":
+                restriction = MovieEnums.MovieRestriction.NC16;
                 break;
-            case "NC17":
-                restriction = MovieEnums.MovieRestriction.NC17;
+            case "M18":
+                restriction = MovieEnums.MovieRestriction.M18;
+                break;
+            case "R21":
+                restriction = MovieEnums.MovieRestriction.R21;
                 break;
             default:
                 PageElements.printConsoleMessage("Error: The restriction is not in wanted format.");
