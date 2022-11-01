@@ -18,7 +18,7 @@ public class UserManager {
             ois.close();
             return users;
         } catch (ClassNotFoundException | IOException e) {
-            PageElements.printConsoleMessage("Error: Invalid Path! User is not saved to the database.");
+            PageElements.printConsoleMessage("Error: Invalid Path! User is not read from the database.");
         }
         return new ArrayList<User>();
     }

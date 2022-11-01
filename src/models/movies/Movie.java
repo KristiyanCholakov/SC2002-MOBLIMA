@@ -1,23 +1,24 @@
 package models.movies;
 
 import java.io.Serializable;
-import java.util.List;
+import java.time.LocalTime;
+import java.util.ArrayList;
 
 public class Movie implements Serializable {
-    private String name;
-    private List<String> genre;
-    private String duration;
+    private String title;
+    private String genre;
+    private LocalTime duration;
     private MovieEnums.MovieStatus status;
     private MovieEnums.MovieType type;
     private MovieEnums.MovieRestriction restriction;
     private String synopsis;
     private Director director;
-    private List<Actor> cast;
+    private ArrayList<Actor> cast;
     private double rating;
-    private List<Review> reviews;
+    private ArrayList<Review> reviews;
 
-    public Movie(String name, List<String> genre, String duration, MovieEnums.MovieStatus status, MovieEnums.MovieType type, MovieEnums.MovieRestriction restriction, String synopsis, Director director, List<Actor> cast, double rating, List<Review> reviews) {
-        this.name = name;
+    public Movie(String title, String genre, LocalTime duration, MovieEnums.MovieStatus status, MovieEnums.MovieType type, MovieEnums.MovieRestriction restriction, String synopsis, Director director, ArrayList<Actor> cast, double rating, ArrayList<Review> reviews) {
+        this.title = title;
         this.genre = genre;
         this.duration = duration;
         this.status = status;
@@ -30,15 +31,15 @@ public class Movie implements Serializable {
         this.reviews = reviews;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public List<String> getGenre() {
+    public String getGenre() {
         return genre;
     }
 
-    public String getDuration() {
+    public LocalTime getDuration() {
         return duration;
     }
 
@@ -62,7 +63,7 @@ public class Movie implements Serializable {
         return director;
     }
 
-    public List<Actor> getCast() {
+    public ArrayList<Actor> getCast() {
         return cast;
     }
 
@@ -70,7 +71,43 @@ public class Movie implements Serializable {
         return rating;
     }
 
-    public List<Review> getReviews() {
+    public ArrayList<Review> getReviews() {
         return reviews;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public void setDuration(LocalTime duration) {
+        this.duration = duration;
+    }
+
+    public void setStatus(MovieEnums.MovieStatus status) {
+        this.status = status;
+    }
+
+    public void setType(MovieEnums.MovieType type) {
+        this.type = type;
+    }
+
+    public void setRestriction(MovieEnums.MovieRestriction restriction) {
+        this.restriction = restriction;
+    }
+
+    public void setSynopsis(String synopsis) {
+        this.synopsis = synopsis;
+    }
+
+    public void setDirector(Director director) {
+        this.director = director;
+    }
+
+    public void setCast(ArrayList<Actor> cast) {
+        this.cast = cast;
     }
 }

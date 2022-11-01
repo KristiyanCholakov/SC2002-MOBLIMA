@@ -1,6 +1,6 @@
 package data_managers;
 
-import models.accounts.User;
+import models.movies.Director;
 import models.movies.Movie;
 import pages.PageElements;
 
@@ -37,16 +37,16 @@ public class MovieManager {
             PageElements.printConsoleMessage("Movie Added!");
             return true;
         } catch (IOException e) {
-            PageElements.printConsoleMessage("Error: Invalid Path! User is not saved to the database.");
+            PageElements.printConsoleMessage("Error: Invalid Path! Movie is not saved to the database.");
             return false;
         }
     }
 
-    public static Movie getMovie(String name) {
+    public static Movie getMovie(String title) {
         ArrayList<Movie> allMovies = readMovies();
         for (int i = 0; i < allMovies.size(); i++) {
             Movie currentMovie = allMovies.get(i);
-            if (currentMovie.getName().equals(name)) {
+            if (currentMovie.getTitle().equals(title)) {
                 return currentMovie;
             }
         }
@@ -55,13 +55,24 @@ public class MovieManager {
 
     public static boolean updateMovie (Movie movie) {
         ArrayList<Movie> allMovies = readMovies();
-        for (int i = 0; i < allMovies.size(); i++) {
-            Movie currentMovie = allMovies.get(i);
-            if (currentMovie.getName().equals(movie.getName())) {
-                allMovies.remove(currentMovie);
-                allMovies.add(movie);
-            }
+        Movie movieToUpdated = getMovie(movie.getTitle());
+        if (movieToUpdated == null) {
+            PageElements.printConsoleMessage("No such movie!");
+            return false;
+        } else {
+            allMovies.remove(movieToUpdated);
+            allMovies.add(movie);
         }
-        return false;
+        try {
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(MOVIES_PATH));
+            out.writeObject(allMovies);
+            out.flush();
+            out.close();
+            PageElements.printConsoleMessage("Movie Updated!");
+            return true;
+        } catch (IOException e) {
+            PageElements.printConsoleMessage("Error: Invalid Path! Movie is not updated to the database.");
+            return false;
+        }
     }
 }

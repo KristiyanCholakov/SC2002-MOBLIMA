@@ -3,18 +3,18 @@ package models.movies;
 import models.Person;
 
 public class Director extends Person {
-    private int numberOfOscars;
+    private int numberOfMovies;
 
-    public Director(String fName, String lName) {
+    public Director(String fName, String lName, int numberOfMovies) {
         super(fName, lName);
+        this.numberOfMovies =numberOfMovies;
     }
 
-    public int getNumberOfOscars() {
-        return numberOfOscars;
+    public int getNumberOfMovies() {
+        return numberOfMovies;
     }
 
-    public void setNumberOfOscars(int numberOfOscars) {
-        this.numberOfOscars = numberOfOscars;
+    public void setNumberOfMovies(int numberOfMovies) {
+        this.numberOfMovies = numberOfMovies;
     }
-
 }

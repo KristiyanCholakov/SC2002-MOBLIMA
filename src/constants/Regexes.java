@@ -5,4 +5,5 @@ public class Regexes {
     public static final String password_regex = "^(?=.*\\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\\w\\d\\s:])([^\\s]){8,16}$";
     public static final String username_regex = "^(?<username>[[a-z]|[A-Z]|\\d|_]+)$";
     public static final String birthday_regex = "^\\d{4}-\\d{2}-\\d{2}$";
+    public static final String duration_regex = "^\\d{2}:\\d{2}:\\d{2}$";
 }
