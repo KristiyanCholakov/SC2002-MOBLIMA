@@ -65,6 +65,14 @@ public class CineplexEditorPages {
         //Cineplex cineplex = new Cineplex(cineplexName);
 
     }
+    public static void addCinemas(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Name of cinema: ");
+        String cinemaName = sc.nextLine();
+        System.out.println("Address of cinema: ");
+
+
+    }
     public static LocalDate dateInput(String userInput) {
 
         DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("M/d/yyyy");
