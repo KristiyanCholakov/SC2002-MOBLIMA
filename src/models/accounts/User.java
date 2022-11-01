@@ -2,17 +2,21 @@ package models.accounts;
 
 import models.Person;
 
+import java.time.LocalDate;
+
 public class User extends Person {
     private String username;
     private String email;
     private String password;
 
-    public User(String f_name, String l_name, String username, String email, String password) {
-        super(f_name, l_name);
+    private LocalDate birthdate;
+
+    public User(String fName, String lName, String username, String email, String password, LocalDate birthdate) {
+        super(fName, lName);
         this.username = username;
         this.email = email;
         this.password = password;
-
+        this.birthdate = birthdate;
     }
 
     public String getUsername() {

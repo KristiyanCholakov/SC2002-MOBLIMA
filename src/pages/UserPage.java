@@ -4,6 +4,7 @@ import constants.Regexes;
 import data_managers.UserManager;
 import models.accounts.User;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class UserPage {
@@ -66,12 +67,18 @@ public class UserPage {
             PageElements.printConsoleMessage("Error: The passwords do not match.");
             return;
         }
+        System.out.print("Birthdate (yyyy-mm-dd): ");
+        String birthday = scanner.next();
+        if (!birthday.matches(Regexes.birthday_regex)) {
+            PageElements.printConsoleMessage("Error: The birthday is not in wanted format.");
+            return;
+        }
         System.out.print("First Name: ");
         String f_name = scanner.next();
         System.out.print("Last Name: ");
         String l_name = scanner.next();
 
-        User user = new User(f_name, l_name, username, email, password1);
+        User user = new User(f_name, l_name, username, email, password1, LocalDate.parse(birthday));
         if (!UserManager.ifUserExists(user)) {
             if (UserManager.writeUser(user));
         } else {

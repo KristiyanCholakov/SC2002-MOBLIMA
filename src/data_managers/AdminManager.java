@@ -35,7 +35,7 @@ public class AdminManager {
         ArrayList<Admin> allAdmins = readAdmins();
         for (int i = 0; i < allAdmins.size(); i++) {
             Admin currentAdmin = allAdmins.get(i);
-            if (currentAdmin.toString().equals(admin.toString())) {
+            if (currentAdmin.getEmail().equals(admin.getEmail()) || currentAdmin.getUsername().equals(admin.getUsername())) {
                 return true;
             }
         }
