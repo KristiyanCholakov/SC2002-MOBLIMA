@@ -70,8 +70,12 @@ public class CineplexEditorPages {
         System.out.println("Name of cinema: ");
         String cinemaName = sc.nextLine();
         System.out.println("Address of cinema: ");
+        String cinemaAddress = sc.nextLine();
+        while (true){
+            System.out.println("Enter a date (like m/d/yyyy): ");
+            LocalDate newDate = dateInput(sc.nextLine());
 
-
+        }
     }
     public static LocalDate dateInput(String userInput) {
 
