@@ -1,7 +1,9 @@
 package pages;
 
+import data_managers.CineplexManager;
 import models.cinemas.Cinema;
 import models.cinemas.Cineplex;
+import models.cinemas.Screen;
 import models.cinemas.ShowTime;
 
 import java.time.LocalDate;
@@ -50,13 +52,19 @@ public class CineplexEditorPages {
         Scanner sc = new Scanner(System.in);
         System.out.println("Name of new cineplex: ");
         String CineplexName = sc.nextLine();
+        if (CineplexManager.getCineplex(CineplexName) != null){
+            PageElements.printConsoleMessage("Cineplex already exists!");
+            return;
+        }
         // 3 cinemas under each cineplex
         for (int i = 0; i < 3; i++){
             System.out.println("Name of " + (i+1) +"st cinema under it: ");
             String cinemaName = sc.nextLine();
+            System.out.println("Address of cinema: ");
             String cinemaAddress = sc.nextLine();
             while (true){
                 //add showtimes
+                //HashMap<LocalDate, ArrayList<ShowTime>> schedules, ArrayList<Screen > screens
                 System.out.println("Enter a date (like m/d/yyyy): ");
                 LocalDate newDate = dateInput(sc.nextLine());
             }
@@ -64,18 +72,6 @@ public class CineplexEditorPages {
         }
         //Cineplex cineplex = new Cineplex(cineplexName);
 
-    }
-    public static void addCinemas(){
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Name of cinema: ");
-        String cinemaName = sc.nextLine();
-        System.out.println("Address of cinema: ");
-        String cinemaAddress = sc.nextLine();
-        while (true){
-            System.out.println("Enter a date (like m/d/yyyy): ");
-            LocalDate newDate = dateInput(sc.nextLine());
-
-        }
     }
     public static LocalDate dateInput(String userInput) {
 
