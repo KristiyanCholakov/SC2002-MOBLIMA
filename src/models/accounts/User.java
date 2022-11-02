@@ -43,6 +43,10 @@ public class User extends Person {
         this.password = password;
     }
 
+    public LocalDate getBirthdate() {
+        return birthdate;
+    }
+
     @Override
     public String toString() {
         return "User:\n" +
@@ -50,6 +54,7 @@ public class User extends Person {
                 "Email=" + this.email + "\n" +
                 "Password=" + this.password + "\n" +
                 "F_Name=" + super.getfName() + "\n" +
-                "L_Name=" + super.getlName() + "\n";
+                "L_Name=" + super.getlName() + "\n" +
+                "Birthday=" + getBirthdate().toString();
     }
 }

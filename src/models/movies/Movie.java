@@ -110,4 +110,28 @@ public class Movie implements Serializable {
     public void setCast(ArrayList<Actor> cast) {
         this.cast = cast;
     }
+
+    public String castToString() {
+        String castString = "";
+        for (int i = 0; i < this.cast.size(); i++) {
+            castString += this.cast.get(i).toString();
+            if (i != this.cast.size()) castString+="\n";
+        }
+        return castString;
+    }
+
+    @Override
+    public String toString() {
+        return "Movie:\n" +
+                "Title=" + this.title + "\n" +
+                "Genre=" + this.genre + "\n" +
+                "Synopsis=" + this.synopsis + "\n" +
+                "Duration=" + this.duration.toString() + "\n" +
+                "Status=" + this.status.getDescription() + "\n" +
+                "Type=" + this.type.getType() + "\n" +
+                "Restriction=" + this.restriction.getRestriction() + "\n" +
+                "Rating=" + this.rating + "\n" +
+                "Director=\n" + this.director.toString() + "\n" +
+                "Cast=\n" + this.castToString();
+    }
 }

@@ -1,8 +1,11 @@
 package pages;
 
 import data_managers.AdminManager;
+import data_managers.MovieManager;
 import models.accounts.Admin;
+import models.movies.Movie;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AdminPage {
@@ -66,7 +69,7 @@ public class AdminPage {
             int choice = scanner.nextInt();
             switch (choice) {
                 case 1:
-//                    showMoviesPage();
+                    BrowsingPages.showMoviesPage();
                     break;
                 case 2:
 //                    showCinemasPage();

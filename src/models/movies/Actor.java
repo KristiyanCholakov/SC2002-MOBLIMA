@@ -13,4 +13,13 @@ public class Actor extends Director {
     public int getNumberOfOscars() {
         return numberOfOscars;
     }
+
+    @Override
+    public String toString() {
+        return "User:\n" +
+                "F_Name=" + super.getfName() + "\n" +
+                "L_Name=" + super.getlName() + "\n" +
+                "NumberOfOscars=" + getNumberOfOscars() + "\n"+
+                "NumberOfMovies=" + super.getNumberOfMovies();
+    }
 }
