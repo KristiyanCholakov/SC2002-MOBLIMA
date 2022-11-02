@@ -75,6 +75,12 @@ public class ShowTimeEditorPages {
 
 
     private static void addShowtimePage() {
+        System.out.println("Enter date");
+        System.out.println("Enter screen number");
+        System.out.println("Enter start time");
+        System.out.println("Enter end time");
+        System.out.println("Enter movie name");
+
     }
 
     private static void editShowtimePage() {
