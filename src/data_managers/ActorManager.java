@@ -2,6 +2,7 @@ package data_managers;
 
 import models.movies.Actor;
 import models.movies.Director;
+import models.movies.Movie;
 import pages.PageElements;
 
 import java.io.*;
@@ -74,6 +75,19 @@ public class ActorManager {
             out.flush();
             out.close();
             PageElements.printConsoleMessage("Actor Updated!");
+            ArrayList<Movie> movies = MovieManager.readMovies();
+            for (int i = 0; i < movies.size(); i++) {
+                Movie movie = movies.get(i);
+                for (int j = 0; j < movie.getCast().size(); j++) {
+                    Actor a = movie.getCast().get(j);;
+                    if (a.equals(actor)) {
+                        movie.getCast().remove(a);
+                        movie.getCast().add(a);
+                        MovieManager.updateMovie(movie);
+                        break;
+                    }
+                }
+            }
             return true;
         } catch (IOException e) {
             PageElements.printConsoleMessage("Error: Invalid Path! Director is not updated to the database.");

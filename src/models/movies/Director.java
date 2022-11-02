@@ -17,4 +17,12 @@ public class Director extends Person {
     public void setNumberOfMovies(int numberOfMovies) {
         this.numberOfMovies = numberOfMovies;
     }
+
+    @Override
+    public String toString() {
+        return "Director:\n" +
+                "F_Name=" + super.getfName() + "\n" +
+                "L_Name=" + super.getlName() + "\n" +
+                "NumberOfOscars=" + this.numberOfMovies;
+    }
 }

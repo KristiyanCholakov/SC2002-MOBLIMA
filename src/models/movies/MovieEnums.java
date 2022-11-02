@@ -56,8 +56,18 @@ public class MovieEnums implements Serializable {
     }
 
     public enum MovieStatus {
-        COMING_SOON,
-        PREVIEW,
-        NOW_SHOWING;
+        COMING_SOON("Movie will be coming to the cinemas soon."),
+        PREVIEW("Movie is available for preview."),
+        NOW_SHOWING("Movie can be seen at the cinemas.");
+
+        private String description;
+
+        MovieStatus(String description) {
+            this.description = description;
+        }
+
+        public String getDescription() {
+            return description;
+        }
     }
 }
