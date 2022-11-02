@@ -16,7 +16,7 @@ public class Actor extends Director {
 
     @Override
     public String toString() {
-        return "User:\n" +
+        return "Actor:\n" +
                 "F_Name=" + super.getfName() + "\n" +
                 "L_Name=" + super.getlName() + "\n" +
                 "NumberOfOscars=" + getNumberOfOscars() + "\n"+
