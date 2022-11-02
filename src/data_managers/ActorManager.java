@@ -83,7 +83,8 @@ public class ActorManager {
                     if (a.equals(actor)) {
                         movie.getCast().remove(a);
                         movie.getCast().add(a);
-                        return true;
+                        MovieManager.updateMovie(movie);
+                        break;
                     }
                 }
             }
