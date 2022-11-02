@@ -19,8 +19,12 @@ public class DirectorManager {
             ArrayList<Director> directors = (ArrayList<Director>) ois.readObject();
             ois.close();
             return directors;
-        } catch (ClassNotFoundException | IOException e) {
-            PageElements.printConsoleMessage("Error: Invalid Path! Director is not read from the database.");
+        } catch (FileNotFoundException e) {
+            PageElements.printConsoleMessage("Error: Invalid Path! Directors can't be read!");
+        } catch (EOFException e) {
+            PageElements.printConsoleMessage("File was empty. This is the first item in it.");
+        } catch (IOException | ClassNotFoundException e) {
+            PageElements.printConsoleMessage("Error!");
         }
         return new ArrayList<Director>();
     }

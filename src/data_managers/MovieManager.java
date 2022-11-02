@@ -18,8 +18,12 @@ public class MovieManager {
             ArrayList<Movie> movies = (ArrayList<Movie>) ois.readObject();
             ois.close();
             return movies;
-        } catch (ClassNotFoundException | IOException e) {
-            PageElements.printConsoleMessage("Error: Invalid Path! Movie is not saved to the database.");
+        } catch (FileNotFoundException e) {
+            PageElements.printConsoleMessage("Error: Invalid Path! Movies can't be read!");
+        } catch (EOFException e) {
+            PageElements.printConsoleMessage("File was empty. This is the first item in it.");
+        } catch (IOException | ClassNotFoundException e) {
+            PageElements.printConsoleMessage("Error!");
         }
         return new ArrayList<Movie>();
     }

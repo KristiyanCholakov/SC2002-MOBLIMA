@@ -17,8 +17,12 @@ public class UserManager {
             ArrayList<User> users = (ArrayList<User>) ois.readObject();
             ois.close();
             return users;
-        } catch (ClassNotFoundException | IOException e) {
-            PageElements.printConsoleMessage("Error: Invalid Path! User is not read from the database.");
+        } catch (FileNotFoundException e) {
+            PageElements.printConsoleMessage("Error: Invalid Path! Users can't be read!");
+        } catch (EOFException e) {
+            PageElements.printConsoleMessage("File was empty. This is the first item in it.");
+        } catch (IOException | ClassNotFoundException e) {
+            PageElements.printConsoleMessage("Error!");
         }
         return new ArrayList<User>();
     }

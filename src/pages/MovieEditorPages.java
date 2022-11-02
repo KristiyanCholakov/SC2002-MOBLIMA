@@ -128,7 +128,7 @@ public class MovieEditorPages {
         }
         System.out.print("Synopsis: ");
         String synopsis = scanner.nextLine();
-        System.out.print("Director: ");
+        System.out.println("Director: ");
         System.out.print("***First Name: ");
         String directorFName = scanner.nextLine();
         System.out.print("***Last Name: ");
@@ -143,9 +143,10 @@ public class MovieEditorPages {
         }
         System.out.print("Number of Main Actors: ");
         int n = scanner.nextInt();
+        scanner.nextLine();
         ArrayList<Actor> actors = new ArrayList<Actor>();
         for (int i = 0; i < n; i++) {
-            System.out.print("Actor: ");
+            System.out.println("Actor: ");
             System.out.print("***First Name: ");
             String actorFName = scanner.nextLine();
             System.out.print("***Last Name: ");
@@ -154,6 +155,7 @@ public class MovieEditorPages {
             if (actor == null) {
                 System.out.print("***Number of Oscars: ");
                 int numberOfOscars = scanner.nextInt();
+                scanner.nextLine();
                 actor = new Actor(actorFName, actorLName, 1, numberOfOscars);
                 ActorManager.writeActor(actor);
             } else {
