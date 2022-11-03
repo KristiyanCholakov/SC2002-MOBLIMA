@@ -1,6 +1,5 @@
 package pages;
 
-import models.cinemas.Screen;
 import models.cinemas.ShowTime;
 import java.time.LocalDate;
 import java.time.LocalTime;

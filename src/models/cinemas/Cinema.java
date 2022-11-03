@@ -1,36 +1,19 @@
 package models.cinemas;
 
-import java.io.Serializable;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashMap;
+public class Cinema {
+    int number;
+    CinemaEnums.CinemaType type;
 
-public class Cinema implements Serializable {
-    private String name;
-    private String address;
-    private HashMap<LocalDate, ArrayList<ShowTime>> schedules;
-    private ArrayList<Screen> screens;
-
-    public Cinema(String name, String address, HashMap<LocalDate, ArrayList<ShowTime>> schedules, ArrayList<Screen> screens) {
-        this.name = name;
-        this.address = address;
-        this.schedules = schedules;
-        this.screens = screens;
+    public Cinema(int number, CinemaEnums.CinemaType type) {
+        this.number = number;
+        this.type = type;
     }
 
-    public String getName() {
-        return name;
+    public int getNumber() {
+        return number;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public HashMap<LocalDate, ArrayList<ShowTime>> getSchedules() {
-        return schedules;
-    }
-
-    public ArrayList<Screen> getScreens() {
-        return screens;
+    public CinemaEnums.CinemaType getType() {
+        return type;
     }
 }

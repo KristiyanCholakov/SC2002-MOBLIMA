@@ -2,8 +2,6 @@ package pages;
 
 import data_managers.CineplexManager;
 import models.cinemas.Cinema;
-import models.cinemas.Cineplex;
-import models.cinemas.Screen;
 import models.cinemas.ShowTime;
 
 import java.time.LocalDate;
@@ -45,6 +43,26 @@ public class CineplexEditorPages {
         }
 
     }
+
+//    add cineplex
+//            add cinemas
+//            choose a date for the schedule
+//            add schedule
+//                add showtime
+//                    enter movie
+//                    enter cinema
+//                    enter tim
+//    "Enter cineplex:" +
+//            "entering the cineplex -> name, location, ..."
+//            "add cinemas (rooms)"
+//            "enter the number of cinemas in the cineplex -> 5" +
+//                        "enter cinema-> name, type (deluxe, normal,...)"
+//                        "doint this 4 more times"
+//            "enter a date for a schedule->1.1.2000"
+//                        "enter the number of projections (showtimes) per this date->20"
+//                                "add showtime->movie, cinema(roomm), start time, end time"
+//                                "do this 19 more times...."
+
     public static void addCineplexes(){
         ArrayList<Cinema> cinemas = null;
         HashMap<LocalDate, ArrayList<ShowTime>> schedules = new HashMap<>();

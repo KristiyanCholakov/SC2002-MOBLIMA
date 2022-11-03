@@ -10,15 +10,15 @@ import java.util.List;
 
 public class ShowTime implements Serializable {
     private LocalDate date;
-    private Screen screen;
+    private Cinema cinema;
     private LocalTime startTime;
     private LocalTime endTime;
     private Movie movie;
     private HashMap<Character, List<Seat>> seatOccupancy;
 
-    public ShowTime(LocalDate date, Screen screen, LocalTime startTime, LocalTime endTime, Movie movie, HashMap<Character, List<Seat>> seatOccupancy) {
+    public ShowTime(LocalDate date, Cinema cinema, LocalTime startTime, LocalTime endTime, Movie movie, HashMap<Character, List<Seat>> seatOccupancy) {
         this.date = date;
-        this.screen = screen;
+        this.cinema = cinema;
         this.startTime = startTime;
         this.endTime = endTime;
         this.movie = movie;
@@ -29,8 +29,8 @@ public class ShowTime implements Serializable {
         return date;
     }
 
-    public Screen getScreen() {
-        return screen;
+    public Cinema getCinema() {
+        return cinema;
     }
 
     public LocalTime getStartTime() {

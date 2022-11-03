@@ -1,7 +1,6 @@
 package models.movies;
 
 import models.accounts.User;
-import models.movies.Movie;
 
 import java.time.LocalDateTime;
 
@@ -10,14 +9,12 @@ public class Review {
     private int rating;
     private String comment;
     private User publisher;
-    private Movie movieAbout;
 
-    public Review(LocalDateTime dateTimePublished, int rating, String comment, User publisher, Movie movieAbout) {
+    public Review(LocalDateTime dateTimePublished, int rating, String comment, User publisher) {
         this.dateTimePublished = dateTimePublished;
         this.rating = rating;
         this.comment = comment;
         this.publisher = publisher;
-        this.movieAbout = movieAbout;
     }
 
     public LocalDateTime getDateTimePublished() {
@@ -36,10 +33,6 @@ public class Review {
         return publisher;
     }
 
-    public Movie getMovieAbout() {
-        return movieAbout;
-    }
-
     public void setDateTimePublished(LocalDateTime dateTimePublished) {
         this.dateTimePublished = dateTimePublished;
     }
@@ -56,8 +49,5 @@ public class Review {
         this.publisher = publisher;
     }
 
-    public void setMovieAbout(Movie movieAbout) {
-        this.movieAbout = movieAbout;
-    }
 
 }
