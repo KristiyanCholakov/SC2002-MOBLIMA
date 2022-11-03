@@ -1,10 +1,17 @@
 package pages;
 
+import models.cinemas.ShowTime;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ShowTimeEditorPages {
     public static void showtimeEditorPage() {
         Scanner scanner = new Scanner(System.in);
+        ArrayList<ShowTime> showTime = new ArrayList<>();
         PageElements.printHeader();
         boolean running = true;
         while (running) {
@@ -75,16 +82,35 @@ public class ShowTimeEditorPages {
 
 
     private static void addShowtimePage() {
-        System.out.println("Enter date");
+        LocalDate date = handleDate();
+
         System.out.println("Enter screen number");
         System.out.println("Enter start time");
         System.out.println("Enter end time");
         System.out.println("Enter movie name");
 
     }
+    private static String getUserInput(){
+        Scanner sc = new Scanner(System.in);
+        return sc.nextLine().trim();
+    }
+    //dd-mm-yyyy intended format
+    private static LocalDate handleDate() {
+        try{
+            System.out.println("Enter date");
+            String date = getUserInput();
+            return LocalDate.parse(date, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        } catch(DateTimeParseException exception) {
+            System.out.println("Invalid format. Please use 'DD-MM-YYYY'.");
+            return handleDate();
+        }
+    }
 
     private static void editShowtimePage() {
     }
     private static void deleteShowtimePage() {
+    }
+    public static void main(String[] args){
+        System.out.println(handleDate());
     }
 }
