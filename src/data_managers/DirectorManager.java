@@ -1,11 +1,9 @@
 package data_managers;
 
-import models.movies.Actor;
 import models.movies.Director;
 import models.movies.Movie;
 import pages.PageElements;
 
-import javax.swing.plaf.ComponentInputMapUIResource;
 import java.io.*;
 import java.util.ArrayList;
 
