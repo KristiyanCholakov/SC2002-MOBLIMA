@@ -1,8 +1,9 @@
 package pages;
 
+import models.cinemas.Screen;
 import models.cinemas.ShowTime;
-
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
@@ -82,11 +83,10 @@ public class ShowTimeEditorPages {
 
 
     private static void addShowtimePage() {
-        LocalDate date = handleDate();
-
-        System.out.println("Enter screen number");
-        System.out.println("Enter start time");
-        System.out.println("Enter end time");
+        LocalDate date = handleDateInput();
+        Screen screen = handleScreenInput();
+        LocalTime startTime = handleStartTimeInput();
+        LocalTime endTime = handleEndTimeInput();
         System.out.println("Enter movie name");
 
     }
@@ -95,14 +95,59 @@ public class ShowTimeEditorPages {
         return sc.nextLine().trim();
     }
     //dd-mm-yyyy intended format
-    private static LocalDate handleDate() {
+    private static LocalDate handleDateInput() {
         try{
             System.out.println("Enter date");
             String date = getUserInput();
             return LocalDate.parse(date, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
         } catch(DateTimeParseException exception) {
             System.out.println("Invalid format. Please use 'DD-MM-YYYY'.");
-            return handleDate();
+            return handleDateInput();
+        }
+    }
+    private static Screen handleScreenInput() {
+        //Todo fill up function after screens class implemented
+        try{
+            System.out.println("Enter screen number");
+            String screenNumber = getUserInput();
+            int screenInt = Integer.parseInt(screenNumber);
+            if (screenInt > 100 || screenInt <= 0){
+                System.out.println("Please enter an integer smaller than 100 and greater than 0.");
+            }
+        } catch(NumberFormatException exception) {
+            System.out.println("Invalid format. Please enter an integer.");
+        }
+        return null;
+    }
+
+    private static LocalTime handleStartTimeInput() {
+        try {
+            System.out.println("Enter Start Time");
+            String time = getUserInput();
+            return LocalTime.parse(time, DateTimeFormatter.ofPattern("HHmm"));
+        } catch(DateTimeParseException exception) {
+            System.out.println("Invalid format. Please use 'HHmm'.");
+            return handleStartTimeInput();
+        }
+    }
+    private static LocalTime handleEndTimeInput() {
+        try{
+            System.out.println("Enter End Time");
+            String time = getUserInput();
+            return LocalTime.parse(time, DateTimeFormatter.ofPattern("HHmm"));
+        } catch(DateTimeParseException exception) {
+            System.out.println("Invalid format. Please use 'HHmm'.");
+            return handleEndTimeInput();
+        }
+    }
+
+    private static String handleMovieInput() {
+        try{
+            System.out.println("Enter Movie Name");
+            return getUserInput();
+        } catch(DateTimeParseException exception) {
+            System.out.println("Invalid format. Please use 'HHmm'.");
+            return handleMovieInput();
         }
     }
 
@@ -111,6 +156,6 @@ public class ShowTimeEditorPages {
     private static void deleteShowtimePage() {
     }
     public static void main(String[] args){
-        System.out.println(handleDate());
+        System.out.println(handleDateInput());
     }
 }
