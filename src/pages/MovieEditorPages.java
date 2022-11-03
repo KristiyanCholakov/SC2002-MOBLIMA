@@ -63,7 +63,7 @@ public class MovieEditorPages {
         }
         LocalTime duration = LocalTime.parse(durationStr);
         System.out.print("Status (CS, P, NS): ");
-        String statusStr = scanner.nextLine();
+
         MovieEnums.MovieStatus status;
         switch (statusStr) {
             case "CS":

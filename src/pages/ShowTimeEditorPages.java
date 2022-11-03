@@ -81,7 +81,7 @@ public class ShowTimeEditorPages {
 
 
 
-    private static void addShowtimePage() {
+    public static void addShowtimePage() {
         LocalDate date = handleDateInput();
         Screen screen = handleScreenInput();
         LocalTime startTime = handleStartTimeInput();

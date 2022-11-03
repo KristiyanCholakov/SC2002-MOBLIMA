@@ -2,13 +2,17 @@ package pages;
 
 import data_managers.CineplexManager;
 import models.cinemas.Cinema;
+import models.cinemas.CinemaEnums;
 import models.cinemas.ShowTime;
+import models.movies.MovieEnums;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
+
+import static pages.ShowTimeEditorPages.addShowtimePage;
 
 public class CineplexEditorPages {
     public static void cinemaEditorPage() {
@@ -26,13 +30,13 @@ public class CineplexEditorPages {
             int choice = scanner.nextInt();
             switch (choice) {
                 case 1:
-                    addCineplexes();
+                    addCineplex();
                     break;
                 case 2:
-                    editCinema();
+                    editCineplex();
                     break;
                 case 3:
-                    deleteCinema();
+                    deleteCineplex();
                     break;
                 case 4:
                     running = false;
@@ -63,8 +67,9 @@ public class CineplexEditorPages {
 //                                "add showtime->movie, cinema(roomm), start time, end time"
 //                                "do this 19 more times...."
 
-    public static void addCineplexes(){
-        ArrayList<Cinema> cinemas = null;
+    public static void addCineplex(){
+        ArrayList<Cinema> cinemas = new ArrayList<>();
+        ArrayList<ShowTime> showtimes = new ArrayList<>();
         HashMap<LocalDate, ArrayList<ShowTime>> schedules = new HashMap<>();
 
         Scanner sc = new Scanner(System.in);
@@ -78,24 +83,37 @@ public class CineplexEditorPages {
         }
         // 3 cinemas under each cineplex
         System.out.println("Number of Cinemas: ");
-        Integer cinNum = sc.nextInt();
+        int cinNum = sc.nextInt();
         for (int i = 0; i < cinNum; i++){
-
-            while (true){
-                //add showtimes
-                //HashMap<LocalDate, ArrayList<ShowTime>> schedules, ArrayList<Screen > screens
-                System.out.println("Enter a date (like m/d/yyyy) to put in Show Times: ");
-                LocalDate newDate = dateInput(sc.nextLine());
-                System.out.println("Enter showtimes: ");
-                //ShowTime(LocalDate date, Screen screen, LocalTime startTime, LocalTime endTime, Movie movie, HashMap<Character, List<Seat>> seatOccupancy)
-                while (true){
-                    // ask user for screen
-
-
-                    System.out.println("");
-
-                }
+            System.out.println("Cinema Type (Platinum/Normal): ");
+            String cinType = sc.nextLine();
+            //enter cinema type
+            CinemaEnums.CinemaType cType;
+            switch (cinType) {
+                case "Platinum":
+                    cType = CinemaEnums.CinemaType.Platinum;
+                    break;
+                case "Normal":
+                    cType = CinemaEnums.CinemaType.Normal;
+                    break;
+                default:
+                    PageElements.printConsoleMessage("Error: The status is not in wanted format.");
+                    return;
             }
+            System.out.println("Enter a date (like m/d/yyyy) to put in Show Times: ");
+            LocalDate newDate = dateInput(sc.nextLine());
+            System.out.println("Number of projections: ");
+            int numOfProj = sc.nextInt();
+            System.out.println("Enter showtimes: ");
+            for (int i = 0; i < numOfProj; i++){
+                // add showtimes of each movie inside arraylist
+                showtimes.add();
+            }
+            schedules.put(newDate, showtimes);
+            showtimes.clear();
+        }
+        for (int i = 0; i < cinNum; i++){
+            Cinema
 
         }
         //Cineplex cineplex = new Cineplex(cineplexName);
@@ -111,10 +129,11 @@ public class CineplexEditorPages {
         return date ;
     }
 
-    public static void editCinema(){
+    public static void editCineplex(){
+
 
     }
-    public static void deleteCinema(){
+    public static void deleteCineplex(){
 
     }
 }
