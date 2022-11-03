@@ -5,4 +5,7 @@ public class CinemaEnums {
 
     }
 
+    public enum SeatConfiguration {
+
+    }
 }
