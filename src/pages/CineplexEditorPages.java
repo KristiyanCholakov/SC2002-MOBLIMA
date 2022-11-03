@@ -70,21 +70,31 @@ public class CineplexEditorPages {
         Scanner sc = new Scanner(System.in);
         System.out.println("Name of new cineplex: ");
         String CineplexName = sc.nextLine();
+        System.out.println("Address of cineplex: ");
+        String CineplexAddress = sc.nextLine();
         if (CineplexManager.getCineplex(CineplexName) != null){
             PageElements.printConsoleMessage("Cineplex already exists!");
             return;
         }
         // 3 cinemas under each cineplex
-        for (int i = 0; i < 3; i++){
-            System.out.println("Name of " + (i+1) +"st cinema under it: ");
-            String cinemaName = sc.nextLine();
-            System.out.println("Address of cinema: ");
-            String cinemaAddress = sc.nextLine();
+        System.out.println("Number of Cinemas: ");
+        Integer cinNum = sc.nextInt();
+        for (int i = 0; i < cinNum; i++){
+
             while (true){
                 //add showtimes
                 //HashMap<LocalDate, ArrayList<ShowTime>> schedules, ArrayList<Screen > screens
-                System.out.println("Enter a date (like m/d/yyyy): ");
+                System.out.println("Enter a date (like m/d/yyyy) to put in Show Times: ");
                 LocalDate newDate = dateInput(sc.nextLine());
+                System.out.println("Enter showtimes: ");
+                //ShowTime(LocalDate date, Screen screen, LocalTime startTime, LocalTime endTime, Movie movie, HashMap<Character, List<Seat>> seatOccupancy)
+                while (true){
+                    // ask user for screen
+
+
+                    System.out.println("");
+
+                }
             }
 
         }
