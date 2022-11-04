@@ -1,12 +1,12 @@
 package pages;
 
 import constants.Regexes;
+import data_managers.ActorManager;
 import data_managers.CineplexManager;
+import data_managers.DirectorManager;
 import data_managers.MovieManager;
-import models.cinemas.Cinema;
-import models.cinemas.CinemaEnums;
-import models.cinemas.ShowTime;
-import models.movies.MovieEnums;
+import models.cinemas.*;
+import models.movies.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -14,6 +14,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
 
 public class CineplexEditorPages {
@@ -73,7 +74,8 @@ public class CineplexEditorPages {
         ArrayList<Cinema> cinemas = new ArrayList<>();
         ArrayList<ShowTime> showtimes = new ArrayList<>();
         HashMap<LocalDate, ArrayList<ShowTime>> schedules = new HashMap<>();
-
+        HashMap<Character, List<Seat>> seatOccupancy = new HashMap<>();
+        List<Seat> seats = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
         System.out.println("Name of new cineplex: ");
         String CineplexName = sc.nextLine();
@@ -102,26 +104,29 @@ public class CineplexEditorPages {
                     PageElements.printConsoleMessage("Error: The status is not in wanted format.");
                     return;
             }
+            Cinema cinema = new Cinema(i+1,cType);
             System.out.println("Enter a date (like m/d/yyyy) to put in Show Times: ");
             LocalDate newDate = dateInput(sc.nextLine());
             System.out.println("Number of projections: ");
             int numOfProj = sc.nextInt();
             System.out.println("Enter showtimes: ");
-            for (int i = 0; i < numOfProj; i++){
+            for (int i = 0; i < numOfProj; i++) {
                 // add showtimes of each movie inside arraylist
+                LocalTime startT;
                 try {
                     System.out.println("Enter Start Time: ");
                     String startTime = sc.nextLine();
-                    LocalTime startT = LocalTime.parse(startTime, DateTimeFormatter.ofPattern("HHmm"));
-                } catch(DateTimeParseException exception) {
+                    startT = LocalTime.parse(startTime, DateTimeFormatter.ofPattern("HHmm"));
+                } catch (DateTimeParseException exception) {
                     System.out.println("Invalid format. Please use 'HHmm'.");
                     return;
                 }
+                LocalTime endT;
                 try {
                     System.out.println("Enter End Time: ");
                     String endTime = sc.nextLine();
-                    LocalTime endT = LocalTime.parse(endTime, DateTimeFormatter.ofPattern("HHmm"));
-                } catch(DateTimeParseException exception) {
+                    endT = LocalTime.parse(endTime, DateTimeFormatter.ofPattern("HHmm"));
+                } catch (DateTimeParseException exception) {
                     System.out.println("Invalid format. Please use 'HHmm'.");
                     return;
                 }
@@ -133,7 +138,7 @@ public class CineplexEditorPages {
                     PageElements.printConsoleMessage("No. of Tries left before termination: " + numTerm);
                     movieName = sc.nextLine();
                     numTerm -= 1;
-                    if (numTerm < 0){
+                    if (numTerm < 0) {
                         return;
                     }
                 }
@@ -210,20 +215,72 @@ public class CineplexEditorPages {
                         PageElements.printConsoleMessage("Error: The restriction is not in wanted format.");
                         return;
                 }
+                System.out.print("Synopsis: ");
+                String synopsis = sc.nextLine();
+                System.out.println("Director: ");
+                System.out.print("***First Name: ");
+                String directorFName = sc.nextLine();
+                System.out.print("***Last Name: ");
+                String directorLName = sc.nextLine();
+                Director director = DirectorManager.getDirector(directorFName, directorLName);
+                if (director == null) {
+                    director = new Director(directorFName, directorLName, 1);
+                    DirectorManager.writeDirector(director);
+                } else {
+                    director.setNumberOfMovies(director.getNumberOfMovies() + 1);
+                    DirectorManager.updateDirector(director);
+                }
+                System.out.print("Number of Main Actors: ");
+                int n = sc.nextInt();
+                sc.nextLine();
+                ArrayList<Actor> actors = new ArrayList<Actor>();
+                for (int i = 0; i < n; i++) {
+                    System.out.println("Actor: ");
+                    System.out.print("***First Name: ");
+                    String actorFName = sc.nextLine();
+                    System.out.print("***Last Name: ");
+                    String actorLName = sc.nextLine();
+                    Actor actor = ActorManager.getActor(actorFName, actorLName);
+                    if (actor == null) {
+                        System.out.print("***Number of Oscars: ");
+                        int numberOfOscars = sc.nextInt();
+                        sc.nextLine();
+                        actor = new Actor(actorFName, actorLName, 1, numberOfOscars);
+                        ActorManager.writeActor(actor);
+                    } else {
+                        actor.setNumberOfMovies(actor.getNumberOfMovies() + 1);
+                        ActorManager.updateActor(actor);
+                    }
+                    actors.add(actor);
+                }
+                double rating = 0.0;
+                ArrayList<Review> reviews = new ArrayList<Review>();
+                Movie movie = new Movie(movieName, genre, duration, status, type, restriction, synopsis, director, actors, rating, reviews);
+                MovieManager.writeMovie(movie);
 
 
-                showtimes.add();
-
-
+                System.out.println("Seats until which alphabet(a-z): ");
+                char row = sc.next().charAt(0);
+                for (char alphabet = 'a'; alphabet <= row; alphabet++) {
+                    System.out.println("Each row how many seats: ");
+                    int numPerRow = sc.nextInt();
+                    for (int i = 0; i < numPerRow; i++) {
+                        Seat seat = new Seat(alphabet, i, false);
+                        seats.add(seat);
+                    }
+                    seatOccupancy.put(alphabet, seats);
+                    seats.clear();
+                }
+                ShowTime showtime = new ShowTime(newDate, cinema, startT, endT,movie,seatOccupancy);
+                showtimes.add(showtime);
             }
+
             schedules.put(newDate, showtimes);
             showtimes.clear();
-        }
-        for (int i = 0; i < cinNum; i++){
-            Cinema
 
         }
-        //Cineplex cineplex = new Cineplex(cineplexName);
+        Cineplex cineplex = new Cineplex(CineplexName,CineplexAddress,schedules,cinemas);
+        CineplexManager.writeCineplex(cineplex);
 
     }
     public static LocalDate dateInput(String userInput) {

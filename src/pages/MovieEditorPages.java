@@ -50,7 +50,7 @@ public class MovieEditorPages {
         System.out.print("Title: ");
         String title = scanner.nextLine();
         if (MovieManager.getMovie(title) != null) {
-            PageElements.printConsoleMessage("Movie already exits!");
+            PageElements.printConsoleMessage("Movie already exists!");
             return;
         }
         System.out.print("Genre: ");
