@@ -110,7 +110,7 @@ public class CineplexEditorPages {
             System.out.println("Number of projections: ");
             int numOfProj = sc.nextInt();
             System.out.println("Enter showtimes: ");
-            for (int i = 0; i < numOfProj; i++) {
+            for (i = 0; i < numOfProj; i++) {
                 // add showtimes of each movie inside arraylist
                 LocalTime startT;
                 try {
