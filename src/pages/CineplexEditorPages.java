@@ -1,18 +1,20 @@
 package pages;
 
+import constants.Regexes;
 import data_managers.CineplexManager;
+import data_managers.MovieManager;
 import models.cinemas.Cinema;
 import models.cinemas.CinemaEnums;
 import models.cinemas.ShowTime;
 import models.movies.MovieEnums;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
-
-import static pages.ShowTimeEditorPages.addShowtimePage;
 
 public class CineplexEditorPages {
     public static void cinemaEditorPage() {
@@ -107,7 +109,112 @@ public class CineplexEditorPages {
             System.out.println("Enter showtimes: ");
             for (int i = 0; i < numOfProj; i++){
                 // add showtimes of each movie inside arraylist
+                try {
+                    System.out.println("Enter Start Time: ");
+                    String startTime = sc.nextLine();
+                    LocalTime startT = LocalTime.parse(startTime, DateTimeFormatter.ofPattern("HHmm"));
+                } catch(DateTimeParseException exception) {
+                    System.out.println("Invalid format. Please use 'HHmm'.");
+                    return;
+                }
+                try {
+                    System.out.println("Enter End Time: ");
+                    String endTime = sc.nextLine();
+                    LocalTime endT = LocalTime.parse(endTime, DateTimeFormatter.ofPattern("HHmm"));
+                } catch(DateTimeParseException exception) {
+                    System.out.println("Invalid format. Please use 'HHmm'.");
+                    return;
+                }
+                System.out.println("Enter Movie Name: ");
+                String movieName = sc.nextLine();
+                int numTerm = 3;
+                while ((MovieManager.getMovie(movieName) != null) == true) {
+                    PageElements.printConsoleMessage("Movie already exists! Try again! Enter Movie Name: ");
+                    PageElements.printConsoleMessage("No. of Tries left before termination: " + numTerm);
+                    movieName = sc.nextLine();
+                    numTerm -= 1;
+                    if (numTerm < 0){
+                        return;
+                    }
+                }
+                System.out.println("Genre: ");
+                String genre = sc.nextLine();
+                System.out.print("Duration (hh:mm:ss): ");
+                String durationStr = sc.nextLine();
+                if (!durationStr.matches(Regexes.duration_regex)) {
+                    PageElements.printConsoleMessage("Error: The duration is not in wanted format.");
+                    return;
+                }
+                LocalTime duration = LocalTime.parse(durationStr);
+                System.out.print("Status (CS, P, NS): ");
+                String statusStr = sc.nextLine();
+                MovieEnums.MovieStatus status;
+                switch (statusStr) {
+                    case "CS":
+                        status = MovieEnums.MovieStatus.COMING_SOON;
+                        break;
+                    case "P":
+                        status = MovieEnums.MovieStatus.PREVIEW;
+                        break;
+                    case "NS":
+                        status = MovieEnums.MovieStatus.NOW_SHOWING;
+                        break;
+                    default:
+                        PageElements.printConsoleMessage("Error: The status is not in wanted format.");
+                        return;
+
+                }
+                System.out.print("Type (2D, 3D, 4DX, IMAX): ");
+                String typeStr = sc.nextLine();
+                MovieEnums.MovieType type;
+                switch (typeStr) {
+                    case "2D":
+                        type = MovieEnums.MovieType.TWO_D;
+                        break;
+                    case "3D":
+                        type = MovieEnums.MovieType.THREE_D;
+                        break;
+                    case "4DX":
+                        type = MovieEnums.MovieType.FOUR_DX;
+                        break;
+                    case "IMAX":
+                        type = MovieEnums.MovieType.IMAX;
+                        break;
+                    default:
+                        PageElements.printConsoleMessage("Error: The type is not in wanted format.");
+                        return;
+                }
+                System.out.print("Restriction (G, PG, PG13, NC16, M18, R21): ");
+                String restrictionStr = sc.nextLine();
+                MovieEnums.MovieRestriction restriction;
+                switch (restrictionStr) {
+                    case "G":
+                        restriction = MovieEnums.MovieRestriction.G;
+                        break;
+                    case "PG":
+                        restriction = MovieEnums.MovieRestriction.PG;
+                        break;
+                    case "PG13":
+                        restriction = MovieEnums.MovieRestriction.PG13;
+                        break;
+                    case "NC16":
+                        restriction = MovieEnums.MovieRestriction.NC16;
+                        break;
+                    case "M18":
+                        restriction = MovieEnums.MovieRestriction.M18;
+                        break;
+                    case "R21":
+                        restriction = MovieEnums.MovieRestriction.R21;
+                        break;
+                    default:
+                        PageElements.printConsoleMessage("Error: The restriction is not in wanted format.");
+                        return;
+                }
+
+
                 showtimes.add();
+
+
             }
             schedules.put(newDate, showtimes);
             showtimes.clear();
