@@ -56,6 +56,17 @@ public class UserManager {
         return false;
     }
 
+    public static User getUser(String username) {
+        ArrayList<User> allUsers = readUsers();
+        for (int i = 0; i < allUsers.size(); i++) {
+            User currentUser = allUsers.get(i);
+            if (currentUser.getEmail().equals(username) || currentUser.getUsername().equals(username)) {
+                return currentUser;
+            }
+        }
+        return null;
+    }
+
     public static User checkCredentials(String username, String password) {
         ArrayList<User> allUsers = readUsers();
         for (int i = 0; i < allUsers.size(); i++) {

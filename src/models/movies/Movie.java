@@ -111,6 +111,10 @@ public class Movie implements Serializable {
         this.cast = cast;
     }
 
+    public void setReviews(ArrayList<Review> reviews) {
+        this.reviews = reviews;
+    }
+
     public String castToString() {
         String castString = "";
         for (int i = 0; i < this.cast.size(); i++) {

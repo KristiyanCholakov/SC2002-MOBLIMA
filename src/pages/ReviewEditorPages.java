@@ -1,42 +1,33 @@
 package pages;
 
+import data_managers.MovieManager;
+import data_managers.UserManager;
 import models.accounts.User;
-import models.accounts.Admin;
-import models.movies.*;
+import models.movies.Movie;
+import models.movies.Review;
 
-import java.lang.reflect.Array;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Scanner;
 
 
-
 public class ReviewEditorPages {
-    //protected ArrayList<Review> reviews;
-    private static Movie movie;
-    static Scanner scanner = new Scanner(System.in);
     public static void reviewEditorPage() {
-        ArrayList<Review> reviews  = movie.getReviews();
+        Scanner scanner = new Scanner(System.in);
+        PageElements.printHeader();
         boolean running = true;
         while (running) {
             System.out.println("Select the action you want:\n" +
                     "(Type the number of the choice)\n" +
-                    "       1 - View Reviews\n" +
-                    "       2 - Delete Reviews\n" +
-                    "       3 - Back to Editor Portal" );
-
+                    "       1 - Delete Review\n" +
+                    "       2 - Back to Editor Portal");
             System.out.print("Choice: ");
             int choice = scanner.nextInt();
+            scanner.nextLine();
             switch (choice) {
                 case 1:
-                    viewReviews(reviews);
+                    deleteReviewsPage();
                     break;
                 case 2:
-                    deleteReviews(reviews);
-                    break;
-                case 3:
                     running = false;
                     break;
                 default:
@@ -45,20 +36,36 @@ public class ReviewEditorPages {
         }
     }
 
-    public static void viewReviews(ArrayList<Review> reviews) {
-            System.out.println(reviews);
-    }
-    public static void deleteReviews(ArrayList<Review> reviews){
-        String username;
-        int i;
-        System.out.println("Choose the username of the reviewer you want to remove: ");
-        username = scanner.nextLine();
-
-        for(i=0; i< reviews.size();i++){
-            if(reviews.get(i).getPublisher().getUsername() == username){
-                reviews.remove(i); // assuming every user only leaves 1 review for that movie, else can just remove the break statement
+    public static void deleteReviewsPage() {
+        Scanner scanner = new Scanner(System.in);
+        PageElements.printHeader();
+        System.out.println("Enter the title of the movie the review is about:");
+        String movieTitle = scanner.nextLine();
+        Movie movie = MovieManager.getMovie(movieTitle);
+        if (movie == null) {
+            PageElements.printConsoleMessage("The movie doesn't exits.");
+        }
+        System.out.println("Enter the email/username of the publisher of the review:");
+        String username = scanner.nextLine();
+        User user = UserManager.getUser(username);
+        if (user == null) {
+            PageElements.printConsoleMessage("The user doesn't exits.");
+        }
+        ArrayList<Review> reviews = movie.getReviews();
+        Review reviewToDelete = null;
+        for (int i = 0; i < reviews.size(); i++) {
+            Review review = reviews.get(i);
+            if (review.getPublisher().equals(user)) {
+                reviewToDelete = review;
                 break;
             }
         }
+        if (reviewToDelete == null) {
+            PageElements.printConsoleMessage("The selected used hasn't reviews the movie.");
+            return;
+        }
+        reviews.remove(reviewToDelete);
+        movie.setReviews(reviews);
+        MovieManager.updateMovie(movie);
     }
 }
