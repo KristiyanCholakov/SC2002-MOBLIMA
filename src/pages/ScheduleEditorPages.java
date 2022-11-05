@@ -32,7 +32,7 @@ public class ScheduleEditorPages {
                     addSchedulePage();
                     break;
                 case 2:
-                    showtimeEditorPage();
+                    editSchedulePage();
                     break;
                 case 3:
                     deleteSchedulePage();
@@ -72,8 +72,8 @@ public class ScheduleEditorPages {
             }
             System.out.println("Enter the starting time (hh:mm):");
             LocalTime startTime= LocalTime.parse(sc.nextLine() + ":00");
-            System.out.println("Enter the ending time (hh:mm):");
-            LocalTime endTime= LocalTime.parse(sc.nextLine() + ":00");
+            LocalTime duration =  movie.getDuration();
+            LocalTime endTime = startTime.plusHours(duration.getHour()).plusMinutes(duration.getMinute());
             ShowTime showTime = new ShowTime(date, cinema, startTime, endTime, movie);
             showTimes.add(showTime);
         }
