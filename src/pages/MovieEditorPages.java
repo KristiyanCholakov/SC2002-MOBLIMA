@@ -18,9 +18,9 @@ public class MovieEditorPages {
         while (running) {
             System.out.println("Select the action you want:\n" +
                     "(Type the number of the choice)\n" +
-                    "       1 - Add\n" +
-                    "       2 - Edit\n" +
-                    "       3 - Delete\n" +
+                    "       1 - Add Movie\n" +
+                    "       2 - Edit Movie\n" +
+                    "       3 - Delete Movie\n" +
                     "       4 - Back to Editor Portal");
             System.out.print("Choice: ");
             int choice = scanner.nextInt();
@@ -184,6 +184,7 @@ public class MovieEditorPages {
         }
         boolean running = true;
         while (running) {
+            PageElements.printHeader();
             System.out.println("Select what you want to edit:\n" +
                     "(Type the number of the choice)\n" +
                     "       1 - Genre \n" +
@@ -330,6 +331,6 @@ public class MovieEditorPages {
             PageElements.printConsoleMessage("The movie doesn't exist!");
             return;
         }
-        MovieManager.removeMovie(movie);
+        MovieManager.deleteMovie(movie);
     }
 }

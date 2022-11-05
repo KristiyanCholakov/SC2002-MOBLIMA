@@ -1,6 +1,5 @@
 package data_managers;
 
-import models.movies.Director;
 import models.movies.Movie;
 import pages.PageElements;
 
@@ -82,7 +81,7 @@ public class MovieManager {
         }
     }
 
-    public static boolean removeMovie(Movie movie) {
+    public static boolean deleteMovie(Movie movie) {
         ArrayList<Movie> allMovies = readMovies();
         Movie movieToUpdated = getMovie(movie.getTitle());
         if (movieToUpdated == null) {

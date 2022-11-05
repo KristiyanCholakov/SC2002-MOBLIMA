@@ -43,6 +43,22 @@ public class Cineplex implements Serializable {
         return cinemasStr;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setSchedules(HashMap<LocalDate, ArrayList<ShowTime>> schedules) {
+        this.schedules = schedules;
+    }
+
+    public void setCinemas(ArrayList<Cinema> cinemas) {
+        this.cinemas = cinemas;
+    }
+
     @Override
     public boolean equals(Object obj) {
         Cineplex cineplex = (Cineplex) obj;

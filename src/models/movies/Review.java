@@ -49,5 +49,9 @@ public class Review {
         this.publisher = publisher;
     }
 
-
+    @Override
+    public boolean equals(Object obj) {
+        Review review = (Review) obj;
+        return review.publisher.equals(this.publisher);
+    }
 }

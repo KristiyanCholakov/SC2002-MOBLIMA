@@ -79,4 +79,28 @@ public class CineplexManager {
             return false;
         }
     }
+
+    public static boolean deleteCineplex (Cineplex cineplex) {
+        ArrayList<Cineplex> allCineplexes = readCineplexes();
+        Cineplex cineplexToUpdated = getCineplex(cineplex.getName());
+        if (cineplexToUpdated == null) {
+            PageElements.printConsoleMessage("No such cineplex!");
+            return false;
+        } else {
+            allCineplexes.remove(cineplexToUpdated);
+            File file = new File(CINEPLEXES_PATH);
+            if(file.exists()) file.delete();
+        }
+        try {
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(CINEPLEXES_PATH));
+            out.writeObject(allCineplexes);
+            out.flush();
+            out.close();
+            PageElements.printConsoleMessage("Cineplex Updated!");
+            return true;
+        } catch (IOException e) {
+            PageElements.printConsoleMessage("Error: Invalid Path! Cineplex is not updated to the database.");
+            return false;
+        }
+    }
 }
