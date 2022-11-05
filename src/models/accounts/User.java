@@ -48,6 +48,12 @@ public class User extends Person {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        User user = (User) obj;
+        return user.email.equals(this.email);
+    }
+
+    @Override
     public String toString() {
         return "User:\n" +
                 "Username=" + this.username + "\n" +
