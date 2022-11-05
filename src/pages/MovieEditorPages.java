@@ -55,15 +55,15 @@ public class MovieEditorPages {
         }
         System.out.print("Genre: ");
         String genre = scanner.nextLine();
-        System.out.print("Duration (hh:mm:ss): ");
-        String durationStr = scanner.nextLine();
+        System.out.print("Duration (hh:mm): ");
+        String durationStr = scanner.nextLine() + ":00";
         if (!durationStr.matches(Regexes.duration_regex)) {
             PageElements.printConsoleMessage("Error: The duration is not in wanted format.");
             return;
         }
         LocalTime duration = LocalTime.parse(durationStr);
         System.out.print("Status (CS, P, NS): ");
-
+        String statusStr = scanner.nextLine();
         MovieEnums.MovieStatus status;
         switch (statusStr) {
             case "CS":
@@ -202,8 +202,8 @@ public class MovieEditorPages {
                     MovieManager.updateMovie(movie);
                     break;
                 case 2:
-                    System.out.print("Duration (hh:mm:ss): ");
-                    String durationStr = scanner.nextLine();
+                    System.out.print("Duration (hh:mm): ");
+                    String durationStr = scanner.nextLine() + ":00";
                     if (!durationStr.matches(Regexes.duration_regex)) {
                         PageElements.printConsoleMessage("Error: The duration is not in wanted format.");
                         return;

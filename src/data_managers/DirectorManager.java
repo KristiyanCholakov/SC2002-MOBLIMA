@@ -58,7 +58,6 @@ public class DirectorManager {
     }
 
     public static boolean updateDirector (Director director) {
-        File file = new File(DIRECTORS_PATH);
         ArrayList<Director> allDirectors = readDirectors();
         Director directorToUpdate = getDirector(director.getfName(), director.getlName());
         if (directorToUpdate == null) {
@@ -67,8 +66,9 @@ public class DirectorManager {
         } else {
             allDirectors.remove(directorToUpdate);
             allDirectors.add(director);
+            File file = new File(DIRECTORS_PATH);
+            if(file.exists()) file.delete();
         }
-        if(file.exists()) file.delete();
         try {
             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(DIRECTORS_PATH));
             out.writeObject(allDirectors);

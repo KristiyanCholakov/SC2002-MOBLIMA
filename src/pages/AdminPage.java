@@ -1,11 +1,8 @@
 package pages;
 
 import data_managers.AdminManager;
-import data_managers.MovieManager;
 import models.accounts.Admin;
-import models.movies.Movie;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AdminPage {
@@ -55,14 +52,14 @@ public class AdminPage {
 
     public static void adminShowPage() {
         Scanner scanner = new Scanner(System.in);
-        PageElements.printHeader();
         boolean running = true;
         while (running) {
+            PageElements.printHeader();
             System.out.println("Select the action you want:\n" +
                     "(Type the number of the choice)\n" +
                     "       1 - Show Movies\n" +
-                    "       2 - Show Cinemas\n" +
-                    "       3 - Show Showtime\n" +
+                    "       2 - Show Cineplexes\n" +
+                    "       3 - Show Schedules\n" +
                     "       4 - Show Reviews\n" +
                     "       5 - Back to Admin Portal");
             System.out.print("Choice: ");
@@ -72,10 +69,10 @@ public class AdminPage {
                     BrowsingPages.showMoviesPage();
                     break;
                 case 2:
-//                    showCinemasPage();
+                    BrowsingPages.showCineplexesPage();
                     break;
                 case 3:
-//                    showShowtimePage();
+                    BrowsingPages.showSchedules();
                     break;
                 case 4:
 //                    showReviewsPage();
@@ -98,7 +95,7 @@ public class AdminPage {
                     "(Type the number of the choice)\n" +
                     "       1 - Movies Editor\n" +
                     "       2 - Cineplex Editor\n" +
-                    "       3 - Showtime Editor\n" +
+                    "       3 - Schedule Editor\n" +
                     "       4 - Reviews Editor\n" +
                     "       5 - Back to Admin Portal");
             System.out.print("Choice: ");
@@ -111,7 +108,7 @@ public class AdminPage {
                     CineplexEditorPages.cinemaEditorPage();
                     break;
                 case 3:
-                    ShowTimeEditorPages.showtimeEditorPage();
+                    ScheduleEditorPages.showtimeEditorPage();
                     break;
                 case 4:
                     ReviewEditorPages.reviewEditorPage();

@@ -64,6 +64,8 @@ public class CineplexManager {
         } else {
             allCineplexes.remove(cineplexToUpdated);
             allCineplexes.add(cineplex);
+            File file = new File(CINEPLEXES_PATH);
+            if(file.exists()) file.delete();
         }
         try {
             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(CINEPLEXES_PATH));

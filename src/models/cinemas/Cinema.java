@@ -1,14 +1,19 @@
 package models.cinemas;
 
-public class Cinema {
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class Cinema implements Serializable {
     int number;
     CinemaEnums.CinemaType type;
 
     CinemaEnums.SeatConfiguration seatConfiguration;
 
-    public Cinema(int number, CinemaEnums.CinemaType type) {
+    public Cinema(int number, CinemaEnums.CinemaType type, CinemaEnums.SeatConfiguration configuration) {
         this.number = number;
         this.type = type;
+        this.seatConfiguration = configuration;
     }
 
     public int getNumber() {
@@ -17,5 +22,13 @@ public class Cinema {
 
     public CinemaEnums.CinemaType getType() {
         return type;
+    }
+
+    @Override
+    public String toString() {
+        return "Cinema:\n" +
+                "Number=" + this.number + "\n" +
+                "Type=" + this.type.getType() + "\n" +
+                "SeatConfiguration=" + this.seatConfiguration.getDescription();
     }
 }

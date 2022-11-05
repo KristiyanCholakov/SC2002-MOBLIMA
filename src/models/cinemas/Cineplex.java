@@ -33,4 +33,27 @@ public class Cineplex implements Serializable {
     public ArrayList<Cinema> getCinemas() {
         return cinemas;
     }
+
+    public String cinemasToString() {
+        String cinemasStr = "";
+        for (int i = 0; i < this.cinemas.size(); i++) {
+            cinemasStr += this.cinemas.get(i).toString();
+            if (i != this.cinemas.size()) cinemasStr+="\n";
+        }
+        return cinemasStr;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        Cineplex cineplex = (Cineplex) obj;
+        return (cineplex.getName().equals(this.name));
+    }
+
+    @Override
+    public String toString() {
+        return "Cineplex:\n" +
+                "Name=" + this.name + "\n" +
+                "Address=" + this.address + "\n" +
+                "Cinemas=\n" + this.cinemasToString();
+    }
 }

@@ -19,10 +19,16 @@ public class Director extends Person {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        Director director = (Director) obj;
+        return (director.getfName().equals(this.getfName()) && director.getlName().equals(this.getlName()));
+    }
+
+    @Override
     public String toString() {
         return "Director:\n" +
                 "F_Name=" + super.getfName() + "\n" +
                 "L_Name=" + super.getlName() + "\n" +
-                "NumberOfOscars=" + this.numberOfMovies;
+                "NumberOfMovies=" + this.numberOfMovies;
     }
 }

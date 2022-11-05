@@ -66,6 +66,8 @@ public class MovieManager {
         } else {
             allMovies.remove(movieToUpdated);
             allMovies.add(movie);
+            File file = new File(MOVIES_PATH);
+            if(file.exists()) file.delete();
         }
         try {
             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(MOVIES_PATH));

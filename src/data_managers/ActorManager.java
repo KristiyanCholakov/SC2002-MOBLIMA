@@ -57,7 +57,6 @@ public class ActorManager {
     }
 
     public static boolean updateActor (Actor actor) {
-        File file = new File(ACTOR_PATH);
         ArrayList<Actor> allActors = readActors();
         Actor actorToUpdate = getActor(actor.getfName(), actor.getlName());
         if (actorToUpdate == null) {
@@ -66,8 +65,9 @@ public class ActorManager {
         } else {
             allActors.remove(actorToUpdate);
             allActors.add(actor);
+            File file = new File(ACTOR_PATH);
+            if(file.exists()) file.delete();
         }
-        if(file.exists()) file.delete();
         try {
             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(ACTOR_PATH));
             out.writeObject(allActors);
@@ -81,7 +81,7 @@ public class ActorManager {
                     Actor a = movie.getCast().get(j);;
                     if (a.equals(actor)) {
                         movie.getCast().remove(a);
-                        movie.getCast().add(a);
+                        movie.getCast().add(actor);
                         MovieManager.updateMovie(movie);
                         break;
                     }

@@ -1,5 +1,6 @@
 package models.movies;
 
+import data_managers.ActorManager;
 import models.Person;
 
 public class Actor extends Director {
@@ -12,6 +13,12 @@ public class Actor extends Director {
 
     public int getNumberOfOscars() {
         return numberOfOscars;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        Actor actor = (Actor) obj;
+        return (actor.getfName().equals(this.getfName()) && actor.getlName().equals(this.getlName()));
     }
 
     @Override

@@ -121,6 +121,12 @@ public class Movie implements Serializable {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        Movie movie = (Movie) obj;
+        return movie.getTitle().equals(this.title);
+    }
+
+    @Override
     public String toString() {
         return "Movie:\n" +
                 "Title=" + this.title + "\n" +
