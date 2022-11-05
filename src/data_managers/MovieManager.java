@@ -81,4 +81,28 @@ public class MovieManager {
             return false;
         }
     }
+
+    public static boolean removeMovie(Movie movie) {
+        ArrayList<Movie> allMovies = readMovies();
+        Movie movieToUpdated = getMovie(movie.getTitle());
+        if (movieToUpdated == null) {
+            PageElements.printConsoleMessage("No such movie!");
+            return false;
+        } else {
+            allMovies.remove(movieToUpdated);
+            File file = new File(MOVIES_PATH);
+            if(file.exists()) file.delete();
+        }
+        try {
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(MOVIES_PATH));
+            out.writeObject(allMovies);
+            out.flush();
+            out.close();
+            PageElements.printConsoleMessage("Movie Deleted!");
+            return true;
+        } catch (IOException e) {
+            PageElements.printConsoleMessage("Error: Invalid Path! Movie is not deleted from the database.");
+            return false;
+        }
+    }
 }

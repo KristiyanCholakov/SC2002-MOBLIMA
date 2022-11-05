@@ -24,6 +24,7 @@ public class MovieEditorPages {
                     "       4 - Back to Editor Portal");
             System.out.print("Choice: ");
             int choice = scanner.nextInt();
+            scanner.nextLine();
             switch (choice) {
                 case 1:
                     addMoviePage();
@@ -194,6 +195,7 @@ public class MovieEditorPages {
                     "       7 - Back to Movie Editor");
             System.out.print("Choice: ");
             int choice = scanner.nextInt();
+            scanner.nextLine();
             switch (choice) {
                 case 1:
                     System.out.print("Genre: ");
@@ -284,6 +286,7 @@ public class MovieEditorPages {
                     }
                     System.out.print("Number of Main Actors: ");
                     int n = scanner.nextInt();
+                    scanner.nextLine();
                     ArrayList<Actor> newActors = new ArrayList<Actor>();
                     for (int i = 0; i < n; i++) {
                         System.out.print("Actor: ");
@@ -295,6 +298,7 @@ public class MovieEditorPages {
                         if (actor == null) {
                             System.out.print("***Number of Oscars: ");
                             int numberOfOscars = scanner.nextInt();
+                            scanner.nextLine();
                             actor = new Actor(actorFName, actorLName, 1, numberOfOscars);
                             ActorManager.writeActor(actor);
                         } else {
@@ -316,6 +320,16 @@ public class MovieEditorPages {
     }
 
     public static void deleteMoviePage() {
+        Scanner scanner = new Scanner(System.in);
+        PageElements.printHeader();
 
+        System.out.println("Enter the title of the movie to be deleted!");
+        String title = scanner.nextLine();
+        Movie movie = MovieManager.getMovie(title);
+        if (movie == null) {
+            PageElements.printConsoleMessage("The movie doesn't exist!");
+            return;
+        }
+        MovieManager.removeMovie(movie);
     }
 }
