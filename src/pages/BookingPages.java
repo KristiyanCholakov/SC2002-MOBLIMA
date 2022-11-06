@@ -24,10 +24,10 @@ public class BookingPages {
             scanner.nextLine();
             switch (choice) {
                 case 1:
-                    BookingPages.bookingPage();
+                    BookingPages.searchByCineplexPage();
                     break;
                 case 2:
-                    ExplorePages.explorePages();
+                    BookingPages.searchByCineplexPage();
                     break;
                 case 3:
                     UserBookingsPages.userBookingsPage();
@@ -62,7 +62,17 @@ public class BookingPages {
         Collections.sort(schedule, new ShowTime.ByStartTime());
         for (int i = 0; i < schedule.size(); i++) {
             ShowTime showTime = schedule.get(i);
+            System.out.print(i + 1 + ") ");
             showTime.printShowTime();
         }
+        System.out.print("Select the showtime you want to book (enter -1 to go back):");
+        int showtimeChoice = scanner.nextInt();
+        scanner.nextLine();
+        if (showtimeChoice == -1) return;
+        makeBooking(schedule.get(showtimeChoice-1));
+    }
+
+    public static void makeBooking(ShowTime showTime) {
+
     }
 }

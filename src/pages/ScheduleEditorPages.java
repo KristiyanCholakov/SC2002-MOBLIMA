@@ -52,7 +52,7 @@ public class ScheduleEditorPages {
         sc.nextLine();
         ArrayList<ShowTime> showTimes = new ArrayList<>();
         for (int i = 0; i < n; i++) {
-            System.out.println("Enter the details for showtime " + i);
+            System.out.println("Enter the details for showtime " + i+1);
             System.out.println("Enter the cinema number where the movie will be projected: ");
             int cinemaN = sc.nextInt();
             sc.nextLine();

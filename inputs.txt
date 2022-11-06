@@ -127,3 +127,72 @@ Rockwell
 Marc
 Maron
 0
+
+***Adding cineplexes
+1
+JP Cinema
+Jurong Point Mall, Jurong East
+10
+Platinum
+S
+Platinum
+S
+Normal
+B
+Normal
+B
+Normal
+B
+Normal
+M
+Normal
+M
+Normal
+M
+Normal
+S
+Normal
+S
+1
+NTU Cinema
+North Spine Plaza, NTU Campus
+2
+Normal
+S
+Normal
+S
+
+***Adding schedules - NTU Cinema
+NTU Cinema
+2022-11-06
+10
+1
+Bullet Train
+10:00
+1
+Prey
+13:00
+1
+Halloween Ends
+15:00
+1
+Fall
+17:00
+1
+Doctor Strange in the Multiverse of Madness
+19:00
+2
+Black Adam
+11:00
+2
+Black Adam
+13:00
+2
+The Bad Guys
+15:00
+2
+Fall
+17:00
+2
+Prey
+19:00
