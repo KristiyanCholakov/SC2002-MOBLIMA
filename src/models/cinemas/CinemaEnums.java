@@ -26,8 +26,8 @@ public class CinemaEnums {
 
     public enum SeatConfiguration {
         SMALL_CINEMA("Small Room", 6, 10),
-        MEDIUM_CINEMA("Medium Room", 10, 15),
-        BIG_CINEMA("Big Room", 15, 25);
+        MEDIUM_CINEMA("Medium Room", 10, 16),
+        BIG_CINEMA("Big Room", 15, 24);
 
         private String description;
         private int rows;

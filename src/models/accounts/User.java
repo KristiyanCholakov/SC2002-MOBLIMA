@@ -56,6 +56,14 @@ public class User extends Person {
         return birthdate;
     }
 
+    public void addBooking (Booking booking) {
+        this.bookings.add(booking);
+    }
+
+    public void removeBooking (Booking booking) {
+        this.bookings.remove(booking);
+    }
+
     @Override
     public boolean equals(Object obj) {
         User user = (User) obj;

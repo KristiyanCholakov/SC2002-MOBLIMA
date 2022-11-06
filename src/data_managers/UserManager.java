@@ -1,6 +1,7 @@
 package data_managers;
 
 import models.accounts.User;
+import models.movies.Movie;
 import pages.PageElements;
 
 import java.io.*;
@@ -65,6 +66,31 @@ public class UserManager {
             }
         }
         return null;
+    }
+
+    public static boolean updateUser(User user) {
+        ArrayList<User> allUsers = readUsers();
+        User userToUpdated = getUser(user.getUsername());
+        if (userToUpdated == null) {
+            PageElements.printConsoleMessage("No such user!");
+            return false;
+        } else {
+            allUsers.remove(userToUpdated);
+            allUsers.add(user);
+            File file = new File(USERS_PATH);
+            if(file.exists()) file.delete();
+        }
+        try {
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(USERS_PATH));
+            out.writeObject(allUsers);
+            out.flush();
+            out.close();
+            PageElements.printConsoleMessage("User Updated!");
+            return true;
+        } catch (IOException e) {
+            PageElements.printConsoleMessage("Error: Invalid Path! User is not updated to the database.");
+            return false;
+        }
     }
 
     public static User checkCredentials(String username, String password) {

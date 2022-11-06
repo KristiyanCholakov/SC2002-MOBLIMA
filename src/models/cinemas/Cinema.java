@@ -24,6 +24,10 @@ public class Cinema implements Serializable {
         return type;
     }
 
+    public CinemaEnums.SeatConfiguration getSeatConfiguration() {
+        return seatConfiguration;
+    }
+
     @Override
     public String toString() {
         return "Cinema:\n" +

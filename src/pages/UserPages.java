@@ -1,11 +1,8 @@
 package pages;
 
 import constants.Regexes;
-import data_managers.MovieManager;
 import data_managers.UserManager;
 import models.accounts.User;
-import models.movies.Movie;
-import models.movies.Review;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

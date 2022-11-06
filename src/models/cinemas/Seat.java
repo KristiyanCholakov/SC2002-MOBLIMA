@@ -1,6 +1,7 @@
 package models.cinemas;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class Seat implements Serializable {
     private Character row;
@@ -39,5 +40,16 @@ public class Seat implements Serializable {
             return true;
         }
         return false;
+    }
+
+    public String printSeat() {
+        if (occupied) return "[X]";
+        else return "[ ]";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        Seat s = (Seat) o;
+        return s.getColumn() == this.column && s.getRow() == this.row;
     }
 }

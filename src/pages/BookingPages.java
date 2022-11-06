@@ -2,14 +2,17 @@ package pages;
 
 import data_managers.CineplexManager;
 import data_managers.MovieManager;
-import models.cinemas.Cineplex;
-import models.cinemas.ShowTime;
+import data_managers.UserManager;
+import models.accounts.Booking;
+import models.cinemas.*;
+import models.movies.Actor;
 import models.movies.Movie;
 import models.movies.MovieEnums;
 
 import javax.sound.sampled.FloatControl;
 import java.sql.Time;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.*;
 
 public class BookingPages {
@@ -23,7 +26,7 @@ public class BookingPages {
                     "       1 - Search by Movie\n" +
                     "       2 - Search by Cinema\n" +
                     "       3 - Search by Genre\n" +
-                    "       4 - Back to User Portal" );
+                    "       4 - Back to User Portal");
             System.out.print("Choice: ");
             int choice = scanner.nextInt();
             scanner.nextLine();
@@ -68,12 +71,12 @@ public class BookingPages {
             scheduleDates.addAll(cineplex.getSchedules().keySet());
             System.out.println("Available schedules:");
             for (int i = 0; i < scheduleDates.size(); i++) {
-                System.out.println("*"+scheduleDates.get(i).toString());
+                System.out.println("*" + scheduleDates.get(i).toString());
             }
             System.out.println("Enter the date you want to check (yyyy-mm-dd):");
             LocalDate date = LocalDate.parse(scanner.nextLine());
             ArrayList<ShowTime> schedule = cineplex.getSchedules().get(date);
-            if (schedule == null || schedule.size()==0) {
+            if (schedule == null || schedule.size() == 0) {
                 PageElements.printConsoleMessage("The cinema hasn't updated their schedule for the date you have selected!");
                 return;
             }
@@ -88,7 +91,7 @@ public class BookingPages {
             int showtimeChoice = scanner.nextInt();
             scanner.nextLine();
             if (showtimeChoice == -1) break;
-            makeBooking(schedule.get(showtimeChoice-1));
+            makeBooking(schedule.get(showtimeChoice - 1),cineplex, date);
         }
     }
 
@@ -134,34 +137,34 @@ public class BookingPages {
                 System.out.println("None");
                 return;
             }
-            for (Cineplex cineplex: availableOptions.keySet()) {
+            for (Cineplex cineplex : availableOptions.keySet()) {
                 System.out.print("Available in  ");
                 cineplex.printCineplex();
                 ArrayList<ShowTime> available = availableOptions.get(cineplex);
                 for (int i = 0; i < available.size(); i++) {
                     ShowTime showTime = available.get(i);
-                    System.out.print((i+1)  + ")");
+                    System.out.print((i + 1) + ")");
                     showTime.printShowTime();
                 }
                 System.out.println("");
             }
             System.out.println("Select the showtime you want to book");
-            System.out.print("Cinema: ");
+            System.out.print("Cineplex: ");
             String cName = scanner.nextLine();
             System.out.print("Option: ");
             int o = scanner.nextInt();
             scanner.nextLine();
             ShowTime option = null;
-            for (Cineplex cineplex: availableOptions.keySet()) {
+            for (Cineplex cineplex : availableOptions.keySet()) {
                 if (cineplex.getName().equals(cName)) {
-                    option = availableOptions.get(cineplex).get(o-1);
+                    option = availableOptions.get(cineplex).get(o - 1);
                 }
             }
             if (option == null) {
                 System.out.println("No such option!");
                 return;
             }
-            makeBooking(option);
+            makeBooking(option, CineplexManager.getCineplex(cName), date);
         }
     }
 
@@ -186,8 +189,76 @@ public class BookingPages {
         }
     }
 
-    public static void makeBooking(ShowTime showTime) {
+    public static void makeBooking(ShowTime showTime, Cineplex cineplex, LocalDate date) {
+        Scanner scanner = new Scanner(System.in);
         PageElements.printHeader();
-        System.out.println(showTime.toString());
+        Movie movie = showTime.getMovie();
+        System.out.println("Title: " + movie.getTitle());
+        System.out.println("Duration: " + movie.getDuration().toString());
+        System.out.println("Status: " + movie.getStatus().getDescription());
+        System.out.println("Genre: " + movie.genresToString());
+        System.out.println("Synopsis: " + movie.getSynopsis());
+        System.out.println("Directed by: " + movie.getDirector().getfName() + " " + movie.getDirector().getlName());
+        System.out.println("Main Actor:");
+        for (int i = 0; i < movie.getCast().size(); i++) {
+            Actor actor = movie.getCast().get(i);
+            System.out.println("    *" + actor.getfName() + " " + actor.getlName());
+        }
+        PageElements.printLine();
+        printSeatOccupation(showTime);
+        System.out.println("Select your seat:");
+        System.out.print("Column: ");
+        Character column = scanner.nextLine().charAt(0);
+        System.out.print("Row: ");
+        int row = scanner.nextInt()-1;
+        scanner.nextLine();
+        Seat selectedSeat = showTime.getSeatOccupancy().get(column).get(row);
+        if (selectedSeat.bookSeat()) {
+            PageElements.printConsoleMessage("You have successfully booked the seat.");
+            HashMap<LocalDate, ArrayList<ShowTime>> schedules = cineplex.getSchedules();
+            ArrayList<ShowTime> schedule = schedules.get(date);
+            for (int i = 0; i < schedule.size(); i++) {
+                ShowTime s = schedule.get(i);
+                if (s.getStartTime().equals(showTime.getStartTime()) &&
+                        s.getMovie().equals(showTime.getMovie()) && s.getCinema().getNumber() == showTime.getCinema().getNumber()) {
+                    schedule.get(i).getSeatOccupancy().get(column).get(row).bookSeat();
+                }
+            }
+            schedules.put(date, schedule);
+            cineplex.setSchedules(schedules);
+            CineplexManager.updateCineplex(cineplex);
+            Booking booking = new Booking(LocalDate.now(), date, cineplex, showTime, selectedSeat);
+            MainPage.currentUser.addBooking(booking);
+            UserManager.updateUser(MainPage.currentUser);
+        } else {
+            System.out.println("The seat is already occupied!");
+        }
+    }
+
+    public static void printSeatOccupation(ShowTime showTime) {
+        Cinema cinema = showTime.getCinema();
+        int rows = cinema.getSeatConfiguration().getRows();
+        int breakAt;
+        if (cinema.getSeatConfiguration() == CinemaEnums.SeatConfiguration.BIG_CINEMA) breakAt = CinemaEnums.SeatConfiguration.BIG_CINEMA.getRows()/3;
+        else breakAt = cinema.getSeatConfiguration().getRows()/2;
+        int alignLength = rows * 3 + 8 - "Screen".length() + (rows-1)/breakAt*2;
+        System.out.println(" ".repeat(alignLength/2) + "SCREEN" + " ".repeat(alignLength/2));
+        for (Character column : showTime.getSeatOccupancy().keySet()) {
+            System.out.print(column + "   ");
+            ArrayList<Seat> seatsInRow = showTime.getSeatOccupancy().get(column);
+            for (int i = 0; i < seatsInRow.size(); i++) {
+                Seat seat = seatsInRow.get(i);
+                if (i % breakAt == 0) System.out.print("  ");
+                System.out.print(seat.printSeat());
+            }
+            System.out.println("   " + column);
+        }
+        System.out.print("    ");
+        for (int i = 1; i <= rows; i++) {
+            if ((i-1) % breakAt == 0) System.out.print("  ");
+            if (i < 10) System.out.print(i+"  ");
+            else System.out.print(i+" ");
+        }
+        System.out.println();
     }
 }
