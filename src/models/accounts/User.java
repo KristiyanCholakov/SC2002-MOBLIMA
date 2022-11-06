@@ -3,6 +3,7 @@ package models.accounts;
 import models.Person;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class User extends Person {
     private String username;
@@ -11,12 +12,20 @@ public class User extends Person {
 
     private LocalDate birthdate;
 
-    public User(String fName, String lName, String username, String email, String password, LocalDate birthdate) {
+    private ArrayList<Booking> bookings;
+
+
+    public User(String fName, String lName, String username, String email, String password, LocalDate birthdate, ArrayList<Booking> bookings) {
         super(fName, lName);
         this.username = username;
         this.email = email;
         this.password = password;
         this.birthdate = birthdate;
+        this.bookings = bookings;
+    }
+
+    public ArrayList<Booking> getBookings() {
+        return bookings;
     }
 
     public String getUsername() {

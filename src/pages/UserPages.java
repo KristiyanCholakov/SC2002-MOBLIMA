@@ -5,14 +5,43 @@ import data_managers.UserManager;
 import models.accounts.User;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Scanner;
 
-public class UserPage {
+public class UserPages {
 
     public static void userPage() {
         Scanner scanner = new Scanner(System.in);
         PageElements.printHeader();
-        while (true){}
+        boolean running = true;
+        while (running) {
+            PageElements.printHeader();
+            System.out.println("Select the action you want:\n" +
+                    "(Type the number of the choice)\n" +
+                    "       1 - Make a Booking\n" +
+                    "       2 - Explore\n" +
+                    "       3 - My Bookings\n" +
+                    "       4 - Back to Editor Portal" );
+            System.out.print("Choice: ");
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+            switch (choice) {
+                case 1:
+                    BookingPages.bookingPage();
+                    break;
+                case 2:
+                    ExplorePages.explorePages();
+                    break;
+                case 3:
+                    UserBookingsPages.userBookingsPage();
+                    break;
+                case 4:
+                    running = false;
+                    break;
+                default:
+                    PageElements.printConsoleMessage("Invalid Choice!");
+            }
+        }
     }
 
     public static void userLoginPage() {
@@ -26,8 +55,8 @@ public class UserPage {
         String password = scanner.next();
         User loggedUser = UserManager.checkCredentials(username, password);
         if (loggedUser != null) {
-           PageElements.printConsoleMessage("Successful Login!");
-           userPage();
+            PageElements.printConsoleMessage("Successful Login!");
+            userPage();
         }
     }
 
@@ -78,9 +107,9 @@ public class UserPage {
         System.out.print("Last Name: ");
         String l_name = scanner.next();
 
-        User user = new User(f_name, l_name, username, email, password1, LocalDate.parse(birthday));
+        User user = new User(f_name, l_name, username, email, password1, LocalDate.parse(birthday), new ArrayList<>());
         if (!UserManager.ifUserExists(user)) {
-            if (UserManager.writeUser(user));
+            if (UserManager.writeUser(user)) ;
         } else {
             PageElements.printConsoleMessage("Error: The user already exists.");
         }

@@ -5,7 +5,7 @@ import models.accounts.Admin;
 
 import java.util.Scanner;
 
-public class AdminPage {
+public class AdminPages {
 
     public static void adminLoginPage() {
         Scanner scanner = new Scanner(System.in);

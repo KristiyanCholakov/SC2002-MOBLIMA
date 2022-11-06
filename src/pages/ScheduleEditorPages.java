@@ -4,14 +4,12 @@ import data_managers.CineplexManager;
 import data_managers.MovieManager;
 import models.cinemas.Cinema;
 import models.cinemas.Cineplex;
-import models.cinemas.Seat;
 import models.cinemas.ShowTime;
 import models.movies.Movie;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Scanner;
 
 public class ScheduleEditorPages {
@@ -27,6 +25,7 @@ public class ScheduleEditorPages {
                     "       4 - Back to Editor Portal" );
             System.out.print("Choice: ");
             int choice = scanner.nextInt();
+            scanner.nextLine();
             switch (choice) {
                 case 1:
                     addSchedulePage();

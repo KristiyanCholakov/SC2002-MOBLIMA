@@ -20,13 +20,13 @@ public class MainPage {
             int choice = scanner.nextInt();
             switch (choice) {
                 case 1:
-                    UserPage.userLoginPage();
+                    UserPages.userLoginPage();
                     break;
                 case 2:
-                    UserPage.userRegisterPage();
+                    UserPages.userRegisterPage();
                     break;
                 case 3:
-                    AdminPage.adminLoginPage();
+                    AdminPages.adminLoginPage();
                     break;
                 case 4:
                     MasterPage.masterLoginPage();
