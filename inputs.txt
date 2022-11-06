@@ -1,0 +1,129 @@
+***Creating an Admin
+kris33
+kris33@gmail.com
+Kris!234
+Kris!234
+Kris
+Cholakov
+
+
+***Creating Movies
+1
+Doctor Strange in the Multiverse of Madness
+Fantasy, Action, Adventure
+02:06
+NS
+2D
+PG13
+Doctor Strange, with the help of mystical allies both old and new, traverses the mind-bending and dangerous alternate realities of the Multiverse to confront a mysterious new adversary.
+Sam
+Raimi
+2
+Benedict
+Cumberbatch
+2
+Elizabeth
+Olsen
+0
+1
+Black Adam
+Action, Fantasy, Science Fiction
+02:05
+NS
+2D
+PG13
+Nearly 5,000 years after he was bestowed with the almighty powers of the Egyptian gods—and imprisoned just as quickly—Black Adam is freed from his earthly tomb, ready to unleash his unique form of justice on the modern world.
+Jaume
+Collet-Serra
+2
+Dwayne
+Johnson
+0
+Aldis
+Hodge
+0
+1
+Fall
+Thriller
+01:47
+NS
+2D
+PG13
+For best friends Becky and Hunter, life is all about conquering fears and pushing limits. But after they climb 2,000 feet to the top of a remote, abandoned radio tower, they find themselves stranded with no way down. Now Becky and Hunter’s expert climbing skills will be put to the ultimate test as they desperately fight to survive the elements, a lack of supplies, and vertigo-inducing heights
+Scott
+Mann
+2
+Grace
+Currey
+0
+Virginia
+Gardner
+0
+1
+Bullet Train
+Action, Comedy, Thriller
+02:07
+NS
+2D
+M18
+Unlucky assassin Ladybug is determined to do his job peacefully after one too many gigs gone off the rails. Fate, however, may have other plans, as Ladybug's latest mission puts him on a collision course with lethal adversaries from around the globe—all with connected, yet conflicting, objectives—on the world's fastest train.
+David
+Leitch
+2
+Brad
+Pitt
+7
+Joey
+King
+0
+1
+Prey
+Thriller, Action, Science Fiction
+01:40
+NS
+2D
+M18
+When danger threatens her camp, the fierce and highly skilled Comanche warrior Naru sets out to protect her people. But the prey she stalks turns out to be a highly evolved alien predator with a technically advanced arsenal.
+Dan
+Trachtenberg
+2
+Amber
+Midthunder
+0
+Dakota
+Beavers
+0
+1
+Halloween Ends
+Horror, Thriller
+01:51
+NS
+2D
+M18
+Four years after the events of Halloween in 2018, Laurie has decided to liberate herself from fear and rage and embrace life. But when a young man is accused of killing a boy he was babysitting, it ignites a cascade of violence and terror that will force Laurie to finally confront the evil she can’t control, once and for all.
+David
+Green
+2
+Jamie
+Curtis
+0
+Andi
+Matichak
+0
+1
+The Bad Guys
+Animation, Action, Adventure, Crime, Comedy
+01:40
+NS
+2D
+PG
+When the Bad Guys, a crew of criminal animals, are finally caught after years of heists and being the world’s most-wanted villains, Mr. Wolf brokers a deal to save them all from prison.
+Pierre
+Perifel
+2
+Sam
+Rockwell
+0
+Marc
+Maron
+0

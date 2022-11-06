@@ -21,7 +21,7 @@ public class UserPages {
                     "       1 - Make a Booking\n" +
                     "       2 - Explore\n" +
                     "       3 - My Bookings\n" +
-                    "       4 - Back to Editor Portal" );
+                    "       4 - Back to Main Page" );
             System.out.print("Choice: ");
             int choice = scanner.nextInt();
             scanner.nextLine();

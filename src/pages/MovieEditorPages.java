@@ -263,7 +263,7 @@ public class MovieEditorPages {
                     director.setNumberOfMovies(director.getNumberOfMovies()-1);
                     if (director.getNumberOfMovies() == 0) DirectorManager.deleteDirector(director);
                     else DirectorManager.updateDirector(director);
-                    System.out.print("Director: ");
+                    System.out.println("Director: ");
                     System.out.print("***First Name: ");
                     String directorFName = scanner.nextLine();
                     System.out.print("***Last Name: ");
@@ -276,6 +276,7 @@ public class MovieEditorPages {
                         newDirector.setNumberOfMovies(newDirector.getNumberOfMovies() + 1);
                         DirectorManager.updateDirector(newDirector);
                     }
+                    movie.setDirector(newDirector);
                     break;
                 case 6:
                     ArrayList<Actor> actors = movie.getCast();

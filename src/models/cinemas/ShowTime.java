@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 
 public class ShowTime implements Serializable {
@@ -62,6 +63,10 @@ public class ShowTime implements Serializable {
         return seatOccupancy;
     }
 
+    public void printShowTime() {
+        System.out.println("(" + this.startTime.toString() + " - " + this.endTime.toString() + ") " + this.movie.getTitle());
+    }
+
     @Override
     public String toString() {
         return "Showtime:\n" +
@@ -69,5 +74,13 @@ public class ShowTime implements Serializable {
                 "Cinema Number=" + this.getCinema().getNumber() + "\n" +
                 "Start Time=" + this.getStartTime() + "\n"+
                 "End Time=" + this.getEndTime();
+    }
+
+    public static class ByStartTime implements Comparator<ShowTime> {
+
+        @Override
+        public int compare(ShowTime o1, ShowTime o2) {
+            return o1.getStartTime().compareTo(o2.getStartTime());
+        }
     }
 }
