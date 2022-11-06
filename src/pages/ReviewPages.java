@@ -44,6 +44,7 @@ public class ReviewPages {
                     case 2:
                         reviews.remove(prevReviewIndex);
                         Review review = reviewInput();
+                        reviews.add(review);
                         break;
                     case 3:
                         return;
@@ -53,6 +54,7 @@ public class ReviewPages {
                 }
             } else {
                 Review review = reviewInput();
+                reviews.add(review);
             }
             movie.setReviews(reviews);
             MovieManager.updateMovie(movie);
