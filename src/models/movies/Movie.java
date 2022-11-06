@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Movie implements Serializable {
     private String title;
-    private String genre;
+    private ArrayList<String> genres;
     private LocalTime duration;
     private MovieEnums.MovieStatus status;
     private MovieEnums.MovieType type;
@@ -17,9 +17,9 @@ public class Movie implements Serializable {
     private double rating;
     private ArrayList<Review> reviews;
 
-    public Movie(String title, String genre, LocalTime duration, MovieEnums.MovieStatus status, MovieEnums.MovieType type, MovieEnums.MovieRestriction restriction, String synopsis, Director director, ArrayList<Actor> cast, double rating, ArrayList<Review> reviews) {
+    public Movie(String title, ArrayList<String> genres, LocalTime duration, MovieEnums.MovieStatus status, MovieEnums.MovieType type, MovieEnums.MovieRestriction restriction, String synopsis, Director director, ArrayList<Actor> cast, double rating, ArrayList<Review> reviews) {
         this.title = title;
-        this.genre = genre;
+        this.genres = genres;
         this.duration = duration;
         this.status = status;
         this.type = type;
@@ -35,8 +35,8 @@ public class Movie implements Serializable {
         return title;
     }
 
-    public String getGenre() {
-        return genre;
+    public ArrayList<String> getGenre() {
+        return genres;
     }
 
     public LocalTime getDuration() {
@@ -68,7 +68,12 @@ public class Movie implements Serializable {
     }
 
     public double getRating() {
-        return rating;
+        double total = 0;
+        for (int i = 0; i < this.reviews.size(); i++) {
+            total += reviews.get(i).getRating();
+        }
+        total /= this.reviews.size();
+        return total;
     }
 
     public ArrayList<Review> getReviews() {
@@ -79,8 +84,8 @@ public class Movie implements Serializable {
         this.title = title;
     }
 
-    public void setGenre(String genre) {
-        this.genre = genre;
+    public void setGenre(ArrayList<String> genre) {
+        this.genres = genre;
     }
 
     public void setDuration(LocalTime duration) {
@@ -119,9 +124,22 @@ public class Movie implements Serializable {
         String castString = "";
         for (int i = 0; i < this.cast.size(); i++) {
             castString += this.cast.get(i).toString();
-            if (i != this.cast.size()) castString+="\n";
+            if (i != this.cast.size()-1) castString += "\n";
         }
         return castString;
+    }
+
+    public String genresToString() {
+        String genresStr = "";
+        for (int i = 0; i < this.genres.size(); i++) {
+            if (i == 0) genresStr += this.genres.get(i);
+            else genresStr += ", " + this.genres.get(i);
+        }
+        return genresStr;
+    }
+
+    public void printMovie() {
+        System.out.println(this.title + " - " + this.genresToString() + " (" + this.duration.toString() + ") -> " + this.getRestriction().getRestriction());
     }
 
     @Override
@@ -134,13 +152,13 @@ public class Movie implements Serializable {
     public String toString() {
         return "Movie:\n" +
                 "Title=" + this.title + "\n" +
-                "Genre=" + this.genre + "\n" +
+                "Genre=" + this.genresToString() + "\n" +
                 "Synopsis=" + this.synopsis + "\n" +
                 "Duration=" + this.duration.toString() + "\n" +
                 "Status=" + this.status.getDescription() + "\n" +
                 "Type=" + this.type.getType() + "\n" +
                 "Restriction=" + this.restriction.getRestriction() + "\n" +
-                "Rating=" + this.rating + "\n" +
+                "Rating=" + this.getRating() + "\n" +
                 "Director=\n" + this.director.toString() + "\n" +
                 "Cast=\n" + this.castToString();
     }

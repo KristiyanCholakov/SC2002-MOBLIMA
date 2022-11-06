@@ -52,7 +52,7 @@ public class ScheduleEditorPages {
         sc.nextLine();
         ArrayList<ShowTime> showTimes = new ArrayList<>();
         for (int i = 0; i < n; i++) {
-            System.out.println("Enter the details for showtime " + i+1);
+            System.out.println("Enter the details for showtime " + (i+1));
             System.out.println("Enter the cinema number where the movie will be projected: ");
             int cinemaN = sc.nextInt();
             sc.nextLine();
@@ -124,6 +124,23 @@ public class ScheduleEditorPages {
     }
 
     public static void deleteSchedulePage() {
-
+        PageElements.printHeader();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the name of the cineplex you whose schedule you want to change: ");
+        String cineplexName = sc.nextLine();
+        Cineplex cineplex = CineplexManager.getCineplex(cineplexName);
+        if (cineplex == null) {
+            PageElements.printConsoleMessage("No such cineplex, add the cineplex first!");
+            return;
+        }
+        System.out.println("Enter the date whose schedule you want to change (yyyy-mm-dd): ");
+        LocalDate date = LocalDate.parse(sc.nextLine());
+        if (!cineplex.getSchedules().containsKey(date)) {
+            PageElements.printConsoleMessage("The schedule doesn't exists! Choose add to add it first.");
+            return;
+        }
+        ArrayList<ShowTime> schedule = new ArrayList<>();
+        cineplex.getSchedules().put(date, schedule);
+        CineplexManager.updateCineplex(cineplex);
     }
 }

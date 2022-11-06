@@ -1,8 +1,11 @@
 package pages;
 
 import constants.Regexes;
+import data_managers.MovieManager;
 import data_managers.UserManager;
 import models.accounts.User;
+import models.movies.Movie;
+import models.movies.Review;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -12,7 +15,6 @@ public class UserPages {
 
     public static void userPage() {
         Scanner scanner = new Scanner(System.in);
-        PageElements.printHeader();
         boolean running = true;
         while (running) {
             PageElements.printHeader();
@@ -21,7 +23,8 @@ public class UserPages {
                     "       1 - Make a Booking\n" +
                     "       2 - Explore\n" +
                     "       3 - My Bookings\n" +
-                    "       4 - Back to Main Page" );
+                    "       4 - Review a Movie\n" +
+                    "       5 - Back to Main Page" );
             System.out.print("Choice: ");
             int choice = scanner.nextInt();
             scanner.nextLine();
@@ -36,7 +39,11 @@ public class UserPages {
                     UserBookingsPages.userBookingsPage();
                     break;
                 case 4:
+                    ReviewPages.reviewPage();
+                    break;
+                case 5:
                     running = false;
+                    MainPage.currentUser = null;
                     break;
                 default:
                     PageElements.printConsoleMessage("Invalid Choice!");
@@ -57,6 +64,7 @@ public class UserPages {
         if (loggedUser != null) {
             PageElements.printConsoleMessage("Successful Login!");
             userPage();
+            MainPage.currentUser = loggedUser;
         }
     }
 

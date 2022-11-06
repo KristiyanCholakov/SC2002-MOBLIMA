@@ -24,9 +24,9 @@ public class AdminPages {
 
     public static void adminPage() {
         Scanner scanner = new Scanner(System.in);
-        PageElements.printHeader();
         boolean running = true;
         while (running) {
+            PageElements.printHeader();
             System.out.println("Select the action you want:\n" +
                     "(Type the number of the choice)\n" +
                     "       1 - Editor Page\n" +
@@ -88,9 +88,9 @@ public class AdminPages {
 
     public static void adminEditPage() {
         Scanner scanner = new Scanner(System.in);
-        PageElements.printHeader();
         boolean running = true;
         while (running) {
+            PageElements.printHeader();
             System.out.println("Select the action you want:\n" +
                     "(Type the number of the choice)\n" +
                     "       1 - Movies Editor\n" +

@@ -59,6 +59,10 @@ public class Cineplex implements Serializable {
         this.cinemas = cinemas;
     }
 
+    public void printCineplex() {
+        System.out.println(this.name + " (" + this.address + ")");
+    }
+
     @Override
     public boolean equals(Object obj) {
         Cineplex cineplex = (Cineplex) obj;

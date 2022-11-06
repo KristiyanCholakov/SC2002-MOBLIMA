@@ -8,6 +8,7 @@ import models.movies.*;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class MovieEditorPages {
@@ -54,7 +55,7 @@ public class MovieEditorPages {
             PageElements.printConsoleMessage("Movie already exists!");
             return;
         }
-        System.out.print("Genre: ");
+        System.out.print("Genre (if many, separate with ', '): ");
         String genre = scanner.nextLine();
         System.out.print("Duration (hh:mm): ");
         String durationStr = scanner.nextLine() + ":00";
@@ -167,7 +168,9 @@ public class MovieEditorPages {
         }
         double rating = 0.0;
         ArrayList<Review> reviews = new ArrayList<Review>();
-        Movie movie = new Movie(title, genre, duration, status, type, restriction, synopsis, director, actors, rating, reviews);
+        ArrayList<String> genreList = new ArrayList<>();
+        Collections.addAll(genreList, genre.split(", "));
+        Movie movie = new Movie(title, genreList, duration, status, type, restriction, synopsis, director, actors, rating, reviews);
         MovieManager.writeMovie(movie);
     }
 
@@ -199,9 +202,11 @@ public class MovieEditorPages {
             scanner.nextLine();
             switch (choice) {
                 case 1:
-                    System.out.print("Genre: ");
+                    System.out.print("Genre (if many, separate with ', '): ");
                     String genre = scanner.nextLine();
-                    movie.setGenre(genre);
+                    ArrayList<String> genreList = new ArrayList<>();
+                    Collections.addAll(genreList, genre.split(", "));
+                    movie.setGenre(genreList);
                     MovieManager.updateMovie(movie);
                     break;
                 case 2:

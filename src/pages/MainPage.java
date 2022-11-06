@@ -1,8 +1,11 @@
 package pages;
 
+import models.accounts.User;
+
 import java.util.Scanner;
 
 public class MainPage {
+    public static User currentUser = null;
 
     public static void mainPage() {
         Scanner scanner = new Scanner(System.in);
