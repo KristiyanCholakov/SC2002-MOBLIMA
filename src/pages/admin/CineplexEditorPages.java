@@ -1,4 +1,4 @@
-package pages;
+package pages.admin;
 
 import constants.Regexes;
 import data_managers.ActorManager;
@@ -7,6 +7,7 @@ import data_managers.DirectorManager;
 import data_managers.MovieManager;
 import models.cinemas.*;
 import models.movies.*;
+import pages.PageElements;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

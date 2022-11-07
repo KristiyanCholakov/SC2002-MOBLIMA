@@ -1,4 +1,4 @@
-package pages;
+package pages.user;
 
 import data_managers.CineplexManager;
 import data_managers.MovieManager;
@@ -8,6 +8,8 @@ import models.cinemas.*;
 import models.movies.Actor;
 import models.movies.Movie;
 import models.movies.MovieEnums;
+import pages.MainPage;
+import pages.PageElements;
 
 import javax.sound.sampled.FloatControl;
 import java.sql.Time;

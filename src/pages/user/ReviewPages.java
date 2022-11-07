@@ -1,8 +1,10 @@
-package pages;
+package pages.user;
 
 import data_managers.MovieManager;
 import models.movies.Movie;
 import models.movies.Review;
+import pages.MainPage;
+import pages.PageElements;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;

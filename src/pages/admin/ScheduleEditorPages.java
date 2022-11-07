@@ -1,4 +1,4 @@
-package pages;
+package pages.admin;
 
 import data_managers.CineplexManager;
 import data_managers.MovieManager;
@@ -6,6 +6,7 @@ import models.cinemas.Cinema;
 import models.cinemas.Cineplex;
 import models.cinemas.ShowTime;
 import models.movies.Movie;
+import pages.PageElements;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

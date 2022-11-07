@@ -1,10 +1,11 @@
-package pages;
+package pages.admin;
 
 import data_managers.MovieManager;
 import data_managers.UserManager;
 import models.accounts.User;
 import models.movies.Movie;
 import models.movies.Review;
+import pages.PageElements;
 
 import java.util.ArrayList;
 import java.util.Scanner;

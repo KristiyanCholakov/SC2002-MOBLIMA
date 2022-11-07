@@ -1,7 +1,8 @@
-package pages;
+package pages.admin;
 
 import data_managers.AdminManager;
 import models.accounts.Admin;
+import pages.*;
 
 import java.util.Scanner;
 

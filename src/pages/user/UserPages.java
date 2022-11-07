@@ -1,8 +1,14 @@
-package pages;
+package pages.user;
 
 import constants.Regexes;
 import data_managers.UserManager;
 import models.accounts.User;
+import pages.MainPage;
+import pages.PageElements;
+import pages.user.BookingPages;
+import pages.user.ExplorePages;
+import pages.user.ReviewPages;
+import pages.user.UserBookingsPages;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

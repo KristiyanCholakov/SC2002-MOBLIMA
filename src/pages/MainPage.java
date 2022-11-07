@@ -1,6 +1,8 @@
 package pages;
 
 import models.accounts.User;
+import pages.admin.AdminPages;
+import pages.user.UserPages;
 
 import java.util.Scanner;
 

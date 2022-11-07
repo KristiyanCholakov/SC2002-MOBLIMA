@@ -1,10 +1,12 @@
-package pages;
+package pages.user;
 
 import data_managers.CineplexManager;
 import data_managers.UserManager;
 import models.accounts.Booking;
 import models.accounts.User;
 import models.cinemas.Cineplex;
+import pages.MainPage;
+import pages.PageElements;
 
 import java.util.ArrayList;
 import java.util.Scanner;
