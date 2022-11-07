@@ -41,6 +41,7 @@ public class AdminPages {
                     "       5 - Back to Start Page");
             System.out.print("Choice: ");
             int choice = scanner.nextInt();
+            scanner.nextLine();
             switch (choice) {
                 case 1:
                     adminEditPage();
@@ -50,8 +51,10 @@ public class AdminPages {
                     break;
                 case 3:
                     changePricesPage();
+                    break;
                 case 4:
                     seePricesPage();
+                    break;
                 case 5:
                     running = false;
                     break;
@@ -147,7 +150,7 @@ public class AdminPages {
         System.out.print("Choice: ");
         int choice = scanner.nextInt();
         Prices prices = PricesManager.readPrices().get(0);
-        ArrayList<Double> arrayList;
+        ArrayList<Double> arrayList = new ArrayList<>();
         switch (choice) {
             case 1:
                 arrayList = inputRegularMoviePrices();
@@ -155,17 +158,17 @@ public class AdminPages {
                         arrayList.get(3), arrayList.get(4), arrayList.get(5), arrayList.get(6), arrayList.get(7), arrayList.get(8), arrayList.get(9)));
                 break;
             case 2:
-                arrayList = inputRegularMoviePrices();
+                arrayList = inputSpecialMoviePrices();
                 prices.setThreeDPrices(new Prices.ThreeDMoviesPrices(arrayList.get(0), arrayList.get(1), arrayList.get(2),
                         arrayList.get(3), arrayList.get(4), arrayList.get(5)));
                 break;
             case 3:
-                arrayList = inputRegularMoviePrices();
+                arrayList = inputSpecialMoviePrices();
                 prices.setFourDXPrices(new Prices.FourDXMoviesPrices(arrayList.get(0), arrayList.get(1), arrayList.get(2),
                         arrayList.get(3), arrayList.get(4), arrayList.get(5)));
                 break;
             case 4:
-                arrayList = inputRegularMoviePrices();
+                arrayList = inputSpecialMoviePrices();
                 prices.setImaxPrices(new Prices.ImaxMoviesPrices(arrayList.get(0), arrayList.get(1), arrayList.get(2),
                         arrayList.get(3), arrayList.get(4), arrayList.get(5)));
                 break;
@@ -191,18 +194,18 @@ public class AdminPages {
         double seniorPrice = scanner.nextDouble();
         scanner.nextLine();
         arrayList.add(seniorPrice);
-        arrayList.addAll(inputRegularMoviePrices());
+        arrayList.addAll(inputSpecialMoviePrices());
         System.out.println("Loyalty Tier 1 Price:");
         double l1Price= scanner.nextDouble();
         scanner.nextLine();
+        arrayList.add(l1Price);
         System.out.println("Loyalty Tier 2 Price:");
         double l2Price= scanner.nextDouble();
         scanner.nextLine();
+        arrayList.add(l2Price);
         System.out.println("Loyalty Tier 3 Price:");
         double l3Price= scanner.nextDouble();
         scanner.nextLine();
-        arrayList.add(l1Price);
-        arrayList.add(l2Price);
         arrayList.add(l3Price);
         return arrayList;
     }

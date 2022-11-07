@@ -20,6 +20,7 @@ public class Prices implements Serializable {
             this.loyalTier1Price = loyalTier1Price;
             this.loyalTier2Price = loyalTier2Price;
             this.loyalTier3Price = loyalTier3Price;
+            this.seniorPrice = seniorPrice;
         }
 
         public RegularMoviePrices() {
