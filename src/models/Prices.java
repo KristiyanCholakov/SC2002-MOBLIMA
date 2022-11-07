@@ -1,11 +1,13 @@
 package models;
 
-public class Prices {
-    private static double blockbusterAddedPrice;
-    private static RegularMoviePrices regularPrices;
-    private static ThreeDMoviesPrices threeDPrices;
-    private static FourDXMoviesPrices fourDXPrices;
-    private static ImaxMoviesPrices imaxPrices;
+import java.io.Serializable;
+
+public class Prices implements Serializable {
+    private double blockbusterAddedPrice;
+    private RegularMoviePrices regularPrices;
+    private ThreeDMoviesPrices threeDPrices;
+    private FourDXMoviesPrices fourDXPrices;
+    private ImaxMoviesPrices imaxPrices;
 
     public static class RegularMoviePrices extends SpecialMoviePrices {
         private double seniorPrice;
@@ -91,7 +93,7 @@ public class Prices {
         }
     }
 
-    public abstract static class SpecialMoviePrices {
+    public abstract static class SpecialMoviePrices implements Serializable {
         private double studentPrice;
         private double monWedPrice;
         private double thuPrice;

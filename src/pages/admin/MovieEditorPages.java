@@ -83,6 +83,8 @@ public class MovieEditorPages {
                 return;
 
         }
+        System.out.print("Is the movie a blockbuster (true, false): ");
+        boolean isBlockbuster = scanner.nextBoolean();
         System.out.print("Type (2D, 3D, 4DX, IMAX): ");
         String typeStr = scanner.nextLine();
         MovieEnums.MovieType type;
@@ -169,7 +171,7 @@ public class MovieEditorPages {
         }
         ArrayList<String> genreList = new ArrayList<>();
         Collections.addAll(genreList, genre.split(", "));
-        Movie movie = new Movie(title, genreList, duration, status, type, restriction, synopsis, director, actors);
+        Movie movie = new Movie(title, genreList, duration, status,isBlockbuster, type, restriction, synopsis, director, actors);
         MovieManager.writeMovie(movie);
     }
 

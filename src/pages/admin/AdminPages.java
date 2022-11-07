@@ -38,7 +38,7 @@ public class AdminPages {
                     "       2 - Browsing Page\n" +
                     "       3 - Change Prices\n" +
                     "       4 - See Prices\n" +
-                    "       4 - Back to Start Page");
+                    "       5 - Back to Start Page");
             System.out.print("Choice: ");
             int choice = scanner.nextInt();
             switch (choice) {
@@ -252,7 +252,7 @@ public class AdminPages {
         System.out.println("Loyalty Tier 2 Price: " + rp.getLoyalTier2Price());
         System.out.println("Loyalty Tier 3 Price: " + rp.getLoyalTier3Price());
         Prices.ThreeDMoviesPrices tp = prices.getThreeDPrices();
-        System.out.println("3D PRICES:");
+        System.out.println("\n3D PRICES:");
         System.out.println("Student Price: " + tp.getStudentPrice());
         System.out.println("Mon-Wed Price: " + tp.getMonWedPrice());
         System.out.println("Thu Price: " + tp.getThuPrice());
@@ -260,7 +260,7 @@ public class AdminPages {
         System.out.println("Fri After 6pm Price: " + tp.getFridayA6Price());
         System.out.println("Weekend Price: " + tp.getWeekendPrice());
         Prices.FourDXMoviesPrices fp = prices.getFourDXPrices();
-        System.out.println("4DX PRICES:");
+        System.out.println("\n4DX PRICES:");
         System.out.println("Student Price: " + fp.getStudentPrice());
         System.out.println("Mon-Wed Price: " + fp.getMonWedPrice());
         System.out.println("Thu Price: " + fp.getThuPrice());
@@ -268,12 +268,12 @@ public class AdminPages {
         System.out.println("Fri After 6pm Price: " + fp.getFridayA6Price());
         System.out.println("Weekend Price: " + fp.getWeekendPrice());
         Prices.RegularMoviePrices ip = prices.getRegularPrices();
-        System.out.println("IMAX PRICES:");
+        System.out.println("\nIMAX PRICES:");
         System.out.println("Mon-Wed Price: " + ip.getMonWedPrice());
         System.out.println("Thu Price: " + ip.getThuPrice());
         System.out.println("Fri Before 6pm Price: " + ip.getFridayB6Price());
         System.out.println("Fri After 6pm Price: " + ip.getFridayA6Price());
         System.out.println("Weekend Price: " + ip.getWeekendPrice());
-        System.out.println("BLOCKBUSTER ADDED PRICE: " + prices.getBlockbusterAddedPrice());
+        System.out.println("\nBLOCKBUSTER ADDED PRICE: " + prices.getBlockbusterAddedPrice());
     }
 }

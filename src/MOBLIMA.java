@@ -5,7 +5,8 @@ import pages.MainPage;
 public class MOBLIMA {
     public static void main(String[] args) {
         if (PricesManager.readPrices().size() == 0) {
-            PricesManager.writePrices(new Prices());
+            Prices prices = new Prices();
+            PricesManager.writePrices(prices);
         }
         MainPage.mainPage();
     }
