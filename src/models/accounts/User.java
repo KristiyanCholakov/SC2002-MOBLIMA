@@ -1,6 +1,7 @@
 package models.accounts;
 
 import models.Person;
+import models.movies.Review;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -14,14 +15,16 @@ public class User extends Person {
 
     private ArrayList<Booking> bookings;
 
+    private ArrayList<Review> reviews;
 
-    public User(String fName, String lName, String username, String email, String password, LocalDate birthdate, ArrayList<Booking> bookings) {
+    public User(String fName, String lName, String username, String email, String password, LocalDate birthdate) {
         super(fName, lName);
         this.username = username;
         this.email = email;
         this.password = password;
         this.birthdate = birthdate;
-        this.bookings = bookings;
+        this.bookings = new ArrayList<>();
+        this.reviews = new ArrayList<>();
     }
 
     public ArrayList<Booking> getBookings() {
@@ -48,6 +51,10 @@ public class User extends Person {
         return password;
     }
 
+    public ArrayList<Review> getReviews() {
+        return reviews;
+    }
+
     public void setPassword(String password) {
         this.password = password;
     }
@@ -62,6 +69,14 @@ public class User extends Person {
 
     public void removeBooking (Booking booking) {
         this.bookings.remove(booking);
+    }
+
+    public void addReview (Review review) {
+        this.reviews.add(review);
+    }
+
+    public void removeReview (Review review) {
+        this.reviews.add(review);
     }
 
     @Override

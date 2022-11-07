@@ -65,8 +65,9 @@ public class ReviewEditorPages {
             PageElements.printConsoleMessage("The selected used hasn't reviews the movie.");
             return;
         }
-        reviews.remove(reviewToDelete);
-        movie.setReviews(reviews);
+        movie.deleteReview(reviewToDelete);
+        user.removeReview(reviewToDelete);
+        UserManager.updateUser(user);
         MovieManager.updateMovie(movie);
     }
 }

@@ -6,6 +6,7 @@ import models.cinemas.Cinema;
 import models.cinemas.Cineplex;
 import models.cinemas.ShowTime;
 import models.movies.Movie;
+import models.movies.Review;
 import pages.PageElements;
 
 import java.time.LocalDate;
@@ -63,5 +64,18 @@ public class BrowsingPages {
                 System.out.println(showTime.toString()+"\n");
             }
         };
+    }
+
+    public static void showReviewsPage() {
+        ArrayList<Movie> movies = MovieManager.readMovies();
+        for (int i = 0; i < movies.size(); i++) {
+            System.out.println(movies.get(i).getTitle());
+            ArrayList<Review> reviews = movies.get(i).getReviews();
+            for (int j = 0; j < reviews.size(); j++) {
+                reviews.get(j).printReview();
+                System.out.println("");
+            }
+            PageElements.printLine();
+        }
     }
 }

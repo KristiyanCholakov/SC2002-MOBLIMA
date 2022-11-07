@@ -76,7 +76,7 @@ public class AdminPages {
                     BrowsingPages.showSchedules();
                     break;
                 case 4:
-//                    showReviewsPage();
+                    BrowsingPages.showReviewsPage();
                     break;
                 case 5:
                     running = false;

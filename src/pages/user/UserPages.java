@@ -5,10 +5,6 @@ import data_managers.UserManager;
 import models.accounts.User;
 import pages.MainPage;
 import pages.PageElements;
-import pages.user.BookingPages;
-import pages.user.ExplorePages;
-import pages.user.ReviewPages;
-import pages.user.UserBookingsPages;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -25,7 +21,7 @@ public class UserPages {
                     "(Type the number of the choice)\n" +
                     "       1 - Make a Booking\n" +
                     "       2 - Explore\n" +
-                    "       3 - My Bookings\n" +
+                    "       3 - My Account\n" +
                     "       4 - Review a Movie\n" +
                     "       5 - Back to Main Page" );
             System.out.print("Choice: ");
@@ -39,7 +35,7 @@ public class UserPages {
                     ExplorePages.explorePages();
                     break;
                 case 3:
-                    UserBookingsPages.userBookingsPage();
+                    UserAccountPages.myAccountPage();
                     break;
                 case 4:
                     ReviewPages.reviewPage();
@@ -118,7 +114,7 @@ public class UserPages {
         System.out.print("Last Name: ");
         String l_name = scanner.next();
 
-        User user = new User(f_name, l_name, username, email, password1, LocalDate.parse(birthday), new ArrayList<>());
+        User user = new User(f_name, l_name, username, email, password1, LocalDate.parse(birthday));
         if (!UserManager.ifUserExists(user)) {
             if (UserManager.writeUser(user)) ;
         } else {

@@ -167,11 +167,9 @@ public class MovieEditorPages {
             }
             actors.add(actor);
         }
-        double rating = 0.0;
-        ArrayList<Review> reviews = new ArrayList<Review>();
         ArrayList<String> genreList = new ArrayList<>();
         Collections.addAll(genreList, genre.split(", "));
-        Movie movie = new Movie(title, genreList, duration, status, type, restriction, synopsis, director, actors, rating, reviews);
+        Movie movie = new Movie(title, genreList, duration, status, type, restriction, synopsis, director, actors);
         MovieManager.writeMovie(movie);
     }
 

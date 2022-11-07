@@ -11,10 +11,10 @@ public class Cineplex implements Serializable {
     private HashMap<LocalDate, ArrayList<ShowTime>> schedules;
     private ArrayList<Cinema> cinemas;
 
-    public Cineplex(String name, String address, HashMap<LocalDate, ArrayList<ShowTime>> schedules, ArrayList<Cinema> cinemas) {
+    public Cineplex(String name, String address, ArrayList<Cinema> cinemas) {
         this.name = name;
         this.address = address;
-        this.schedules = schedules;
+        this.schedules = new HashMap<LocalDate, ArrayList<ShowTime>>();
         this.cinemas = cinemas;
     }
 

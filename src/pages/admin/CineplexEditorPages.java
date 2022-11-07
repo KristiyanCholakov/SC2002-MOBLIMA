@@ -109,8 +109,7 @@ public class CineplexEditorPages {
             return;
         }
         ArrayList<Cinema> cinemas = cinemasInput();
-        HashMap<LocalDate, ArrayList<ShowTime>> schedules = new HashMap<LocalDate, ArrayList<ShowTime>>();
-        Cineplex cineplex = new Cineplex(name, address, schedules, cinemas);
+        Cineplex cineplex = new Cineplex(name, address, cinemas);
         CineplexManager.writeCineplex(cineplex);
     }
 

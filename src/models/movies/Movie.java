@@ -3,6 +3,7 @@ package models.movies;
 import java.io.Serializable;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class Movie implements Serializable {
     private String title;
@@ -17,7 +18,9 @@ public class Movie implements Serializable {
     private double rating;
     private ArrayList<Review> reviews;
 
-    public Movie(String title, ArrayList<String> genres, LocalTime duration, MovieEnums.MovieStatus status, MovieEnums.MovieType type, MovieEnums.MovieRestriction restriction, String synopsis, Director director, ArrayList<Actor> cast, double rating, ArrayList<Review> reviews) {
+    private int ticketsSold;
+
+    public Movie(String title, ArrayList<String> genres, LocalTime duration, MovieEnums.MovieStatus status, MovieEnums.MovieType type, MovieEnums.MovieRestriction restriction, String synopsis, Director director, ArrayList<Actor> cast) {
         this.title = title;
         this.genres = genres;
         this.duration = duration;
@@ -27,15 +30,16 @@ public class Movie implements Serializable {
         this.synopsis = synopsis;
         this.director = director;
         this.cast = cast;
-        this.rating = rating;
-        this.reviews = reviews;
+        this.rating = 0;
+        this.reviews = new ArrayList<>();
+        this.ticketsSold = 0;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public ArrayList<String> getGenre() {
+    public ArrayList<String> getGenres() {
         return genres;
     }
 
@@ -72,12 +76,20 @@ public class Movie implements Serializable {
         for (int i = 0; i < this.reviews.size(); i++) {
             total += reviews.get(i).getRating();
         }
-        total /= this.reviews.size();
+        total = total / this.reviews.size();
         return total;
     }
 
     public ArrayList<Review> getReviews() {
         return reviews;
+    }
+
+    public int getTicketsSold() {
+        return ticketsSold;
+    }
+
+    public void setTicketsSold(int ticketsSold) {
+        this.ticketsSold = ticketsSold;
     }
 
     public void setTitle(String title) {
@@ -138,8 +150,16 @@ public class Movie implements Serializable {
         return genresStr;
     }
 
+    public void addReview(Review review) {
+        this.reviews.add(review);
+    }
+
+    public void deleteReview(Review review) {
+        this.reviews.remove(review);
+    }
+
     public void printMovie() {
-        System.out.println(this.title + " - " + this.genresToString() + " (" + this.duration.toString() + ") -> " + this.getRestriction().getRestriction());
+        System.out.println(this.title +" (Directed by: " + this.getDirector().getfName() + " " + this.getDirector().getlName() + ") - " + this.genresToString() + " (" + this.duration.toString() + ") -> " + this.getRestriction().getRestriction());
     }
 
     @Override
@@ -161,5 +181,23 @@ public class Movie implements Serializable {
                 "Rating=" + this.getRating() + "\n" +
                 "Director=\n" + this.director.toString() + "\n" +
                 "Cast=\n" + this.castToString();
+    }
+
+    public static class ByRating implements Comparator<Movie> {
+
+        @Override
+        public int compare(Movie o1, Movie o2) {
+            if (o1.getRating() > o2.getRating()) {
+                return 1;
+            } else return -1;
+        }
+    }
+
+    public static class BySales implements Comparator<Movie> {
+
+        @Override
+        public int compare(Movie o1, Movie o2) {
+            return o1.getTicketsSold() - o2.getTicketsSold();
+        }
     }
 }

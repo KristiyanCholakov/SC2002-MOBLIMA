@@ -11,10 +11,7 @@ import models.movies.MovieEnums;
 import pages.MainPage;
 import pages.PageElements;
 
-import javax.sound.sampled.FloatControl;
-import java.sql.Time;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.time.Period;
 import java.util.*;
 
@@ -137,7 +134,7 @@ public class BookingPages {
             return;
         }
         for (Cineplex cineplex : availableOptions.keySet()) {
-            System.out.print("Available in  ");
+            System.out.print("Available in ");
             cineplex.printCineplex();
             ArrayList<ShowTime> available = availableOptions.get(cineplex);
             for (int i = 0; i < available.size(); i++) {
@@ -175,7 +172,7 @@ public class BookingPages {
         ArrayList<Movie> moviesWanted = new ArrayList<>();
         ArrayList<Movie> movies = MovieManager.readMovies();
         for (int i = 0; i < movies.size(); i++) {
-            ArrayList<String> movieGenres = movies.get(i).getGenre();
+            ArrayList<String> movieGenres = movies.get(i).getGenres();
             for (int j = 0; j < movieGenres.size(); j++) {
                 if (movieGenres.get(j).equals(wantedGenre)) {
                     moviesWanted.add(movies.get(i));
@@ -231,6 +228,8 @@ public class BookingPages {
             cineplex.setSchedules(schedules);
             CineplexManager.updateCineplex(cineplex);
             Booking booking = new Booking(LocalDate.now(), date, cineplex, showTime, selectedSeat);
+            movie.setTicketsSold(movie.getTicketsSold()+1);
+            MovieManager.updateMovie(movie);
             MainPage.getCurrentUser().addBooking(booking);
             UserManager.updateUser(MainPage.getCurrentUser());
         } else {

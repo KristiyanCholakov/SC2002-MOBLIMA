@@ -1,9 +1,13 @@
 package pages;
 
+import data_managers.MovieManager;
+import data_managers.UserManager;
 import models.accounts.User;
+import models.movies.Movie;
 import pages.admin.AdminPages;
 import pages.user.UserPages;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MainPage {
