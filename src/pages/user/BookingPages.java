@@ -228,8 +228,9 @@ public class BookingPages {
             cineplex.setSchedules(schedules);
             CineplexManager.updateCineplex(cineplex);
             Booking booking = new Booking(LocalDate.now(), date, cineplex, showTime, selectedSeat);
-            movie.setTicketsSold(movie.getTicketsSold()+1);
-            MovieManager.updateMovie(movie);
+            Movie m = MovieManager.getMovie(movie.getTitle());
+            m.setTicketsSold(m.getTicketsSold()+1);
+            MovieManager.updateMovie(m);
             MainPage.getCurrentUser().addBooking(booking);
             UserManager.updateUser(MainPage.getCurrentUser());
         } else {

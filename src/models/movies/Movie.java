@@ -72,6 +72,7 @@ public class Movie implements Serializable {
     }
 
     public double getRating() {
+        if (this.reviews.size() == 0) return 0;
         double total = 0;
         for (int i = 0; i < this.reviews.size(); i++) {
             total += reviews.get(i).getRating();
@@ -187,9 +188,9 @@ public class Movie implements Serializable {
 
         @Override
         public int compare(Movie o1, Movie o2) {
-            if (o1.getRating() > o2.getRating()) {
-                return 1;
-            } else return -1;
+            if (o1.getRating() < o2.getRating()) return 1;
+            if (o1.getRating() > o2.getRating()) return -1;
+            return 0;
         }
     }
 
@@ -197,7 +198,7 @@ public class Movie implements Serializable {
 
         @Override
         public int compare(Movie o1, Movie o2) {
-            return o1.getTicketsSold() - o2.getTicketsSold();
+            return o2.getTicketsSold() - o1.getTicketsSold();
         }
     }
 }

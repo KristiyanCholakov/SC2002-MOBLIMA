@@ -59,7 +59,7 @@ public class UserAccountPages {
         }
         for (int i = 0; i < bookings.size(); i++) {
             Booking booking = bookings.get(i);
-            System.out.print((i+1) + ")");
+            System.out.println((i+1) + ")");
             System.out.println(booking.printBooking());
         }
         PageElements.printLine();
@@ -82,6 +82,9 @@ public class UserAccountPages {
             PageElements.printConsoleMessage("Error! Seat not canceled!");
             return;
         }
+        Movie movie = MovieManager.getMovie(canceled.getShowTime().getMovie().getTitle());
+        movie.setTicketsSold(movie.getTicketsSold()-1);
+        MovieManager.updateMovie(movie);
         CineplexManager.updateCineplex(cineplex);
         UserManager.updateUser(user);
     }
@@ -96,7 +99,7 @@ public class UserAccountPages {
         }
         for (int i = 0; i < reviews.size(); i++) {
             Review review = reviews.get(i);
-            System.out.print((i+1) + ")");
+            System.out.println((i+1) + ")");
             review.printReview();
         }
         PageElements.printLine();

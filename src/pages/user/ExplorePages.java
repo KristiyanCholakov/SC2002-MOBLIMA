@@ -83,7 +83,7 @@ public class ExplorePages {
         if (by.equals("Rating")) {
             Collections.sort(movies, new Movie.ByRating());
         } else {
-            Collections.sort(movies, new Movie.ByRating());
+            Collections.sort(movies, new Movie.BySales());
         }
         int x;
         if ( movies.size() < 5) x = movies.size();
