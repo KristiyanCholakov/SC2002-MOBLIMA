@@ -35,15 +35,15 @@ public class Seat implements Serializable {
     }
 
     public boolean cancelSeat() {
-        if (occupied) {
-            occupied = false;
+        if (this.occupied) {
+            this.occupied = false;
             return true;
         }
         return false;
     }
 
     public String printSeat() {
-        if (occupied) return "[X]";
+        if (this.occupied) return "[X]";
         else return "[ ]";
     }
 

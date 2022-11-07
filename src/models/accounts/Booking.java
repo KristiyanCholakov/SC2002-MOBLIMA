@@ -42,6 +42,11 @@ public class Booking implements Serializable {
         return seat;
     }
 
+    public String printBooking() {
+        return "Booked On: " + this.bookedOn.toString() + ", " + "Movie: " + this.showTime.getMovie().getTitle() + ", Cineplex: " + this.cineplex.getName()
+                + ", Seat: " + this.seat.getRow() + this.getSeat().getColumn()+ ", Date: " + this.date.toString();
+    }
+
     @Override
     public boolean equals(Object obj) {
         Booking b = (Booking) obj;

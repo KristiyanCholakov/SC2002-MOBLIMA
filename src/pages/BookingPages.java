@@ -194,16 +194,16 @@ public class BookingPages {
         System.out.println("Genre: " + movie.genresToString());
         System.out.println("Synopsis: " + movie.getSynopsis());
         System.out.println("Directed by: " + movie.getDirector().getfName() + " " + movie.getDirector().getlName());
-        System.out.println("Main Actor:");
-        Period period = MainPage.getCurrentUser().getBirthdate().until(LocalDate.now());
-        int yearsOld = period.getYears();
-        if (yearsOld < movie.getRestriction().getMinAge()) {
-            PageElements.printConsoleMessage("The user is to young to watch the movie.\n" + movie.getRestriction().getDescription());
-            return;
-        }
+        System.out.println("Main Actors:");
         for (int i = 0; i < movie.getCast().size(); i++) {
             Actor actor = movie.getCast().get(i);
             System.out.println("    *" + actor.getfName() + " " + actor.getlName());
+        }
+        Period period = MainPage.getCurrentUser().getBirthdate().until(LocalDate.now());
+        int yearsOld = period.getYears();
+        if (yearsOld < movie.getRestriction().getMinAge()) {
+            PageElements.printConsoleMessage("The user is too young to watch the movie.\n" + movie.getRestriction().getDescription());
+            return;
         }
         PageElements.printLine();
         printSeatOccupation(showTime);

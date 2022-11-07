@@ -63,6 +63,16 @@ public class Cineplex implements Serializable {
         System.out.println(this.name + " (" + this.address + ")");
     }
 
+    public boolean cancelBooking(LocalDate date, ShowTime showTime, Seat seat) {
+        for (int i = 0; i < this.schedules.get(date).size(); i++) {
+            if (this.schedules.get(date).get(i).getMovie().equals(showTime.getMovie()) &&
+                    this.schedules.get(date).get(i).getStartTime().equals(showTime.getStartTime())) {
+                return this.schedules.get(date).get(i).getSeatOccupancy().get(seat.getRow()).get(seat.getColumn()-1).cancelSeat();
+            }
+        }
+        return false;
+    }
+
     @Override
     public boolean equals(Object obj) {
         Cineplex cineplex = (Cineplex) obj;
