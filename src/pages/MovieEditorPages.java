@@ -337,6 +337,10 @@ public class MovieEditorPages {
             PageElements.printConsoleMessage("The movie doesn't exist!");
             return;
         }
+        DirectorManager.deleteDirector(movie.getDirector());
+        for (int i = 0; i < movie.getCast().size(); i++) {
+            ActorManager.deleteActor(movie.getCast().get(i));
+        }
         MovieManager.deleteMovie(movie);
     }
 }

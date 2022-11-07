@@ -24,7 +24,7 @@ public class ReviewPages {
             int prevReviewIndex = -1;
             ArrayList<Review> reviews = movie.getReviews();
             for (int i = 0; i < reviews.size(); i++) {
-                if(reviews.get(i).getPublisher().equals(MainPage.currentUser)) {
+                if(reviews.get(i).getPublisher().equals(MainPage.getCurrentUser())) {
                     alreadyWrote = true;
                     prevReviewIndex = i;
                 }
@@ -68,6 +68,6 @@ public class ReviewPages {
         scanner.nextLine();
         System.out.print("Enter the your comment about the movie: ");
         String comment = scanner.nextLine();
-        return new Review(LocalDateTime.now(),rating, comment, MainPage.currentUser);
+        return new Review(LocalDateTime.now(),rating, comment, MainPage.getCurrentUser());
     }
 }

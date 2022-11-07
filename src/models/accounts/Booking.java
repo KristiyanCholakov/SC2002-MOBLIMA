@@ -4,9 +4,10 @@ import models.cinemas.Cineplex;
 import models.cinemas.Seat;
 import models.cinemas.ShowTime;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Booking {
+public class Booking implements Serializable {
     private LocalDate bookedOn;
     private LocalDate date;
     private Cineplex cineplex;

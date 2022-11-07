@@ -40,7 +40,7 @@ public class UserPages {
                     break;
                 case 5:
                     running = false;
-                    MainPage.currentUser = null;
+                    MainPage.setCurrentUser(null);
                     break;
                 default:
                     PageElements.printConsoleMessage("Invalid Choice!");
@@ -60,8 +60,8 @@ public class UserPages {
         User loggedUser = UserManager.checkCredentials(username, password);
         if (loggedUser != null) {
             PageElements.printConsoleMessage("Successful Login!");
+            MainPage.setCurrentUser(loggedUser);
             userPage();
-            MainPage.currentUser = loggedUser;
         }
     }
 

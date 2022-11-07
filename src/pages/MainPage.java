@@ -5,7 +5,15 @@ import models.accounts.User;
 import java.util.Scanner;
 
 public class MainPage {
-    public static User currentUser = null;
+    private static User currentUser;
+
+    public static User getCurrentUser() {
+        return currentUser;
+    }
+
+    public static void setCurrentUser(User currentUser) {
+        MainPage.currentUser = currentUser;
+    }
 
     public static void mainPage() {
         Scanner scanner = new Scanner(System.in);

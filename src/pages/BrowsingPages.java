@@ -17,8 +17,9 @@ public class BrowsingPages {
         PageElements.printHeader();
         System.out.println("MOVIES:");
         ArrayList<Movie> movies = MovieManager.readMovies();
+        System.out.print("TOTAL NUMBER OF MOVIES: " + movies.size());
         for (int i = 0; i < movies.size(); i++) {
-            System.out.println(movies.get(i).toString());
+            System.out.println(movies.get(i).toString()+"\n");
         }
         boolean running = true;
         while (running) {
@@ -30,8 +31,9 @@ public class BrowsingPages {
     public static void showCineplexesPage() {
         Scanner scanner = new Scanner(System.in);
         PageElements.printHeader();
-        System.out.println("Cineplexes:");
+        System.out.println("CINEPLEXES:");
         ArrayList<Cineplex> cineplexes = CineplexManager.readCineplexes();
+        System.out.print("TOTAL NUMBER OF CINEPLEXES: " + cineplexes.size());
         for (int i = 0; i < cineplexes.size(); i++) {
             System.out.println(cineplexes.get(i).toString());
         }

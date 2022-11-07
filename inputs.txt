@@ -196,3 +196,56 @@ Fall
 2
 Prey
 19:00
+
+NTU Cinema
+2022-11-07
+5
+1
+Bullet Train
+10:00
+1
+Prey
+13:00
+1
+Halloween Ends
+15:00
+2
+The Bad Guys
+10:00
+2
+Black Adam
+14:00
+
+JP Cinema
+2022-11-06
+10
+1
+Bullet Train
+10:00
+1
+Prey
+13:00
+1
+Halloween Ends
+15:00
+2
+The Bad Guys
+10:00
+2
+Black Adam
+14:00
+3
+Doctor Strange in the Multiverse of Madness
+10:00
+3
+Halloween Ends
+13:00
+3
+Prey
+15:00
+4
+The Bad Guys
+10:00
+4
+Black Adam
+14:00

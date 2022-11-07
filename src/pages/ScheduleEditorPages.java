@@ -139,8 +139,7 @@ public class ScheduleEditorPages {
             PageElements.printConsoleMessage("The schedule doesn't exists! Choose add to add it first.");
             return;
         }
-        ArrayList<ShowTime> schedule = new ArrayList<>();
-        cineplex.getSchedules().put(date, schedule);
+        cineplex.getSchedules().remove(date);
         CineplexManager.updateCineplex(cineplex);
     }
 }
