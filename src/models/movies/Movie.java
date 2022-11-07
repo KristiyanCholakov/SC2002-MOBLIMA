@@ -10,6 +10,7 @@ public class Movie implements Serializable {
     private ArrayList<String> genres;
     private LocalTime duration;
     private MovieEnums.MovieStatus status;
+    private boolean blockbuster;
     private MovieEnums.MovieType type;
     private MovieEnums.MovieRestriction restriction;
     private String synopsis;
@@ -20,11 +21,12 @@ public class Movie implements Serializable {
 
     private int ticketsSold;
 
-    public Movie(String title, ArrayList<String> genres, LocalTime duration, MovieEnums.MovieStatus status, MovieEnums.MovieType type, MovieEnums.MovieRestriction restriction, String synopsis, Director director, ArrayList<Actor> cast) {
+    public Movie(String title, ArrayList<String> genres, LocalTime duration, MovieEnums.MovieStatus status, boolean blockbuster, MovieEnums.MovieType type, MovieEnums.MovieRestriction restriction, String synopsis, Director director, ArrayList<Actor> cast) {
         this.title = title;
         this.genres = genres;
         this.duration = duration;
         this.status = status;
+        this.blockbuster = blockbuster;
         this.type = type;
         this.restriction = restriction;
         this.synopsis = synopsis;
@@ -87,6 +89,14 @@ public class Movie implements Serializable {
 
     public int getTicketsSold() {
         return ticketsSold;
+    }
+
+    public boolean isBlockbuster() {
+        return blockbuster;
+    }
+
+    public void setBlockbuster(boolean blockbuster) {
+        this.blockbuster = blockbuster;
     }
 
     public void setTicketsSold(int ticketsSold) {
