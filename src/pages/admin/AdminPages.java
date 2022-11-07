@@ -37,6 +37,7 @@ public class AdminPages {
                     "       1 - Editor Page\n" +
                     "       2 - Browsing Page\n" +
                     "       3 - Change Prices\n" +
+                    "       4 - See Prices\n" +
                     "       4 - Back to Start Page");
             System.out.print("Choice: ");
             int choice = scanner.nextInt();
@@ -50,6 +51,8 @@ public class AdminPages {
                 case 3:
                     changePricesPage();
                 case 4:
+                    seePricesPage();
+                case 5:
                     running = false;
                     break;
                 default:
@@ -232,5 +235,45 @@ public class AdminPages {
         arrayList.add(friA6Price);
         arrayList.add(weekendPrice);
         return arrayList;
+    }
+
+    public static void seePricesPage () {
+        Prices prices = PricesManager.readPrices().get(0);
+        System.out.println("Regular (2D) Movies Prices:");
+        Prices.RegularMoviePrices rp = prices.getRegularPrices();
+        System.out.println("Senior Price: " + rp.getSeniorPrice());
+        System.out.println("Student Price: " + rp.getStudentPrice());
+        System.out.println("Mon-Wed Price: " + rp.getMonWedPrice());
+        System.out.println("Thu Price: " + rp.getThuPrice());
+        System.out.println("Fri Before 6pm Price: " + rp.getFridayB6Price());
+        System.out.println("Fri After 6pm Price: " + rp.getFridayA6Price());
+        System.out.println("Weekend Price: " + rp.getWeekendPrice());
+        System.out.println("Loyalty Tier 1 Price: " + rp.getLoyalTier1Price());
+        System.out.println("Loyalty Tier 2 Price: " + rp.getLoyalTier2Price());
+        System.out.println("Loyalty Tier 3 Price: " + rp.getLoyalTier3Price());
+        Prices.ThreeDMoviesPrices tp = prices.getThreeDPrices();
+        System.out.println("3D PRICES:");
+        System.out.println("Student Price: " + tp.getStudentPrice());
+        System.out.println("Mon-Wed Price: " + tp.getMonWedPrice());
+        System.out.println("Thu Price: " + tp.getThuPrice());
+        System.out.println("Fri Before 6pm Price: " + tp.getFridayB6Price());
+        System.out.println("Fri After 6pm Price: " + tp.getFridayA6Price());
+        System.out.println("Weekend Price: " + tp.getWeekendPrice());
+        Prices.FourDXMoviesPrices fp = prices.getFourDXPrices();
+        System.out.println("4DX PRICES:");
+        System.out.println("Student Price: " + fp.getStudentPrice());
+        System.out.println("Mon-Wed Price: " + fp.getMonWedPrice());
+        System.out.println("Thu Price: " + fp.getThuPrice());
+        System.out.println("Fri Before 6pm Price: " + fp.getFridayB6Price());
+        System.out.println("Fri After 6pm Price: " + fp.getFridayA6Price());
+        System.out.println("Weekend Price: " + fp.getWeekendPrice());
+        Prices.RegularMoviePrices ip = prices.getRegularPrices();
+        System.out.println("IMAX PRICES:");
+        System.out.println("Mon-Wed Price: " + ip.getMonWedPrice());
+        System.out.println("Thu Price: " + ip.getThuPrice());
+        System.out.println("Fri Before 6pm Price: " + ip.getFridayB6Price());
+        System.out.println("Fri After 6pm Price: " + ip.getFridayA6Price());
+        System.out.println("Weekend Price: " + ip.getWeekendPrice());
+        System.out.println("BLOCKBUSTER ADDED PRICE: " + prices.getBlockbusterAddedPrice());
     }
 }
