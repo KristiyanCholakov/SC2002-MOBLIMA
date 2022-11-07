@@ -28,7 +28,7 @@ public class UserManager {
         return new ArrayList<User>();
     }
 
-    public static boolean writeUser (User user) {
+    public static void writeUser (User user) {
         File file = new File(USERS_PATH);
         ArrayList<User> allUsers = readUsers();
         allUsers.add(user);
@@ -39,10 +39,10 @@ public class UserManager {
             out.flush();
             out.close();
             PageElements.printConsoleMessage("User successfully registered!");
-            return true;
+//            return;
         } catch (IOException e) {
             PageElements.printConsoleMessage("Error: Invalid Path! User is not saved to the database.");
-            return false;
+//            return;
         }
     }
 
