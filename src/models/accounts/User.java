@@ -76,7 +76,7 @@ public class User extends Person {
     }
 
     public void removeReview (Review review) {
-        this.reviews.add(review);
+        this.reviews.remove(review);
     }
 
     @Override
