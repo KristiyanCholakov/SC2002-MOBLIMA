@@ -116,7 +116,7 @@ public class UserPages {
 
         User user = new User(f_name, l_name, username, email, password1, LocalDate.parse(birthday));
         if (!UserManager.ifUserExists(user)) {
-            if (UserManager.writeUser(user)) ;
+            UserManager.writeUser(user);
         } else {
             PageElements.printConsoleMessage("Error: The user already exists.");
         }
