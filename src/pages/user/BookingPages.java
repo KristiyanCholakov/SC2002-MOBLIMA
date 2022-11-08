@@ -1,9 +1,10 @@
 package pages.user;
 
-import data_managers.CineplexManager;
-import data_managers.MovieManager;
-import data_managers.UserManager;
+import data_managers.*;
+import models.Holiday;
+import models.Prices;
 import models.accounts.Booking;
+import models.accounts.User;
 import models.cinemas.*;
 import models.movies.Actor;
 import models.movies.Movie;
@@ -11,7 +12,9 @@ import models.movies.MovieEnums;
 import pages.MainPage;
 import pages.PageElements;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.Period;
 import java.util.*;
 
@@ -213,6 +216,8 @@ public class BookingPages {
         int column = scanner.nextInt() - 1;
         scanner.nextLine();
         Seat selectedSeat = showTime.getSeatOccupancy().get(row).get(column);
+        double price = getPrice(showTime, date, MainPage.getCurrentUser(), selectedSeat);
+        System.out.println("TOTAL PRICE: " + price);
         if (selectedSeat.bookSeat()) {
             PageElements.printConsoleMessage("You have successfully booked the seat.");
             HashMap<LocalDate, ArrayList<ShowTime>> schedules = cineplex.getSchedules();
@@ -227,7 +232,7 @@ public class BookingPages {
             schedules.put(date, schedule);
             cineplex.setSchedules(schedules);
             CineplexManager.updateCineplex(cineplex);
-            Booking booking = new Booking(LocalDate.now(), date, cineplex, showTime, selectedSeat);
+            Booking booking = new Booking(LocalDate.now(), date, cineplex, showTime, selectedSeat, price);
             Movie m = MovieManager.getMovie(movie.getTitle());
             m.setTicketsSold(m.getTicketsSold()+1);
             MovieManager.updateMovie(m);
@@ -252,8 +257,13 @@ public class BookingPages {
             ArrayList<Seat> seatsInRow = showTime.getSeatOccupancy().get(column);
             for (int i = 0; i < seatsInRow.size(); i++) {
                 Seat seat = seatsInRow.get(i);
-                if (i % breakAt == 0 && i != 0) System.out.print("  ");
-                System.out.print(seat.printSeat());
+                if (seat.getType() == SeatEnums.SeatType.COUPLE) {
+                    if (i * 2 % breakAt == 0 && i * 2 != 0) System.out.print("  ");
+                    System.out.print(seat.printSeat());
+                } else {
+                    if (i % breakAt == 0 && i != 0) System.out.print("  ");
+                    System.out.print(seat.printSeat());
+                }
             }
             System.out.println("   " + column);
         }
@@ -264,5 +274,97 @@ public class BookingPages {
             else System.out.print(i + " ");
         }
         System.out.println();
+    }
+
+    public static double getPrice(ShowTime showTime, LocalDate date, User user, Seat seat) {
+        //todo determine the price
+        System.out.println("Your price is based on: ");
+        System.out.println("*The movie is " + showTime.getMovie().getType().getType());
+        Prices prices = PricesManager.readPrices().get(0);
+        double added = 0;
+        if (showTime.getMovie().isBlockbuster()) {
+            System.out.println("*The movie is a blockbuster");
+            added += prices.getBlockbusterAddedPrice();
+        }
+        if (seat.getType() != SeatEnums.SeatType.NORMAL) {
+            System.out.println("*Your seat is a " + seat.getType().getType() + " seat");
+            added += seat.getType().getAddPrice();
+        }
+        if (showTime.getMovie().getType() == MovieEnums.MovieType.TWO_D) {
+            if (user.getBookings().size() > 9) {
+                if (user.getBookings().size() > 29) {
+                    System.out.println("*Your are a loyalty client tier 3 (more than 29 bookings)");
+                    return prices.getRegularPrices().getLoyalTier2Price() + added;
+                } else if (user.getBookings().size() > 19) {
+                    System.out.println("*Your are a loyalty client tier 2 (more than 19 bookings)");
+                    return prices.getRegularPrices().getLoyalTier1Price() + added;
+                }
+                System.out.println("*Your are a loyalty client tier 3 (more than 9 bookings)");
+                return prices.getRegularPrices().getLoyalTier3Price() + added;
+            } else if (user.getYears() < 18 && isHoliday(date) == null && (date.getDayOfWeek() != DayOfWeek.SATURDAY || date.getDayOfWeek() != DayOfWeek.SUNDAY) && showTime.getStartTime().isBefore(LocalTime.parse("18:00:00"))) {
+                System.out.println("*Your are a student");
+                return prices.getRegularPrices().getStudentPrice() + added;
+            } else if (user.getYears() >= 55  && isHoliday(date) == null  && (date.getDayOfWeek() != DayOfWeek.SATURDAY || date.getDayOfWeek() != DayOfWeek.SUNDAY) && showTime.getStartTime().isBefore(LocalTime.parse("18:00:00"))) {
+                System.out.println("*Your are a senior");
+                return prices.getRegularPrices().getSeniorPrice() + added;
+            } else {
+                if (date.getDayOfWeek() == DayOfWeek.MONDAY || date.getDayOfWeek() == DayOfWeek.TUESDAY || date.getDayOfWeek() == DayOfWeek.WEDNESDAY) {
+                    System.out.println("*It is Monday - Wednesday");
+                    return prices.getRegularPrices().getMonWedPrice() + added;
+                } else if (date.getDayOfWeek() == DayOfWeek.THURSDAY) {
+                    System.out.println("*It is Thursday");
+                    return prices.getRegularPrices().getThuPrice() + added;
+                } else if (date.getDayOfWeek() == DayOfWeek.FRIDAY) {
+                    if (showTime.getStartTime().isBefore(LocalTime.parse("18:00:00"))) {
+                        System.out.println("*It is Friday Before 6pm");
+                        return prices.getRegularPrices().getFridayB6Price() + added;
+                    } else {
+                        System.out.println("*It is Friday After 6pm");
+                        return prices.getRegularPrices().getFridayA6Price() + added;
+                    }
+                }
+            }
+        } else {
+            Prices.SpecialMoviePrices specialPrices = null;
+            if (showTime.getMovie().getType() == MovieEnums.MovieType.THREE_D) {
+                specialPrices = prices.getThreeDPrices();
+            } else if (showTime.getMovie().getType() == MovieEnums.MovieType.FOUR_DX) {
+                specialPrices = prices.getFourDXPrices();
+            } else if (showTime.getMovie().getType() == MovieEnums.MovieType.IMAX) {
+                specialPrices = prices.getImaxPrices();
+            }
+            if (user.getYears() < 18 && isHoliday(date) == null && (date.getDayOfWeek() != DayOfWeek.SATURDAY || date.getDayOfWeek() != DayOfWeek.SUNDAY) && showTime.getStartTime().isBefore(LocalTime.parse("18:00:00"))) {
+                System.out.println("*Your are a student");
+                return specialPrices.getStudentPrice() + added;
+            } else {
+                if (date.getDayOfWeek() == DayOfWeek.MONDAY || date.getDayOfWeek() == DayOfWeek.TUESDAY || date.getDayOfWeek() == DayOfWeek.WEDNESDAY) {
+                    System.out.println("*It is Monday - Wednesday");
+                    return specialPrices.getMonWedPrice() + added;
+                } else if (date.getDayOfWeek() == DayOfWeek.THURSDAY) {
+                    System.out.println("*It is Thursday");
+                    return specialPrices.getThuPrice() + added;
+                } else if (date.getDayOfWeek() == DayOfWeek.FRIDAY) {
+                    if (showTime.getStartTime().isBefore(LocalTime.parse("18:00:00"))) {
+                        System.out.println("*It is Friday Before 6pm");
+                        return specialPrices.getFridayB6Price() + added;
+                    } else {
+                        System.out.println("*It is Friday After 6pm");
+                        return specialPrices.getFridayA6Price() + added;
+                    }
+                }
+            }
+        }
+        return -1;
+    }
+
+    public static Holiday isHoliday (LocalDate date) {
+        ArrayList<Holiday> holidays = HolidayManager.readHolidays();
+        for (int i = 0; i < holidays.size(); i++) {
+            Holiday holiday = holidays.get(i);
+            if (holiday.is(date)) {
+                return holiday;
+            }
+        }
+        return null;
     }
 }

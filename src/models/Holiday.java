@@ -46,4 +46,14 @@ public class Holiday {
     public void setAdditionalPrice(double additionalPrice) {
         this.additionalPrice = additionalPrice;
     }
+
+    public boolean is(LocalDate date) {
+        return date.isAfter(startDate) && date.isBefore(endDate);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        Holiday holiday = (Holiday) obj;
+        return this.name.equals(holiday.getName());
+    }
 }

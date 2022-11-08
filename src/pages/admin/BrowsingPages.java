@@ -1,8 +1,9 @@
 package pages.admin;
 
 import data_managers.CineplexManager;
+import data_managers.HolidayManager;
 import data_managers.MovieManager;
-import models.cinemas.Cinema;
+import models.Holiday;
 import models.cinemas.Cineplex;
 import models.cinemas.ShowTime;
 import models.movies.Movie;
@@ -67,6 +68,7 @@ public class BrowsingPages {
     }
 
     public static void showReviewsPage() {
+        PageElements.printHeader();
         ArrayList<Movie> movies = MovieManager.readMovies();
         for (int i = 0; i < movies.size(); i++) {
             System.out.println(movies.get(i).getTitle());
@@ -75,6 +77,17 @@ public class BrowsingPages {
                 reviews.get(j).printReview();
                 System.out.println("");
             }
+            PageElements.printLine();
+        }
+    }
+
+    public static void showHolidaysPage() {
+        PageElements.printHeader();
+        ArrayList<Holiday> holidays = HolidayManager.readHolidays();
+        for (int i = 0; i < holidays.size(); i++) {
+            System.out.println(holidays.get(i).getName());
+            System.out.println("From " + holidays.get(i).getStartDate().toString() + ", To " + holidays.get(i).getEndDate());
+            System.out.println("Added Price: " + holidays.get(i).getAdditionalPrice());
             PageElements.printLine();
         }
     }

@@ -35,29 +35,19 @@ public class MovieEnums implements Serializable {
     }
 
     public enum MovieType {
-        TWO_D("2D", 9.0),
-        THREE_D("3D", 12.0),
-        FOUR_DX("4DX", 18.0),
-        IMAX("IMAX", 16.0);
+        TWO_D("2D"),
+        THREE_D("3D"),
+        FOUR_DX("4DX"),
+        IMAX("IMAX");
 
         private String type;
-        private Double ticketPrice;
 
-        MovieType (String type, Double ticketPrice){
+        MovieType (String type){
             this.type = type;
-            this.ticketPrice = ticketPrice;
         }
 
         public String getType() {
             return type;
-        }
-
-        public Double getTicketPrice() {
-            return ticketPrice;
-        }
-
-        public void setTicketPrice(Double ticketPrice) {
-            this.ticketPrice = ticketPrice;
         }
     }
 

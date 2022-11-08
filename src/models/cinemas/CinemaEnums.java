@@ -5,38 +5,36 @@ import java.util.HashMap;
 
 public class CinemaEnums {
     public enum CinemaType {
-        NORMAL("Normal", 10.0),
-        PLATINUM("Platinum",15.0 );
+        NORMAL("Normal"),
+        PLATINUM("Platinum" );
         private String type;
-        private Double price;
-
-        CinemaType(String type, Double price) {
+        CinemaType(String type) {
             this.type = type;
-            this.price = price;
         }
 
         public String getType() {
             return type;
         }
-
-        public Double getPrice() {
-            return price;
-        }
     }
 
     public enum SeatConfiguration {
-        SMALL_CINEMA("Small Room", 6, 10),
-        MEDIUM_CINEMA("Medium Room", 10, 16),
-        BIG_CINEMA("Big Room", 15, 24);
+        SMALL_CINEMA_C_D("Small Room with Couple and Deluxe seats", 6, 12, true),
+        SMALL_CINEMA("Small Room", 6, 12, false),
+        MEDIUM_CINEMA_C_D("Medium Room with Couple and Deluxe seats", 10, 16, true),
+        MEDIUM_CINEMA("Medium Room", 10, 16, false),
+        BIG_CINEMA_C_D("Big Room with Couple and Deluxe seats", 10, 16, true),
+        BIG_CINEMA("Big Room", 15, 24, false);
 
         private String description;
         private int rows;
         private int columns;
+        private boolean withPandC;
 
-        SeatConfiguration(String description, int rows, int columns) {
+        SeatConfiguration(String description, int rows, int columns, boolean withPandC) {
             this.description = description;
             this.rows = rows;
             this.columns = columns;
+            this.withPandC = withPandC;
         }
 
         public String getDescription() {
@@ -49,6 +47,10 @@ public class CinemaEnums {
 
         public int getColumns() {
             return columns;
+        }
+
+        public boolean isWithPandC() {
+            return withPandC;
         }
     }
 }

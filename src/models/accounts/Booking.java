@@ -12,14 +12,16 @@ public class Booking implements Serializable {
     private LocalDate date;
     private Cineplex cineplex;
     private ShowTime showTime;
+    private double cost;
     private Seat seat;
 
-    public Booking(LocalDate bookedOn, LocalDate date, Cineplex cineplex, ShowTime showTime, Seat seat) {
+    public Booking(LocalDate bookedOn, LocalDate date, Cineplex cineplex, ShowTime showTime, Seat seat, double cost) {
         this.bookedOn = bookedOn;
         this.date = date;
         this.cineplex = cineplex;
         this.showTime = showTime;
         this.seat = seat;
+        this.cost = cost;
     }
 
     public LocalDate getBookedOn() {
@@ -40,6 +42,10 @@ public class Booking implements Serializable {
 
     public Seat getSeat() {
         return seat;
+    }
+
+    public double getCost() {
+        return cost;
     }
 
     public String printBooking() {

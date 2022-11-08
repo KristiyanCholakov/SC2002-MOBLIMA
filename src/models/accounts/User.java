@@ -4,6 +4,7 @@ import models.Person;
 import models.movies.Review;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 
 public class User extends Person {
@@ -61,6 +62,10 @@ public class User extends Person {
 
     public LocalDate getBirthdate() {
         return birthdate;
+    }
+
+    public int getYears() {
+        return  this.birthdate.until(LocalDate.now()).getYears();
     }
 
     public void addBooking (Booking booking) {

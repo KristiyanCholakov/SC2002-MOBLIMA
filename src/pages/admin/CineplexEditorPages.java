@@ -75,21 +75,40 @@ public class CineplexEditorPages {
                     return null;
             }
             System.out.println("Cinema Type (S/M/B): ");
-            String seatConfStr = sc.nextLine();
+            String seatConfStr1 = sc.nextLine();
+            System.out.println("With Deluxe and Couple seats (true/false): ");
+            boolean seatConfStr2 = sc.nextBoolean();
             CinemaEnums.SeatConfiguration seatConfig;
-            switch (seatConfStr) {
-                case "S":
-                    seatConfig = CinemaEnums.SeatConfiguration.SMALL_CINEMA;
-                    break;
-                case "M":
-                    seatConfig = CinemaEnums.SeatConfiguration.MEDIUM_CINEMA;
-                    break;
-                case "B":
-                    seatConfig = CinemaEnums.SeatConfiguration.BIG_CINEMA;
-                    break;
-                default:
-                    PageElements.printConsoleMessage("Error: The status is not in wanted format.");
-                    return null;
+            if (seatConfStr2) {
+                switch (seatConfStr1) {
+                    case "S":
+                        seatConfig = CinemaEnums.SeatConfiguration.SMALL_CINEMA_C_D;
+                        break;
+                    case "M":
+                        seatConfig = CinemaEnums.SeatConfiguration.MEDIUM_CINEMA_C_D;
+                        break;
+                    case "B":
+                        seatConfig = CinemaEnums.SeatConfiguration.BIG_CINEMA_C_D;
+                        break;
+                    default:
+                        PageElements.printConsoleMessage("Error: The status is not in wanted format.");
+                        return null;
+                }
+            } else {
+                switch (seatConfStr1) {
+                    case "S":
+                        seatConfig = CinemaEnums.SeatConfiguration.SMALL_CINEMA;
+                        break;
+                    case "M":
+                        seatConfig = CinemaEnums.SeatConfiguration.MEDIUM_CINEMA;
+                        break;
+                    case "B":
+                        seatConfig = CinemaEnums.SeatConfiguration.BIG_CINEMA;
+                        break;
+                    default:
+                        PageElements.printConsoleMessage("Error: The status is not in wanted format.");
+                        return null;
+                }
             }
             Cinema cinema = new Cinema(i + 1, cType, seatConfig);
             cinemas.add(cinema);

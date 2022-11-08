@@ -17,17 +17,51 @@ public class ShowTime implements Serializable {
     private Movie movie;
     private HashMap<Character, ArrayList<Seat>> seatOccupancy;
 
-    private HashMap<Character, ArrayList<Seat>> configuration (int rows, int columns) {
-        HashMap<Character, ArrayList<Seat>> configuration = new  HashMap<Character, ArrayList<Seat>>();
-        for (int i = 65; i < 65 + rows; i++) {
-            char row = (char) i;
-            ArrayList<Seat> rowSeats = new ArrayList<>();
-            for (int j = 0; j < columns; j++) {
-                rowSeats.add(new Seat(row, j+1, false));
+    private HashMap<Character, ArrayList<Seat>> configuration(Cinema cinema) {
+        HashMap<Character, ArrayList<Seat>> configuration = new HashMap<Character, ArrayList<Seat>>();
+        if (cinema.seatConfiguration.isWithPandC()) {
+            for (int i = 65; i < 65 + cinema.getSeatConfiguration().getRows(); i++) {
+                char row = (char) i;
+                ArrayList<Seat> rowSeats = new ArrayList<>();
+                if (i < 67) {
+                    for (int j = 0; j < cinema.seatConfiguration.getColumns()/2; j++) {
+                        rowSeats.add(new Seat(row, j + 1, false, SeatEnums.SeatType.COUPLE));
+                    }
+                } else if (i == 67) {
+                    for (int j = 0; j < cinema.seatConfiguration.getColumns(); j++) {
+                        rowSeats.add(new Seat(row, j + 1, false, SeatEnums.SeatType.DELUXE));
+                    }
+                } else {
+                    for (int j = 0; j < cinema.seatConfiguration.getColumns(); j++) {
+                        rowSeats.add(new Seat(row, j + 1, false, SeatEnums.SeatType.NORMAL));
+                    }
+                }
+                configuration.put(row, rowSeats);
             }
-            configuration.put(row, rowSeats);
+            return configuration;
+        } else {
+            if (cinema.getType() == CinemaEnums.CinemaType.NORMAL) {
+                for (int i = 65; i < 65 + cinema.getSeatConfiguration().getRows(); i++) {
+                    char row = (char) i;
+                    ArrayList<Seat> rowSeats = new ArrayList<>();
+                    for (int j = 0; j < cinema.seatConfiguration.getColumns(); j++) {
+                        rowSeats.add(new Seat(row, j + 1, false, SeatEnums.SeatType.NORMAL));
+                    }
+                    configuration.put(row, rowSeats);
+                }
+                return configuration;
+            } else {
+                for (int i = 65; i < 65 + cinema.getSeatConfiguration().getRows(); i++) {
+                    char row = (char) i;
+                    ArrayList<Seat> rowSeats = new ArrayList<>();
+                    for (int j = 0; j < cinema.seatConfiguration.getColumns(); j++) {
+                        rowSeats.add(new Seat(row, j + 1, false, SeatEnums.SeatType.DELUXE));
+                    }
+                    configuration.put(row, rowSeats);
+                }
+                return configuration;
+            }
         }
-        return configuration;
     }
 
     public ShowTime(LocalDate date, Cinema cinema, LocalTime startTime, LocalTime endTime, Movie movie) {
@@ -36,7 +70,7 @@ public class ShowTime implements Serializable {
         this.startTime = startTime;
         this.endTime = endTime;
         this.movie = movie;
-        this.seatOccupancy = configuration(cinema.seatConfiguration.getRows(), cinema.seatConfiguration.getColumns());
+        this.seatOccupancy = configuration(cinema);
     }
 
     public LocalDate getDate() {
@@ -72,7 +106,7 @@ public class ShowTime implements Serializable {
         return "Showtime:\n" +
                 "Movie=" + this.movie.getTitle() + "\n" +
                 "Cinema Number=" + this.getCinema().getNumber() + "\n" +
-                "Start Time=" + this.getStartTime() + "\n"+
+                "Start Time=" + this.getStartTime() + "\n" +
                 "End Time=" + this.getEndTime();
     }
 

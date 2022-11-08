@@ -75,7 +75,8 @@ public class AdminPages {
                     "       2 - Show Cineplexes\n" +
                     "       3 - Show Schedules\n" +
                     "       4 - Show Reviews\n" +
-                    "       5 - Back to Admin Portal");
+                    "       5 - Show Holidays\n" +
+                    "       6 - Back to Admin Portal");
             System.out.print("Choice: ");
             int choice = scanner.nextInt();
             switch (choice) {
@@ -92,6 +93,9 @@ public class AdminPages {
                     BrowsingPages.showReviewsPage();
                     break;
                 case 5:
+                    BrowsingPages.showHolidaysPage();
+                    break;
+                case 6:
                     running = false;
                     break;
                 default:
@@ -111,7 +115,8 @@ public class AdminPages {
                     "       2 - Cineplex Editor\n" +
                     "       3 - Schedule Editor\n" +
                     "       4 - Reviews Editor\n" +
-                    "       5 - Back to Admin Portal");
+                    "       5 - Holidays Editor\n" +
+                    "       6 - Back to Admin Portal");
             System.out.print("Choice: ");
             int choice = scanner.nextInt();
             switch (choice) {
@@ -128,6 +133,9 @@ public class AdminPages {
                     ReviewEditorPages.reviewEditorPage();
                     break;
                 case 5:
+                    HolidayEditorPages.holidayEditorPage();
+                    break;
+                case 6:
                     running = false;
                     break;
                 default:

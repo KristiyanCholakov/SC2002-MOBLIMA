@@ -6,12 +6,14 @@ import java.util.Objects;
 public class Seat implements Serializable {
     private Character row;
     private int column;
+    private SeatEnums.SeatType type;
     private boolean occupied;
 
-    public Seat(Character row, int column, boolean occupied) {
+    public Seat(Character row, int column, boolean occupied, SeatEnums.SeatType type) {
         this.row = row;
         this.column = column;
         this.occupied = occupied;
+        this.type = type;
     }
 
     public Character getRow() {
@@ -24,6 +26,10 @@ public class Seat implements Serializable {
 
     public boolean isOccupied() {
         return occupied;
+    }
+
+    public SeatEnums.SeatType getType() {
+        return type;
     }
 
     public boolean bookSeat() {
@@ -43,8 +49,19 @@ public class Seat implements Serializable {
     }
 
     public String printSeat() {
-        if (this.occupied) return "[X]";
-        else return "[ ]";
+        switch (this.type) {
+            case COUPLE:
+                if (this.occupied) return "[XXXX]";
+                else return "[    ]";
+            case DELUXE:
+                if (this.occupied) return "{X}";
+                else return "{ }";
+            case NORMAL:
+                if (this.occupied) return "[X]";
+                else return "[ ]";
+            default:
+                return "error";
+        }
     }
 
     @Override
