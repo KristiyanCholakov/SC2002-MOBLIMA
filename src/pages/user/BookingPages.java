@@ -218,6 +218,10 @@ public class BookingPages {
         Seat selectedSeat = showTime.getSeatOccupancy().get(row).get(column);
         double price = getPrice(showTime, date, MainPage.getCurrentUser(), selectedSeat);
         System.out.println("TOTAL PRICE: " + price);
+        System.out.println("Confirm Booking (true, false):");
+        boolean yes = scanner.nextBoolean();
+        scanner.nextLine();
+        if (!yes) return;
         if (selectedSeat.bookSeat()) {
             PageElements.printConsoleMessage("You have successfully booked the seat.");
             HashMap<LocalDate, ArrayList<ShowTime>> schedules = cineplex.getSchedules();

@@ -70,7 +70,7 @@ public class CineplexEditorPages {
                     cType = CinemaEnums.CinemaType.NORMAL;
                     break;
                 default:
-                    PageElements.printConsoleMessage("Error: The status is not in wanted format.");
+                    PageElements.printConsoleMessage("Error: The type is not in wanted format.");
                     return null;
             }
             System.out.println("Cinema Type (S/M/B): ");
@@ -128,6 +128,9 @@ public class CineplexEditorPages {
             return;
         }
         ArrayList<Cinema> cinemas = cinemasInput();
+        if (cinemas == null) {
+            return;
+        }
         Cineplex cineplex = new Cineplex(name, address, cinemas);
         CineplexManager.writeCineplex(cineplex);
     }
@@ -160,6 +163,9 @@ public class CineplexEditorPages {
                 break;
             case 2:
                 ArrayList<Cinema> cinemas = cinemasInput();
+                if (cinemas == null) {
+                    return;
+                }
                 HashMap<LocalDate, ArrayList<ShowTime>> schedules = new HashMap<LocalDate, ArrayList<ShowTime>>();
                 cineplex.setCinemas(cinemas);
                 cineplex.setSchedules(schedules);
