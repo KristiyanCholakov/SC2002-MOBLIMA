@@ -1,8 +1,9 @@
 package models;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Holiday {
+public class Holiday implements Serializable {
     private String name;
     private LocalDate startDate;
     private LocalDate endDate;

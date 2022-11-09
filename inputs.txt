@@ -13,6 +13,7 @@ Doctor Strange in the Multiverse of Madness
 Fantasy, Action, Adventure
 02:06
 NS
+true
 2D
 PG13
 Doctor Strange, with the help of mystical allies both old and new, traverses the mind-bending and dangerous alternate realities of the Multiverse to confront a mysterious new adversary.
@@ -25,12 +26,14 @@ Cumberbatch
 Elizabeth
 Olsen
 0
+
 1
 Black Adam
 Action, Fantasy, Science Fiction
 02:05
 NS
-2D
+true
+3D
 PG13
 Nearly 5,000 years after he was bestowed with the almighty powers of the Egyptian gods—and imprisoned just as quickly—Black Adam is freed from his earthly tomb, ready to unleash his unique form of justice on the modern world.
 Jaume
@@ -42,11 +45,13 @@ Johnson
 Aldis
 Hodge
 0
+
 1
 Fall
 Thriller
 01:47
 NS
+false
 2D
 PG13
 For best friends Becky and Hunter, life is all about conquering fears and pushing limits. But after they climb 2,000 feet to the top of a remote, abandoned radio tower, they find themselves stranded with no way down. Now Becky and Hunter’s expert climbing skills will be put to the ultimate test as they desperately fight to survive the elements, a lack of supplies, and vertigo-inducing heights
@@ -59,11 +64,13 @@ Currey
 Virginia
 Gardner
 0
+
 1
 Bullet Train
 Action, Comedy, Thriller
 02:07
 NS
+true
 2D
 M18
 Unlucky assassin Ladybug is determined to do his job peacefully after one too many gigs gone off the rails. Fate, however, may have other plans, as Ladybug's latest mission puts him on a collision course with lethal adversaries from around the globe—all with connected, yet conflicting, objectives—on the world's fastest train.
@@ -76,11 +83,13 @@ Pitt
 Joey
 King
 0
+
 1
 Prey
 Thriller, Action, Science Fiction
 01:40
 NS
+false
 2D
 M18
 When danger threatens her camp, the fierce and highly skilled Comanche warrior Naru sets out to protect her people. But the prey she stalks turns out to be a highly evolved alien predator with a technically advanced arsenal.
@@ -93,12 +102,14 @@ Midthunder
 Dakota
 Beavers
 0
+
 1
 Halloween Ends
 Horror, Thriller
 01:51
 NS
-2D
+true
+4DX
 M18
 Four years after the events of Halloween in 2018, Laurie has decided to liberate herself from fear and rage and embrace life. But when a young man is accused of killing a boy he was babysitting, it ignites a cascade of violence and terror that will force Laurie to finally confront the evil she can’t control, once and for all.
 David
@@ -110,12 +121,14 @@ Curtis
 Andi
 Matichak
 0
+
 1
 The Bad Guys
 Animation, Action, Adventure, Crime, Comedy
 01:40
 NS
-2D
+false
+IMAX
 PG
 When the Bad Guys, a crew of criminal animals, are finally caught after years of heists and being the world’s most-wanted villains, Mr. Wolf brokers a deal to save them all from prison.
 Pierre
@@ -132,27 +145,22 @@ Maron
 1
 JP Cinema
 Jurong Point Mall, Jurong East
-10
+5
 Platinum
 S
-Platinum
-S
-Normal
-B
-Normal
-B
-Normal
-B
-Normal
-M
-Normal
-M
-Normal
-M
+false
 Normal
 S
+false
 Normal
 S
+true
+Normal
+M
+true
+Normal
+B
+true
 
 1
 NTU Cinema
@@ -160,12 +168,14 @@ North Spine Plaza, NTU Campus
 2
 Normal
 S
+true
 Normal
 S
+false
 
 ***Adding schedules - NTU Cinema
 NTU Cinema
-2022-11-06
+2022-11-09
 10
 1
 Bullet Train
@@ -199,7 +209,7 @@ Prey
 19:00
 
 NTU Cinema
-2022-11-07
+2022-11-10
 5
 1
 Bullet Train
@@ -218,7 +228,7 @@ Black Adam
 14:00
 
 JP Cinema
-2022-11-06
+2022-11-09
 10
 1
 Bullet Train
@@ -226,27 +236,27 @@ Bullet Train
 1
 Prey
 13:00
-1
+2
 Halloween Ends
 15:00
 2
 The Bad Guys
 10:00
-2
+3
 Black Adam
 14:00
 3
 Doctor Strange in the Multiverse of Madness
 10:00
-3
+4
 Halloween Ends
 13:00
-3
+4
 Prey
 15:00
-4
+5
 The Bad Guys
 10:00
-4
+5
 Black Adam
 14:00

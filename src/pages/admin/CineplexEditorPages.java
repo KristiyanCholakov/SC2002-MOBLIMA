@@ -61,7 +61,6 @@ public class CineplexEditorPages {
             System.out.println("Entering details for Cinema " + (i + 1));
             System.out.println("Cinema Type (Platinum/Normal): ");
             String cinType = sc.nextLine();
-            //enter cinema type
             CinemaEnums.CinemaType cType;
             switch (cinType) {
                 case "Platinum":
@@ -78,6 +77,7 @@ public class CineplexEditorPages {
             String seatConfStr1 = sc.nextLine();
             System.out.println("With Deluxe and Couple seats (true/false): ");
             boolean seatConfStr2 = sc.nextBoolean();
+            sc.nextLine();
             CinemaEnums.SeatConfiguration seatConfig;
             if (seatConfStr2) {
                 switch (seatConfStr1) {

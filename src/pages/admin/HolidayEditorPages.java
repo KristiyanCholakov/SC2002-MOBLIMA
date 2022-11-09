@@ -16,8 +16,8 @@ public class HolidayEditorPages {
             System.out.println("Select the action you want:\n" +
                     "(Type the number of the choice)\n" +
                     "       1 - Add Holiday\n" +
-                    "       3 - Delete Holiday\n" +
-                    "       4 - Back to Editor Portal");
+                    "       2 - Delete Holiday\n" +
+                    "       3 - Back to Editor Portal");
             System.out.print("Choice: ");
             int choice = scanner.nextInt();
             scanner.nextLine();

@@ -4,6 +4,7 @@ import constants.Regexes;
 import data_managers.AdminManager;
 import models.accounts.Admin;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MasterPage {
@@ -99,5 +100,11 @@ public class MasterPage {
         PageElements.printHeader();
         System.out.println("SHOW ADMINS\n");
         AdminManager.showAdmins();
+        ArrayList<Admin> admins = AdminManager.readAdmins();
+        for (int i = 0; i < admins.size(); i++) {
+            System.out.print("*");
+            System.out.println(admins.get(i).toString());
+            System.out.println();
+        }
     }
 }

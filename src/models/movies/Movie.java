@@ -187,6 +187,7 @@ public class Movie implements Serializable {
                 "Synopsis=" + this.synopsis + "\n" +
                 "Duration=" + this.duration.toString() + "\n" +
                 "Status=" + this.status.getDescription() + "\n" +
+                "Blockbuster=" + this.blockbuster + "\n" +
                 "Type=" + this.type.getType() + "\n" +
                 "Restriction=" + this.restriction.getRestriction() + "\n" +
                 "Rating=" + this.getRating() + "\n" +
