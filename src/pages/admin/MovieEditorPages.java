@@ -85,6 +85,7 @@ public class MovieEditorPages {
         }
         System.out.print("Is the movie a blockbuster (true, false): ");
         boolean isBlockbuster = scanner.nextBoolean();
+        scanner.nextLine();
         System.out.print("Type (2D, 3D, 4DX, IMAX): ");
         String typeStr = scanner.nextLine();
         MovieEnums.MovieType type;
