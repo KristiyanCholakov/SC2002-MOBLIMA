@@ -195,10 +195,11 @@ public class MovieEditorPages {
                     "       1 - Genre \n" +
                     "       2 - Duration\n" +
                     "       3 - Status\n" +
-                    "       4 - Type\n" +
-                    "       5 - Director\n" +
-                    "       6 - Actors\n" +
-                    "       7 - Back to Movie Editor");
+                    "       4 - Blockbuster\n" +
+                    "       5 - Type\n" +
+                    "       6 - Director\n" +
+                    "       7 - Actors\n" +
+                    "       8 - Back to Movie Editor");
             System.out.print("Choice: ");
             int choice = scanner.nextInt();
             scanner.nextLine();
@@ -243,6 +244,11 @@ public class MovieEditorPages {
                     movie.setStatus(status);
                     break;
                 case 4:
+                    System.out.print("Is the movie a blockbuster (true, false): ");
+                    boolean isBlockbuster = scanner.nextBoolean();
+                    movie.setBlockbuster(isBlockbuster);
+                    break;
+                case 5:
                     System.out.print("Type (2D, 3D, 4DX, IMAX): ");
                     String typeStr = scanner.nextLine();
                     MovieEnums.MovieType type;
@@ -265,7 +271,7 @@ public class MovieEditorPages {
                     }
                     movie.setType(type);
                     break;
-                case 5:
+                case 6:
                     Director director = movie.getDirector();
                     director.setNumberOfMovies(director.getNumberOfMovies()-1);
                     if (director.getNumberOfMovies() == 0) DirectorManager.deleteDirector(director);
@@ -285,7 +291,7 @@ public class MovieEditorPages {
                     }
                     movie.setDirector(newDirector);
                     break;
-                case 6:
+                case 7:
                     ArrayList<Actor> actors = movie.getCast();
                     for (int i = 0; i < actors.size(); i++) {
                         Actor actor = actors.get(i);
@@ -318,7 +324,7 @@ public class MovieEditorPages {
                     }
                     movie.setCast(newActors);
                     break;
-                case 7:
+                case 8:
                     running = false;
                     break;
                 default:
