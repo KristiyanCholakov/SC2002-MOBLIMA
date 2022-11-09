@@ -222,7 +222,7 @@ public class BookingPages {
         }
         Holiday holiday = isHoliday(date);
         if (holiday != null) {
-            System.out.println("*It is a holiday: " + holiday);
+            System.out.println("*It is a holiday: " + holiday.getName());
             price += holiday.getAdditionalPrice();
         }
         System.out.println("TOTAL PRICE: " + price);

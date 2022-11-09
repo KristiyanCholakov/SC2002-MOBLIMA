@@ -49,7 +49,7 @@ public class Holiday implements Serializable {
     }
 
     public boolean is(LocalDate date) {
-        return date.isAfter(startDate) && date.isBefore(endDate);
+        return (date.isAfter(startDate) && date.isBefore(endDate)) || date.equals(startDate) || date.equals(endDate);
     }
 
     @Override
