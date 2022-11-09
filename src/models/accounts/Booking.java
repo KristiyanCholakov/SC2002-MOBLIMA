@@ -50,7 +50,7 @@ public class Booking implements Serializable {
 
     public String printBooking() {
         return "Booked On: " + this.bookedOn.toString() + ", " + "Movie: " + this.showTime.getMovie().getTitle() + ", Cineplex: " + this.cineplex.getName()
-                + ", Seat: " + this.seat.getRow() + this.getSeat().getColumn()+ ", Date: " + this.date.toString();
+                + ", Seat: " + this.seat.getRow() + this.getSeat().getColumn()+ ", Date: " + this.date.toString() + ", PRICE: " + this.cost;
     }
 
     @Override

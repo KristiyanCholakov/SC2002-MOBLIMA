@@ -99,7 +99,6 @@ public class MasterPage {
     public static void showAdminsPage() {
         PageElements.printHeader();
         System.out.println("SHOW ADMINS\n");
-        AdminManager.showAdmins();
         ArrayList<Admin> admins = AdminManager.readAdmins();
         for (int i = 0; i < admins.size(); i++) {
             System.out.print("*");

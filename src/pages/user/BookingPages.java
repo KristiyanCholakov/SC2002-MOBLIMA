@@ -217,6 +217,14 @@ public class BookingPages {
         scanner.nextLine();
         Seat selectedSeat = showTime.getSeatOccupancy().get(row).get(column);
         double price = getPrice(showTime, date, MainPage.getCurrentUser(), selectedSeat);
+        if (selectedSeat.getType() == SeatEnums.SeatType.COUPLE) {
+            price *= 2;
+        }
+        Holiday holiday = isHoliday(date);
+        if (holiday != null) {
+            System.out.println("*It is a holiday: " + holiday);
+            price += holiday.getAdditionalPrice();
+        }
         System.out.println("TOTAL PRICE: " + price);
         System.out.println("Confirm Booking (true, false):");
         boolean yes = scanner.nextBoolean();
