@@ -7,7 +7,7 @@ import pages.MainPage;
 import pages.PageElements;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class UserPages {
@@ -25,7 +25,13 @@ public class UserPages {
                     "       4 - Review a Movie\n" +
                     "       5 - Back to Main Page" );
             System.out.print("Choice: ");
-            int choice = scanner.nextInt();
+            int choice;
+            try {
+                choice = scanner.nextInt();
+            } catch (InputMismatchException e) {
+                PageElements.printConsoleMessage("You have to enter a number!");
+                choice = -1;
+            }
             scanner.nextLine();
             switch (choice) {
                 case 1:
@@ -56,9 +62,9 @@ public class UserPages {
 
         System.out.println("LOGIN\n");
         System.out.print("Email/Username: ");
-        String username = scanner.next();
+        String username = scanner.nextLine();
         System.out.print("Password: ");
-        String password = scanner.next();
+        String password = scanner.nextLine();
         User loggedUser = UserManager.checkCredentials(username, password);
         if (loggedUser != null) {
             PageElements.printConsoleMessage("Successful Login!");

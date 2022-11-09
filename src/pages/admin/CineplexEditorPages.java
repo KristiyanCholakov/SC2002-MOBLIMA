@@ -13,10 +13,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class CineplexEditorPages {
     public static void cinemaEditorPage() {
@@ -30,7 +27,14 @@ public class CineplexEditorPages {
                     "       3 - Delete Cineplex\n" +
                     "       4 - Back to Editor Portal");
             System.out.print("Choice: ");
-            int choice = scanner.nextInt();
+            int choice;
+            try {
+                choice = scanner.nextInt();
+            } catch (InputMismatchException e) {
+                choice = -1;
+                PageElements.printConsoleMessage("You have to enter a number!");
+            }
+            scanner.nextLine();
             switch (choice) {
                 case 1:
                     addCineplex();
@@ -132,7 +136,12 @@ public class CineplexEditorPages {
             PageElements.printConsoleMessage("Cineplex already exists!");
             return;
         }
-        ArrayList<Cinema> cinemas = cinemasInput();
+        ArrayList<Cinema> cinemas = null;
+        try {
+            cinemas = cinemasInput();
+        } catch (InputMismatchException e) {
+            PageElements.printConsoleMessage("You have to enter a valid input!");
+        }
         if (cinemas == null) {
             return;
         }
@@ -158,7 +167,13 @@ public class CineplexEditorPages {
                 "       2 - Cinemas\n" +
                 "       3 - Back to Cineplex Editor");
         System.out.print("Choice: ");
-        int choice = scanner.nextInt();
+        int choice;
+        try {
+            choice = scanner.nextInt();
+        } catch (InputMismatchException e) {
+            choice = -1;
+            PageElements.printConsoleMessage("You have to enter a number!");
+        }
         scanner.nextLine();
         switch (choice) {
             case 1:
@@ -167,7 +182,12 @@ public class CineplexEditorPages {
                 cineplex.setAddress(address);
                 break;
             case 2:
-                ArrayList<Cinema> cinemas = cinemasInput();
+                ArrayList<Cinema> cinemas = null;
+                try {
+                    cinemas = cinemasInput();
+                } catch (InputMismatchException e) {
+                    PageElements.printConsoleMessage("You have to enter a valid input!");
+                }
                 if (cinemas == null) {
                     return;
                 }

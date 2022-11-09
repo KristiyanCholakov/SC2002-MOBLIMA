@@ -1,13 +1,13 @@
 package pages.user;
 
 import data_managers.MovieManager;
-import models.cinemas.ShowTime;
 import models.movies.Movie;
 import models.movies.Review;
 import pages.PageElements;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ExplorePages {
@@ -23,7 +23,13 @@ public class ExplorePages {
                     "       3 - Top 5 Movies by Ticket Sales\n" +
                     "       4 - Back to User Portal");
             System.out.print("Choice: ");
-            int choice = scanner.nextInt();
+            int choice;
+            try {
+                choice = scanner.nextInt();
+            } catch (InputMismatchException e) {
+                choice = -1;
+                PageElements.printConsoleMessage("You have to enter a number!");
+            }
             scanner.nextLine();
             switch (choice) {
                 case 1:
@@ -63,7 +69,14 @@ public class ExplorePages {
                 "       2 - Descending By Rating\n" +
                 "       3 - Newest");
         System.out.print("Choice: ");
-        int order = scanner.nextInt();
+        int order;
+        try {
+            order = scanner.nextInt();
+        } catch (InputMismatchException e) {
+            order = -1;
+            PageElements.printConsoleMessage("You have to enter a number!");
+        }
+        scanner.nextLine();
         ArrayList<Review> reviews = movie.getReviews();
         if (order == 1) {
             Collections.sort(reviews, new Review.ByRatingAsc());

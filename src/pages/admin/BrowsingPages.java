@@ -27,7 +27,7 @@ public class BrowsingPages {
         boolean running = true;
         while (running) {
             System.out.println("Type 'end' to return to Browsing Page");
-            if (scanner.next().equals("end")) running = false;
+            if (scanner.nextLine().equals("end")) running = false;
         }
     }
 
@@ -43,7 +43,7 @@ public class BrowsingPages {
         boolean running = true;
         while (running) {
             System.out.println("Type 'end' to return to Browsing Page");
-            if (scanner.next().equals("end")) running = false;
+            if (scanner.nextLine().equals("end")) running = false;
         }
     }
 

@@ -8,8 +8,10 @@ import models.movies.*;
 import pages.PageElements;
 
 import java.time.LocalTime;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class MovieEditorPages {
@@ -25,14 +27,28 @@ public class MovieEditorPages {
                     "       3 - Delete Movie\n" +
                     "       4 - Back to Editor Portal");
             System.out.print("Choice: ");
-            int choice = scanner.nextInt();
+            int choice;
+            try {
+                choice = scanner.nextInt();
+            } catch (InputMismatchException e) {
+                choice = -1;
+                PageElements.printConsoleMessage("You have to enter a number!");
+            }
             scanner.nextLine();
             switch (choice) {
                 case 1:
-                    addMoviePage();
+                    try {
+                        addMoviePage();
+                    }  catch (InputMismatchException e ) {
+                        PageElements.printConsoleMessage("You have to enter a valid input!");
+                    }
                     break;
                 case 2:
-                    editMoviePage();
+                    try {
+                        editMoviePage();
+                    }  catch (InputMismatchException e ) {
+                        PageElements.printConsoleMessage("You have to enter a valid input!");
+                    }
                     break;
                 case 3:
                     deleteMoviePage();
@@ -201,7 +217,13 @@ public class MovieEditorPages {
                     "       7 - Actors\n" +
                     "       8 - Back to Movie Editor");
             System.out.print("Choice: ");
-            int choice = scanner.nextInt();
+            int choice;
+            try {
+                choice = scanner.nextInt();
+            } catch (InputMismatchException e) {
+                choice = -1;
+                PageElements.printConsoleMessage("You have to enter a number!");
+            }
             scanner.nextLine();
             switch (choice) {
                 case 1:

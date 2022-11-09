@@ -7,7 +7,7 @@ import models.accounts.Admin;
 import pages.*;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class AdminPages {
@@ -40,7 +40,13 @@ public class AdminPages {
                     "       4 - See Prices\n" +
                     "       5 - Back to Start Page");
             System.out.print("Choice: ");
-            int choice = scanner.nextInt();
+            int choice;
+            try {
+                choice = scanner.nextInt();
+            } catch (InputMismatchException e) {
+                choice = -1;
+                PageElements.printConsoleMessage("You have to enter a number!");
+            }
             scanner.nextLine();
             switch (choice) {
                 case 1:
@@ -78,7 +84,14 @@ public class AdminPages {
                     "       5 - Show Holidays\n" +
                     "       6 - Back to Admin Portal");
             System.out.print("Choice: ");
-            int choice = scanner.nextInt();
+            int choice;
+            try {
+                choice = scanner.nextInt();
+            } catch (InputMismatchException e) {
+                choice = -1;
+                PageElements.printConsoleMessage("You have to enter a number!");
+            }
+            scanner.nextLine();
             switch (choice) {
                 case 1:
                     BrowsingPages.showMoviesPage();
@@ -118,7 +131,14 @@ public class AdminPages {
                     "       5 - Holidays Editor\n" +
                     "       6 - Back to Admin Portal");
             System.out.print("Choice: ");
-            int choice = scanner.nextInt();
+            int choice;
+            try {
+                choice = scanner.nextInt();
+            } catch (InputMismatchException e) {
+                choice = -1;
+                PageElements.printConsoleMessage("You have to enter a number!");
+            }
+            scanner.nextLine();
             switch (choice) {
                 case 1:
                     MovieEditorPages.movieEditorPage();
@@ -156,35 +176,68 @@ public class AdminPages {
                 "       5 - Blockbuster Added Price\n" +
                 "       6 - Back to Admin Portal");
         System.out.print("Choice: ");
-        int choice = scanner.nextInt();
+        int choice;
+        try {
+            choice = scanner.nextInt();
+        } catch (InputMismatchException e) {
+            choice = -1;
+            PageElements.printConsoleMessage("You have to enter a number!");
+        }
+        scanner.nextLine();
         Prices prices = PricesManager.readPrices().get(0);
-        ArrayList<Double> arrayList = new ArrayList<>();
+        ArrayList<Double> arrayList;
         switch (choice) {
             case 1:
-                arrayList = inputRegularMoviePrices();
-                prices.setRegularPrices(new Prices.RegularMoviePrices(arrayList.get(0), arrayList.get(1), arrayList.get(2),
-                        arrayList.get(3), arrayList.get(4), arrayList.get(5), arrayList.get(6), arrayList.get(7), arrayList.get(8), arrayList.get(9)));
+                try {
+                    arrayList = inputRegularMoviePrices();
+                    prices.setRegularPrices(new Prices.RegularMoviePrices(arrayList.get(0), arrayList.get(1), arrayList.get(2),
+                            arrayList.get(3), arrayList.get(4), arrayList.get(5), arrayList.get(6), arrayList.get(7), arrayList.get(8), arrayList.get(9)));
+
+                } catch (InputMismatchException e) {
+                    PageElements.printConsoleMessage("You have entered the wrong format!");
+                    return;
+                }
                 break;
             case 2:
-                arrayList = inputSpecialMoviePrices();
-                prices.setThreeDPrices(new Prices.ThreeDMoviesPrices(arrayList.get(0), arrayList.get(1), arrayList.get(2),
-                        arrayList.get(3), arrayList.get(4), arrayList.get(5)));
+                try {
+                    arrayList = inputSpecialMoviePrices();
+                    prices.setThreeDPrices(new Prices.ThreeDMoviesPrices(arrayList.get(0), arrayList.get(1), arrayList.get(2),
+                            arrayList.get(3), arrayList.get(4), arrayList.get(5)));
+                } catch (InputMismatchException e) {
+                    PageElements.printConsoleMessage("You have entered the wrong format!");
+                    return;
+                }
                 break;
             case 3:
-                arrayList = inputSpecialMoviePrices();
-                prices.setFourDXPrices(new Prices.FourDXMoviesPrices(arrayList.get(0), arrayList.get(1), arrayList.get(2),
-                        arrayList.get(3), arrayList.get(4), arrayList.get(5)));
+                try {
+                    arrayList = inputSpecialMoviePrices();
+                    prices.setFourDXPrices(new Prices.FourDXMoviesPrices(arrayList.get(0), arrayList.get(1), arrayList.get(2),
+                            arrayList.get(3), arrayList.get(4), arrayList.get(5)));
+                } catch (InputMismatchException e) {
+                    PageElements.printConsoleMessage("You have entered the wrong format!");
+                    return;
+                }
                 break;
             case 4:
-                arrayList = inputSpecialMoviePrices();
-                prices.setImaxPrices(new Prices.ImaxMoviesPrices(arrayList.get(0), arrayList.get(1), arrayList.get(2),
-                        arrayList.get(3), arrayList.get(4), arrayList.get(5)));
+                try {
+                    arrayList = inputSpecialMoviePrices();
+                    prices.setImaxPrices(new Prices.ImaxMoviesPrices(arrayList.get(0), arrayList.get(1), arrayList.get(2),
+                            arrayList.get(3), arrayList.get(4), arrayList.get(5)));
+                } catch (InputMismatchException e) {
+                    PageElements.printConsoleMessage("You have entered the wrong format!");
+                    return;
+                }
                 break;
             case 5:
-                System.out.println("Enter new added price for blockbuster:");
-                double b = scanner.nextDouble();
-                scanner.nextLine();
-                prices.setBlockbusterAddedPrice(b);
+                try {
+                    System.out.println("Enter new added price for blockbuster:");
+                    double b = scanner.nextDouble();
+                    scanner.nextLine();
+                    prices.setBlockbusterAddedPrice(b);
+                } catch (InputMismatchException e) {
+                    PageElements.printConsoleMessage("You have entered the wrong format!");
+                    return;
+                }
                 break;
             case 6:
                 return;

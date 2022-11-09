@@ -5,25 +5,39 @@ import models.Holiday;
 import pages.PageElements;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class HolidayEditorPages {
     public static void holidayEditorPage() {
         Scanner scanner = new Scanner(System.in);
-        PageElements.printHeader();
         boolean running = true;
         while (running) {
+            PageElements.printHeader();
             System.out.println("Select the action you want:\n" +
                     "(Type the number of the choice)\n" +
                     "       1 - Add Holiday\n" +
                     "       2 - Delete Holiday\n" +
                     "       3 - Back to Editor Portal");
             System.out.print("Choice: ");
-            int choice = scanner.nextInt();
+            int choice;
+            try {
+                choice = scanner.nextInt();
+            } catch (InputMismatchException e) {
+                choice = -1;
+                PageElements.printConsoleMessage("You have to enter a number!");
+            }
             scanner.nextLine();
             switch (choice) {
                 case 1:
-                    addHolidayPage();
+                    try {
+                        addHolidayPage();
+                    } catch (DateTimeParseException e) {
+                        PageElements.printConsoleMessage("You haven't entered the date with the wanted format!");
+                    } catch (InputMismatchException e ) {
+                        PageElements.printConsoleMessage("You have to enter a valid input!");
+                    }
                     break;
                 case 2:
                     deleteHolidayPage();

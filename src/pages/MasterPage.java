@@ -12,9 +12,10 @@ public class MasterPage {
 
     public static void masterLoginPage() {
         Scanner scanner = new Scanner(System.in);
+        PageElements.printHeader();
         System.out.println("MASTER LOGIN\n");
         System.out.print("Enter the master's code: ");
-        String code = scanner.next();
+        String code = scanner.nextLine();
         if (!code.equals(masterCode)) PageElements.printConsoleMessage("Wrong code!");
         else masterPage();
     }
@@ -60,33 +61,33 @@ public class MasterPage {
                 "       contain 1 non-alpha numeric number\n" +
                 "       be 8-16 characters long\n");
         System.out.print("Username: ");
-        String username = scanner.next();
+        String username = scanner.nextLine();
         if (!username.matches(Regexes.username_regex)) {
             PageElements.printConsoleMessage("Error: The username is not in wanted format.");
             return;
         }
         System.out.print("Email: ");
-        String email = scanner.next();
+        String email = scanner.nextLine();
         if (!email.matches(Regexes.email_regex)) {
             PageElements.printConsoleMessage("Error: The email is not in wanted format.");
             return;
         }
         System.out.print("Password: ");
-        String password1 = scanner.next();
+        String password1 = scanner.nextLine();
         if (!password1.matches(Regexes.password_regex)) {
             PageElements.printConsoleMessage("Error: The password is not in wanted format.");
             return;
         }
         System.out.print("Confirm Password: ");
-        String password2 = scanner.next();
+        String password2 = scanner.nextLine();
         if (!password1.equals(password2)) {
             PageElements.printConsoleMessage("Error: The passwords do not match.");
             return;
         }
         System.out.print("First Name: ");
-        String f_name = scanner.next();
+        String f_name = scanner.nextLine();
         System.out.print("Last Name: ");
-        String l_name = scanner.next();
+        String l_name = scanner.nextLine();
 
         Admin admin = new Admin(f_name, l_name, username, email, password1);
         if (!AdminManager.ifAdminExists(admin)) {

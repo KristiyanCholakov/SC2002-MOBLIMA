@@ -1,13 +1,10 @@
 package pages;
 
-import data_managers.MovieManager;
-import data_managers.UserManager;
 import models.accounts.User;
-import models.movies.Movie;
 import pages.admin.AdminPages;
 import pages.user.UserPages;
 
-import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class MainPage {
@@ -34,7 +31,14 @@ public class MainPage {
                     "       4 - Master Portal\n" +
                     "       5 - Exit the System");
             System.out.print("Choice: ");
-            int choice = scanner.nextInt();
+            int choice;
+            try {
+                choice = scanner.nextInt();
+            } catch (InputMismatchException e) {
+                PageElements.printConsoleMessage("You have to enter a number!");
+                choice = -1;
+            }
+            scanner.nextLine();
             switch (choice) {
                 case 1:
                     UserPages.userLoginPage();

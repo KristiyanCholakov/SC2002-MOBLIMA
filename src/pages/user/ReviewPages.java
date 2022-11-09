@@ -9,6 +9,7 @@ import pages.PageElements;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ReviewPages {
@@ -36,7 +37,13 @@ public class ReviewPages {
                     "       2 - Delete old one and write new review\n" +
                     "       3 - Return to Previous Page");
             System.out.print("Choice: ");
-            int choice = scanner.nextInt();
+            int choice;
+            try {
+                choice = scanner.nextInt();
+            } catch (InputMismatchException e) {
+                choice = -1;
+                PageElements.printConsoleMessage("You have to enter a number!");
+            }
             scanner.nextLine();
             switch (choice) {
                 case 1:

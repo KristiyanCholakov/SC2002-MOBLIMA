@@ -8,6 +8,7 @@ import models.movies.Review;
 import pages.PageElements;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
@@ -22,7 +23,13 @@ public class ReviewEditorPages {
                     "       1 - Delete Review\n" +
                     "       2 - Back to Editor Portal");
             System.out.print("Choice: ");
-            int choice = scanner.nextInt();
+            int choice;
+            try {
+                choice = scanner.nextInt();
+            } catch (InputMismatchException e) {
+                choice = -1;
+                PageElements.printConsoleMessage("You have to enter a number!");
+            }
             scanner.nextLine();
             switch (choice) {
                 case 1:

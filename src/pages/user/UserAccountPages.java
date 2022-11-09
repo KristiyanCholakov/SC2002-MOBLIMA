@@ -11,7 +11,9 @@ import models.movies.Review;
 import pages.MainPage;
 import pages.PageElements;
 
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
@@ -28,17 +30,41 @@ public class UserAccountPages {
                     "       3 - Change Password\n" +
                     "       4 - Back to Previous Page" );
             System.out.print("Choice: ");
-            int choice = scanner.nextInt();
+            int choice;
+            try {
+                choice = scanner.nextInt();
+            } catch (InputMismatchException e) {
+                choice = -1;
+                PageElements.printConsoleMessage("You have to enter a number!");
+            }
             scanner.nextLine();
             switch (choice) {
                 case 1:
-                    userBookingsPage();
+                    try {
+                        userBookingsPage();
+                    } catch (DateTimeParseException e) {
+                        PageElements.printConsoleMessage("You have to enter the date/time in a valid format!");
+                    } catch (InputMismatchException e ) {
+                        PageElements.printConsoleMessage("You have to enter a valid input!");
+                    }
                     break;
                 case 2:
-                    userReviewsPage();
+                    try {
+                        userReviewsPage();
+                    } catch (DateTimeParseException e) {
+                        PageElements.printConsoleMessage("You have to enter the date/time in a valid format!");
+                    } catch (InputMismatchException e ) {
+                        PageElements.printConsoleMessage("You have to enter a valid input!");
+                    }
                     break;
                 case 3:
-                    changePasswordPage();
+                    try {
+                        changePasswordPage();
+                    } catch (DateTimeParseException e) {
+                        PageElements.printConsoleMessage("You have to enter the date/time in a valid format!");
+                    } catch (InputMismatchException e ) {
+                        PageElements.printConsoleMessage("You have to enter a valid input!");
+                    }
                     break;
                 case 4:
                     running = false;
