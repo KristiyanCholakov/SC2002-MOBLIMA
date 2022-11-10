@@ -359,6 +359,9 @@ public class BookingPages {
                         System.out.println("*It is Friday After 6pm");
                         return prices.getRegularPrices().getFridayA6Price() + added;
                     }
+                } else {
+                    System.out.println("*It is a Weekend");
+                    return prices.getRegularPrices().getWeekendPrice() + added;
                 }
             }
         } else {
@@ -388,10 +391,12 @@ public class BookingPages {
                         System.out.println("*It is Friday After 6pm");
                         return specialPrices.getFridayA6Price() + added;
                     }
+                } else {
+                    System.out.println("*It is a Weekend");
+                    return specialPrices.getWeekendPrice() + added;
                 }
             }
         }
-        return -1;
     }
 
     public static Holiday isHoliday (LocalDate date) {
