@@ -52,6 +52,7 @@ public class ReviewEditorPages {
         Movie movie = MovieManager.getMovie(movieTitle);
         if (movie == null) {
             PageElements.printConsoleMessage("The movie doesn't exits.");
+            return;
         }
         System.out.println("Enter the email/username of the publisher of the review:");
         String username = scanner.nextLine();
