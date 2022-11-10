@@ -7,10 +7,25 @@ import pages.PageElements;
 import java.io.*;
 import java.util.ArrayList;
 
+/**
+ * The ActorManager class takes care of interacting with the file where the actors are stored.
+ * It performs writing, updating, reading and searching in the actors storage.
+ *
+ * @author Kristiyan Cholakov (KrisCholakov02)
+ * @version 10/11/22
+ */
 public class ActorManager {
 
+    /**
+     * The ACTOR_PATH constant points to the file where actors are stored.
+     */
     private static final String ACTOR_PATH = "src/data/actors.txt";
 
+    /**
+     * The readActors function reads all actors records from the actors' storage.
+     *
+     * @return An array list of the actor records from the storage. Empty array list if not any.
+     */
     public static ArrayList<Actor> readActors () {
         try {
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream(ACTOR_PATH));
@@ -27,6 +42,12 @@ public class ActorManager {
         return new ArrayList<Actor>();
     }
 
+    /**
+     * The writeActor function adds an actor record to the actors' storage
+     *
+     * @param actor The actor record to be written in the storage.
+     * @return true if the actor record is added successfully. false if writing failed.
+     */
     public static boolean writeActor (Actor actor) {
         File file = new File(ACTOR_PATH);
         ArrayList<Actor> allActors = readActors();
@@ -45,6 +66,14 @@ public class ActorManager {
         }
     }
 
+    /**
+     * The getActor function searches for an actor with the same first and last name in the storage and providing their
+     * record.
+     *
+     * @param fName The first name of an actor
+     * @param lName The last name of an actor
+     * @return The record of an actor with the same first and last name. null if an actor with these names does not exist.
+     */
     public static Actor getActor (String fName, String lName) {
         ArrayList<Actor> allActors = readActors();
         for (int i = 0; i < allActors.size(); i++) {
@@ -56,6 +85,12 @@ public class ActorManager {
         return null;
     }
 
+    /**
+     * The updateActor function searches if the provided actor record exists and if so updates their entry.
+     *
+     * @param actor The actor record to be updated in the storage.
+     * @return true if the actor record is updated successfully. false if updating failed.
+     */
     public static boolean updateActor (Actor actor) {
         ArrayList<Actor> allActors = readActors();
         Actor actorToUpdate = getActor(actor.getfName(), actor.getlName());
@@ -94,6 +129,12 @@ public class ActorManager {
         }
     }
 
+    /**
+     * The deleteActor function searches if the provided actor record exists and if so deletes their entry.
+     *
+     * @param actor The actor record to be deleted in the storage.
+     * @return true if the actor record is deleted successfully. false if deletion failed.
+     */
     public static boolean deleteActor (Actor actor) {
         File file = new File(ACTOR_PATH);
         ArrayList<Actor> allActors = readActors();

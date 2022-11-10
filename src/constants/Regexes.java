@@ -1,7 +1,7 @@
 package constants;
 
 /**
- * A class consisting of all regular expression constants.
+ * The Regex class consisting of all regular expression constants that are later used in the program.
  *
  * @author Kristiyan Cholakov (KrisCholakov02)
  * @version 10/11/22
