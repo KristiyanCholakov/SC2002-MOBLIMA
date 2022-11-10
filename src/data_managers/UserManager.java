@@ -66,6 +66,7 @@ public class UserManager {
      * The ifUserExists function checks if the user exists in the users' storage.
      *
      * @param user The user record to be checked if exists in the storage.
+     * @return true if the user record exists. false if it does not.
      */
     public static boolean ifUserExists(User user) {
         ArrayList<User> allUsers = readUsers();
@@ -78,6 +79,12 @@ public class UserManager {
         return false;
     }
 
+    /**
+     * The getUser function searches for a user with the same username in the storage and provides their record.
+     *
+     * @param username The username of the user that we search
+     * @return The record of the user with the same username. null if a user with this title does not exist.
+     */
     public static User getUser(String username) {
         ArrayList<User> allUsers = readUsers();
         for (int i = 0; i < allUsers.size(); i++) {
@@ -89,6 +96,12 @@ public class UserManager {
         return null;
     }
 
+    /**
+     * The updateUser function searches if the provided user record exists and if so updates their entry.
+     *
+     * @param user The user record to be updated in the storage.
+     * @return true if the user record is updated successfully. false if updating failed.
+     */
     public static boolean updateUser(User user) {
         ArrayList<User> allUsers = readUsers();
         User userToUpdated = getUser(user.getUsername());
@@ -114,6 +127,13 @@ public class UserManager {
         }
     }
 
+    /**
+     * The checkCredentials function checks if there exists a user account with the given username/email and password.
+     *
+     * @param username Either the username or the email with which the user tries to log in.
+     * @param password The password of the user trying to log in.
+     * @return The user record if there exists one with the corresponding email and password. null if it doesn't exist.
+     */
     public static User checkCredentials(String username, String password) {
         ArrayList<User> allUsers = readUsers();
         for (int i = 0; i < allUsers.size(); i++) {
