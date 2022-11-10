@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 /**
  * The AdminManager class takes care of interacting with the file where the admin accounts are stored.
- * It performs writing, updating, reading and searching in the admins' storage.
+ * It performs writing, reading and searching in the admins' storage.
  *
  * @author Kristiyan Cholakov (KrisCholakov02)
  * @version 10/11/22

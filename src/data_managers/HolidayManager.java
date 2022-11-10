@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 /**
  * The HolidayManager class takes care of interacting with the file where the holidays are stored.
- * It performs writing, updating, reading and searching in the holidays' storage.
+ * It performs writing, reading and searching in the holidays' storage.
  *
  * @author Kristiyan Cholakov (KrisCholakov02)
  * @version 10/11/22
