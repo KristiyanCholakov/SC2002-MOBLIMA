@@ -46,22 +46,6 @@ public class Prices implements Serializable {
         public double getLoyalTier3Price() {
             return loyalTier3Price;
         }
-
-        public void setSeniorPrice(double seniorPrice) {
-            this.seniorPrice = seniorPrice;
-        }
-
-        public void setLoyalTier1Price(double loyalTier1Price) {
-            this.loyalTier1Price = loyalTier1Price;
-        }
-
-        public void setLoyalTier2Price(double loyalTier2Price) {
-            this.loyalTier2Price = loyalTier2Price;
-        }
-
-        public void setLoyalTier3Price(double loyalTier3Price) {
-            this.loyalTier3Price = loyalTier3Price;
-        }
     }
 
     public static class ThreeDMoviesPrices extends SpecialMoviePrices {
@@ -133,30 +117,6 @@ public class Prices implements Serializable {
 
         public double getWeekendPrice() {
             return weekendPrice;
-        }
-
-        public void setStudentPrice(double studentPrice) {
-            this.studentPrice = studentPrice;
-        }
-
-        public void setMonWedPrice(double monWedPrice) {
-            this.monWedPrice = monWedPrice;
-        }
-
-        public void setThuPrice(double thuPrice) {
-            this.thuPrice = thuPrice;
-        }
-
-        public void setFridayB6Price(double fridayB6Price) {
-            this.fridayB6Price = fridayB6Price;
-        }
-
-        public void setFridayA6Price(double fridayA6Price) {
-            this.fridayA6Price = fridayA6Price;
-        }
-
-        public void setWeekendPrice(double weekendPrice) {
-            this.weekendPrice = weekendPrice;
         }
     }
 
