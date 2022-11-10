@@ -60,9 +60,9 @@ public class HolidayEditorPages {
             System.out.println("The holiday already exists!");
             return;
         }
-        System.out.println("Enter Start Data (yyyy-mm-dd):");
+        System.out.println("Enter Start Date (yyyy-mm-dd):");
         LocalDate startData = LocalDate.parse(scanner.nextLine());
-        System.out.println("Enter Start Data (yyyy-mm-dd):");
+        System.out.println("Enter End Date (yyyy-mm-dd):");
         LocalDate endDate = LocalDate.parse(scanner.nextLine());
         System.out.println("Additional Price:");
         double addPrice = scanner.nextDouble();

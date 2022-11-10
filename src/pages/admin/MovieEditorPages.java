@@ -199,7 +199,7 @@ public class MovieEditorPages {
         String title = scanner.nextLine();
         Movie movie = MovieManager.getMovie(title);
         if (movie == null) {
-            PageElements.printConsoleMessage("Movie does not exits!");
+            PageElements.printConsoleMessage("Movie does not exists!");
             return;
         }
         boolean running = true;
