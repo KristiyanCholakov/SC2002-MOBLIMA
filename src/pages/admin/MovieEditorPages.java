@@ -214,7 +214,9 @@ public class MovieEditorPages {
                     "       5 - Type\n" +
                     "       6 - Director\n" +
                     "       7 - Actors\n" +
-                    "       8 - Back to Movie Editor");
+                    "       8 - Synopsis\n" +
+                    "       9 - Restriction\n" +
+                    "       10 - Back to Movie Editor");
             System.out.print("Choice: ");
             int choice;
             try {
@@ -346,6 +348,40 @@ public class MovieEditorPages {
                     movie.setCast(newActors);
                     break;
                 case 8:
+                    System.out.println("Enter the new synopsis:");
+                    String synopsis = scanner.nextLine();
+                    movie.setSynopsis(synopsis);
+                    break;
+                case 9:
+                    System.out.print("Restriction (G, PG, PG13, NC16, M18, R21): ");
+                    String restrictionStr = scanner.nextLine();
+                    MovieEnums.MovieRestriction restriction;
+                    switch (restrictionStr) {
+                        case "G":
+                            restriction = MovieEnums.MovieRestriction.G;
+                            break;
+                        case "PG":
+                            restriction = MovieEnums.MovieRestriction.PG;
+                            break;
+                        case "PG13":
+                            restriction = MovieEnums.MovieRestriction.PG13;
+                            break;
+                        case "NC16":
+                            restriction = MovieEnums.MovieRestriction.NC16;
+                            break;
+                        case "M18":
+                            restriction = MovieEnums.MovieRestriction.M18;
+                            break;
+                        case "R21":
+                            restriction = MovieEnums.MovieRestriction.R21;
+                            break;
+                        default:
+                            PageElements.printConsoleMessage("Error: The restriction is not in wanted format.");
+                            return;
+                    }
+                    movie.setRestriction(restriction);
+                    break;
+                case 10:
                     running = false;
                     break;
                 default:
