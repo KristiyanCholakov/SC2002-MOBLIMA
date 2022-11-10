@@ -333,6 +333,7 @@ public class AdminPages {
         System.out.println("Weekend Price: " + fp.getWeekendPrice());
         Prices.RegularMoviePrices ip = prices.getRegularPrices();
         System.out.println("\nIMAX PRICES:");
+        System.out.println("Student Price: " + ip.getStudentPrice());
         System.out.println("Mon-Wed Price: " + ip.getMonWedPrice());
         System.out.println("Thu Price: " + ip.getThuPrice());
         System.out.println("Fri Before 6pm Price: " + ip.getFridayB6Price());
