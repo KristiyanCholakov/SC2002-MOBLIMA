@@ -12,6 +12,7 @@ public class CinemaEnums {
      * The CinemaType enum holds the types of cinema.
      */
     public enum CinemaType {
+
         /**
          * Normal type of cinema.
          */
