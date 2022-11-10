@@ -82,7 +82,7 @@ public class ReviewPages {
         try {
             rating = scanner.nextInt();
             if (rating < 1 || rating > 5) {
-                PageElements.printConsoleMessage("The rating should be in the range fro 1 to 5.");
+                PageElements.printConsoleMessage("The rating should be in the range from 1 to 5.");
             }
         } catch (InputMismatchException e) {
             PageElements.printConsoleMessage("The rating should be an integer.");
