@@ -3,6 +3,8 @@ package models.movies;
 import data_managers.ActorManager;
 import models.Person;
 
+import java.util.Comparator;
+
 public class Actor extends Director {
     private int numberOfOscars;
 
@@ -13,6 +15,15 @@ public class Actor extends Director {
 
     public int getNumberOfOscars() {
         return numberOfOscars;
+    }
+
+
+    public static class ByNumberOfOscars implements Comparator<Actor> {
+
+        @Override
+        public int compare(Actor o1, Actor o2) {
+            return o2.getNumberOfOscars() - o1.getNumberOfOscars();
+        }
     }
 
     @Override

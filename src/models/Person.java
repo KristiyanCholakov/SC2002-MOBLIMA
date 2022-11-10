@@ -29,6 +29,10 @@ public abstract class Person implements Serializable {
         this.lName = lName;
     }
 
+    public String getFullName() {
+        return this.fName + " " + this.lName;
+    }
+
     @Override
     public boolean equals(Object obj) {
         obj = (Person) obj;

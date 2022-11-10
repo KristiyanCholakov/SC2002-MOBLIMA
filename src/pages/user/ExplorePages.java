@@ -1,6 +1,10 @@
 package pages.user;
 
+import data_managers.ActorManager;
+import data_managers.DirectorManager;
 import data_managers.MovieManager;
+import models.movies.Actor;
+import models.movies.Director;
 import models.movies.Movie;
 import models.movies.Review;
 import pages.PageElements;
@@ -21,7 +25,9 @@ public class ExplorePages {
                     "       1 - See Reviews about a Movie\n" +
                     "       2 - Top 5 Movies by Rating\n" +
                     "       3 - Top 5 Movies by Ticket Sales\n" +
-                    "       4 - Back to User Portal");
+                    "       4 - Actors\n" +
+                    "       5 - Directors\n" +
+                    "       6 - Back to User Portal");
             System.out.print("Choice: ");
             int choice;
             try {
@@ -42,6 +48,12 @@ public class ExplorePages {
                     top5MoviesPage("Tickets Sold");
                     break;
                 case 4:
+                    exploreActors();
+                    break;
+                case 5:
+                    exploreDirectors();
+                    break;
+                case 6:
                     running = false;
                     break;
                 default:
@@ -106,6 +118,52 @@ public class ExplorePages {
             movies.get(i).printMovie();
             if (by.equals("Rating"))  System.out.println(by + ": " + movies.get(i).getRating());
             else System.out.println(by + ": " + movies.get(i).getTicketsSold());
+        }
+    }
+
+    public static void exploreActors() {
+        PageElements.printHeader();
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Actor> actors = ActorManager.readActors();
+        System.out.println("Select the sorting of the reviews:\n" +
+                "(Type the number of the choice)\n" +
+                "       1 - Descending By Number of Movies\n" +
+                "       2 - Descending By Number of Oscars\n");
+        System.out.print("Choice: ");
+        int choice;
+        try {
+            choice = scanner.nextInt();
+        } catch (InputMismatchException e) {
+            choice = -1;
+            PageElements.printConsoleMessage("You have to enter a number!");
+        }
+        scanner.nextLine();
+        switch (choice) {
+            case 1:
+                Collections.sort(actors, new Actor.ByNumberOfMovies());
+                break;
+            case 2:
+                Collections.sort(actors, new Actor.ByNumberOfOscars());
+                break;
+            default:
+                PageElements.printConsoleMessage("Invalid Choice!");
+                return;
+        }
+        System.out.println("ACTORS:\n");
+        for (int i = 0; i < actors.size(); i++) {
+            Actor  actor = actors.get(i);
+            System.out.println((i+1) + ") " + actor.getFullName() + ", Oscars: " + actor.getNumberOfOscars() + " and Movies: " + actor.getNumberOfMovies());
+        }
+    }
+
+    public static void exploreDirectors() {
+        PageElements.printHeader();
+        ArrayList<Director> directors = DirectorManager.readDirectors();
+        Collections.sort(directors, new Director.ByNumberOfMovies());
+        System.out.println("DIRECTORS:\n");
+        for (int i = 0; i < directors.size(); i++) {
+            Director actor = directors.get(i);
+            System.out.println((i+1) + ") " + actor.getFullName() + ", Movies: " + actor.getNumberOfMovies());
         }
     }
 }

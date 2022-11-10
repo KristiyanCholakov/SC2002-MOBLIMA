@@ -1,7 +1,6 @@
 package models.movies;
 
 import models.accounts.User;
-import models.cinemas.ShowTime;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
