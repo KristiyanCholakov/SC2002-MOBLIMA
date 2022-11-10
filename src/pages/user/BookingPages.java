@@ -220,11 +220,11 @@ public class BookingPages {
         System.out.println("Status: " + movie.getStatus().getDescription());
         System.out.println("Genre: " + movie.genresToString());
         System.out.println("Synopsis: " + movie.getSynopsis());
-        System.out.println("Directed by: " + movie.getDirector().getfName() + " " + movie.getDirector().getlName());
+        System.out.println("Directed by: " + movie.getDirector().getFName() + " " + movie.getDirector().getLName());
         System.out.println("Main Actors:");
         for (int i = 0; i < movie.getCast().size(); i++) {
             Actor actor = movie.getCast().get(i);
-            System.out.println("    *" + actor.getfName() + " " + actor.getlName());
+            System.out.println("    *" + actor.getFName() + " " + actor.getLName());
         }
         Period period = MainPage.getCurrentUser().getBirthdate().until(LocalDate.now());
         int yearsOld = period.getYears();

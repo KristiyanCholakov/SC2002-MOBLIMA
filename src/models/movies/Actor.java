@@ -45,26 +45,14 @@ public class Actor extends Director {
         /**
          * Custom compare method to compare 2 actors based on their number of oscars.
          *
-         * @param o1 the first actor to be compared.
-         * @param o2 the second actor to be compared.
+         * @param o1 the first director to be compared.
+         * @param o2 the second director to be compared.
          * @return Negative integer if second actor has less oscars than the first one. Positive if the more. 0 when equal.
          */
         @Override
         public int compare(Actor o1, Actor o2) {
             return o2.getNumberOfOscars() - o1.getNumberOfOscars();
         }
-    }
-
-    /**
-     * Custom equals method to check if 2 actors are the same based on their first and last names.
-     *
-     * @param obj The actor to be compared.
-     * @return true if the actors have the same first and last names. false if not.
-     */
-    @Override
-    public boolean equals(Object obj) {
-        Actor actor = (Actor) obj;
-        return (actor.getfName().equals(this.getfName()) && actor.getlName().equals(this.getlName()));
     }
 
     /**
@@ -75,8 +63,8 @@ public class Actor extends Director {
     @Override
     public String toString() {
         return "Actor:\n" +
-                "F_Name=" + super.getfName() + "\n" +
-                "L_Name=" + super.getlName() + "\n" +
+                "F_Name=" + super.getFName() + "\n" +
+                "L_Name=" + super.getLName() + "\n" +
                 "NumberOfOscars=" + getNumberOfOscars() + "\n"+
                 "NumberOfMovies=" + super.getNumberOfMovies();
     }

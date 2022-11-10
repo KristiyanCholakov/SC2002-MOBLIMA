@@ -78,7 +78,7 @@ public class ActorManager {
         ArrayList<Actor> allActors = readActors();
         for (int i = 0; i < allActors.size(); i++) {
             Actor currentActor = allActors.get(i);
-            if (currentActor.getfName().equals(fName) && currentActor.getlName().equals(lName)) {
+            if (currentActor.getFName().equals(fName) && currentActor.getLName().equals(lName)) {
                 return currentActor;
             }
         }
@@ -93,7 +93,7 @@ public class ActorManager {
      */
     public static boolean updateActor (Actor actor) {
         ArrayList<Actor> allActors = readActors();
-        Actor actorToUpdate = getActor(actor.getfName(), actor.getlName());
+        Actor actorToUpdate = getActor(actor.getFName(), actor.getLName());
         if (actorToUpdate == null) {
             PageElements.printConsoleMessage("No such actor!");
             return false;
@@ -138,7 +138,7 @@ public class ActorManager {
     public static boolean deleteActor (Actor actor) {
         File file = new File(ACTORS_PATH);
         ArrayList<Actor> allActors = readActors();
-        Actor actorToUpdate = getActor(actor.getfName(), actor.getlName());
+        Actor actorToUpdate = getActor(actor.getFName(), actor.getLName());
         if (actorToUpdate == null) {
             PageElements.printConsoleMessage("No such actor!");
             return false;

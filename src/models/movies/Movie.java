@@ -170,7 +170,7 @@ public class Movie implements Serializable {
     }
 
     public void printMovie() {
-        System.out.println(this.title +" (Directed by: " + this.getDirector().getfName() + " " + this.getDirector().getlName() + ") - " + this.genresToString() + " (" + this.duration.toString() + ") -> " + this.getRestriction().getRestriction());
+        System.out.println(this.title +" (Directed by: " + this.getDirector().getFName() + " " + this.getDirector().getLName() + ") - " + this.genresToString() + " (" + this.duration.toString() + ") -> " + this.getRestriction().getRestriction());
     }
 
     @Override

@@ -36,7 +36,7 @@ public class Admin extends User {
                 "Password=" + super.getPassword() + "\n" +
                 "DateCreated=" + super.getBirthdate().toString() + "\n" +
                 "Password=" + super.getPassword() + "\n" +
-                "FirstName=" + super.getfName() + "\n" +
-                "LastName=" + super.getlName();
+                "FirstName=" + super.getFName() + "\n" +
+                "LastName=" + super.getLName();
     }
 }

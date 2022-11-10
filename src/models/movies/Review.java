@@ -58,7 +58,7 @@ public class Review implements Serializable {
     }
 
     public void printReview() {
-        System.out.println("Publisher: " + this.publisher.getfName() + " " +this.publisher.getlName() + "\n" +
+        System.out.println("Publisher: " + this.publisher.getFName() + " " +this.publisher.getLName() + "\n" +
                 "Rating: " + this.getRating() + "\n" +
                 "Comment:\n" +
                 this.getComment());

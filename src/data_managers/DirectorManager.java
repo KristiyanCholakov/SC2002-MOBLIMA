@@ -77,7 +77,7 @@ public class DirectorManager {
         ArrayList<Director> allDirectors = readDirectors();
         for (int i = 0; i < allDirectors.size(); i++) {
             Director currentDirector = allDirectors.get(i);
-            if (currentDirector.getfName().equals(fName) && currentDirector.getlName().equals(lName)) {
+            if (currentDirector.getFName().equals(fName) && currentDirector.getLName().equals(lName)) {
                 return currentDirector;
             }
         }
@@ -93,7 +93,7 @@ public class DirectorManager {
      */
     public static boolean updateDirector (Director director) {
         ArrayList<Director> allDirectors = readDirectors();
-        Director directorToUpdate = getDirector(director.getfName(), director.getlName());
+        Director directorToUpdate = getDirector(director.getFName(), director.getLName());
         if (directorToUpdate == null) {
             PageElements.printConsoleMessage("No such director!");
             return false;
@@ -134,7 +134,7 @@ public class DirectorManager {
     public static boolean deleteDirector (Director director) {
         File file = new File(DIRECTORS_PATH);
         ArrayList<Director> allDirectors = readDirectors();
-        Director directorToDeleted = getDirector(director.getfName(), director.getlName());
+        Director directorToDeleted = getDirector(director.getFName(), director.getLName());
         if (directorToDeleted == null) {
             PageElements.printConsoleMessage("No such director!");
             return false;

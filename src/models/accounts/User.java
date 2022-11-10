@@ -197,8 +197,8 @@ public class User extends Person {
                 "Username=" + this.username + "\n" +
                 "Email=" + this.email + "\n" +
                 "Password=" + this.password + "\n" +
-                "F_Name=" + super.getfName() + "\n" +
-                "L_Name=" + super.getlName() + "\n" +
+                "F_Name=" + super.getFName() + "\n" +
+                "L_Name=" + super.getLName() + "\n" +
                 "Birthday=" + getBirthdate().toString();
     }
 }
