@@ -25,8 +25,8 @@ public class ExplorePages {
                     "       1 - See Reviews about a Movie\n" +
                     "       2 - Top 5 Movies by Rating\n" +
                     "       3 - Top 5 Movies by Ticket Sales\n" +
-                    "       4 - Actors\n" +
-                    "       5 - Directors\n" +
+                    "       4 - See Actors\n" +
+                    "       5 - See Directors\n" +
                     "       6 - Back to User Portal");
             System.out.print("Choice: ");
             int choice;
