@@ -8,7 +8,6 @@ import models.movies.*;
 import pages.PageElements;
 
 import java.time.LocalTime;
-import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.InputMismatchException;
@@ -76,7 +75,7 @@ public class MovieEditorPages {
         String genre = scanner.nextLine();
         System.out.print("Duration (hh:mm): ");
         String durationStr = scanner.nextLine() + ":00";
-        if (!durationStr.matches(Regexes.duration_regex)) {
+        if (!durationStr.matches(Regexes.DURATION_REGEX)) {
             PageElements.printConsoleMessage("Error: The duration is not in wanted format.");
             return;
         }
@@ -237,7 +236,7 @@ public class MovieEditorPages {
                 case 2:
                     System.out.print("Duration (hh:mm): ");
                     String durationStr = scanner.nextLine() + ":00";
-                    if (!durationStr.matches(Regexes.duration_regex)) {
+                    if (!durationStr.matches(Regexes.DURATION_REGEX)) {
                         PageElements.printConsoleMessage("Error: The duration is not in wanted format.");
                         return;
                     }

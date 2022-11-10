@@ -62,19 +62,19 @@ public class MasterPage {
                 "       be 8-16 characters long\n");
         System.out.print("Username: ");
         String username = scanner.nextLine();
-        if (!username.matches(Regexes.username_regex)) {
+        if (!username.matches(Regexes.USERNAME_REGEX)) {
             PageElements.printConsoleMessage("Error: The username is not in wanted format.");
             return;
         }
         System.out.print("Email: ");
         String email = scanner.nextLine();
-        if (!email.matches(Regexes.email_regex)) {
+        if (!email.matches(Regexes.EMAIL_REGEX)) {
             PageElements.printConsoleMessage("Error: The email is not in wanted format.");
             return;
         }
         System.out.print("Password: ");
         String password1 = scanner.nextLine();
-        if (!password1.matches(Regexes.password_regex)) {
+        if (!password1.matches(Regexes.PASSWORD_REGEX)) {
             PageElements.printConsoleMessage("Error: The password is not in wanted format.");
             return;
         }

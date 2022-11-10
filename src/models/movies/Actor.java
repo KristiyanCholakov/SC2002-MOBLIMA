@@ -1,8 +1,5 @@
 package models.movies;
 
-import data_managers.ActorManager;
-import models.Person;
-
 import java.util.Comparator;
 
 public class Actor extends Director {
