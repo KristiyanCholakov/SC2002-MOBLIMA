@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  * The ActorManager class takes care of interacting with the file where the actors are stored.
- * It performs writing, updating, reading and searching in the actors storage.
+ * It performs writing, updating, reading and searching in the actors' storage.
  *
  * @author Kristiyan Cholakov (KrisCholakov02)
  * @version 10/11/22
@@ -19,7 +19,7 @@ public class ActorManager {
     /**
      * The ACTOR_PATH constant points to the file where actors are stored.
      */
-    private static final String ACTOR_PATH = "src/data/actors.txt";
+    private static final String ACTORS_PATH = "src/data/actors.txt";
 
     /**
      * The readActors function reads all actors records from the actors' storage.
@@ -28,7 +28,7 @@ public class ActorManager {
      */
     public static ArrayList<Actor> readActors () {
         try {
-            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(ACTOR_PATH));
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(ACTORS_PATH));
             ArrayList<Actor> actors = (ArrayList<Actor>) ois.readObject();
             ois.close();
             return actors;
@@ -43,18 +43,18 @@ public class ActorManager {
     }
 
     /**
-     * The writeActor function adds an actor record to the actors' storage
+     * The writeActor function adds an actor record to the actors' storage.
      *
      * @param actor The actor record to be written in the storage.
      * @return true if the actor record is added successfully. false if writing failed.
      */
     public static boolean writeActor (Actor actor) {
-        File file = new File(ACTOR_PATH);
+        File file = new File(ACTORS_PATH);
         ArrayList<Actor> allActors = readActors();
         allActors.add(actor);
         if(file.exists()) file.delete();
         try {
-            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(ACTOR_PATH));
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(ACTORS_PATH));
             out.writeObject(allActors);
             out.flush();
             out.close();
@@ -100,11 +100,11 @@ public class ActorManager {
         } else {
             allActors.remove(actorToUpdate);
             allActors.add(actor);
-            File file = new File(ACTOR_PATH);
+            File file = new File(ACTORS_PATH);
             if(file.exists()) file.delete();
         }
         try {
-            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(ACTOR_PATH));
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(ACTORS_PATH));
             out.writeObject(allActors);
             out.flush();
             out.close();
@@ -136,7 +136,7 @@ public class ActorManager {
      * @return true if the actor record is deleted successfully. false if deletion failed.
      */
     public static boolean deleteActor (Actor actor) {
-        File file = new File(ACTOR_PATH);
+        File file = new File(ACTORS_PATH);
         ArrayList<Actor> allActors = readActors();
         Actor actorToUpdate = getActor(actor.getfName(), actor.getlName());
         if (actorToUpdate == null) {
@@ -147,7 +147,7 @@ public class ActorManager {
         }
         if(file.exists()) file.delete();
         try {
-            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(ACTOR_PATH));
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(ACTORS_PATH));
             out.writeObject(allActors);
             out.flush();
             out.close();

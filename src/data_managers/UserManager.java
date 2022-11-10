@@ -1,17 +1,30 @@
 package data_managers;
 
 import models.accounts.User;
-import models.movies.Movie;
 import pages.PageElements;
 
 import java.io.*;
 import java.util.ArrayList;
 
+/**
+ * The UserManager class takes care of interacting with the file where the users are stored.
+ * It performs writing, updating, reading and searching in the users' storage.
+ *
+ * @author Kristiyan Cholakov (KrisCholakov02)
+ * @version 10/11/22
+ */
 public class UserManager {
 
+    /**
+     * The USERS_PATH constant points to the file where users are stored.
+     */
     private static final String USERS_PATH = "src/data/users.txt";
 
-
+    /**
+     * The readUsers function reads all users records from the users' storage.
+     *
+     * @return An array list of the users records from the storage. Empty array list if not any.
+     */
     public static ArrayList<User> readUsers () {
         try {
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream(USERS_PATH));
@@ -28,6 +41,11 @@ public class UserManager {
         return new ArrayList<User>();
     }
 
+    /**
+     * The writeUser function adds a user record to the users' storage.
+     *
+     * @param user
+     */
     public static void writeUser (User user) {
         File file = new File(USERS_PATH);
         ArrayList<User> allUsers = readUsers();

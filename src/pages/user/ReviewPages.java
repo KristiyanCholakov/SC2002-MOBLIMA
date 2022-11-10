@@ -54,6 +54,7 @@ public class ReviewPages {
                     movie.deleteReview(review);
                     MainPage.getCurrentUser().removeReview(review);
                     Review newReview = reviewInput(movie);
+                    if (newReview == null) return;
                     movie.addReview(newReview);
                     MainPage.getCurrentUser().addReview(newReview);
                     break;
@@ -65,6 +66,7 @@ public class ReviewPages {
             }
         } else {
             Review newReview = reviewInput(movie);
+            if (newReview == null) return;
             movie.addReview(newReview);
             MainPage.getCurrentUser().addReview(newReview);
         }
@@ -76,7 +78,16 @@ public class ReviewPages {
     public static Review reviewInput(Movie movie) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the your rating about the movie: ");
-        int rating = scanner.nextInt();
+        int rating;
+        try {
+            rating = scanner.nextInt();
+            if (rating < 1 || rating > 5) {
+                PageElements.printConsoleMessage("The rating should be in the range fro 1 to 5.");
+            }
+        } catch (InputMismatchException e) {
+            PageElements.printConsoleMessage("The rating should be an integer.");
+            return null;
+        }
         scanner.nextLine();
         System.out.print("Enter the your comment about the movie: ");
         String comment = scanner.nextLine();
