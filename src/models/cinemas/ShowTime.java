@@ -19,7 +19,7 @@ public class ShowTime implements Serializable {
 
     private HashMap<Character, ArrayList<Seat>> configuration(Cinema cinema) {
         HashMap<Character, ArrayList<Seat>> configuration = new HashMap<Character, ArrayList<Seat>>();
-        if (cinema.getSeatConfiguration().isWithPandC()) {
+        if (cinema.getSeatConfiguration().isWithDandC()) {
             for (int i = 65; i < 65 + cinema.getSeatConfiguration().getRows(); i++) {
                 char row = (char) i;
                 ArrayList<Seat> rowSeats = new ArrayList<>();
