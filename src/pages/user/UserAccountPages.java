@@ -86,7 +86,7 @@ public class UserAccountPages {
         for (int i = 0; i < bookings.size(); i++) {
             Booking booking = bookings.get(i);
             System.out.println((i+1) + ")");
-            System.out.println(booking.printBooking());
+            System.out.println(booking.toString());
         }
         PageElements.printLine();
         System.out.println("Enter the booking you want to cancel: (enter -1 if you don't want to cancel any).");
