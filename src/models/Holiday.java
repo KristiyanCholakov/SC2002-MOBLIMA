@@ -36,18 +36,6 @@ public class Holiday implements Serializable {
         this.name = name;
     }
 
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
-    }
-
-    public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
-    }
-
-    public void setAdditionalPrice(double additionalPrice) {
-        this.additionalPrice = additionalPrice;
-    }
-
     public boolean is(LocalDate date) {
         return (date.isAfter(startDate) && date.isBefore(endDate)) || date.equals(startDate) || date.equals(endDate);
     }
