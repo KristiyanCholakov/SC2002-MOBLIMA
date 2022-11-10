@@ -11,8 +11,18 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-
+/**
+ *  The ReviewEditorPages class holds the functionality connected with the review editing pages for the admin.
+ *
+ * @author Kristiyan Cholakov (KrisCholakov02)
+ * @version 10/11/22
+ */
 public class ReviewEditorPages {
+
+    /**
+     * The reviewEditorPage method gives the opportunity to choose what the admin wants to do.
+     * If the choice is invalid asks for another. If it is valid redirects to the corresponding page.
+     */
     public static void reviewEditorPage() {
         Scanner scanner = new Scanner(System.in);
         PageElements.printHeader();
@@ -44,6 +54,11 @@ public class ReviewEditorPages {
         }
     }
 
+    /**
+     * The deleteReviewsPage method allows the admins to delete a particular review based on the movie it is about and
+     * user that published it.
+     * If the review exists, it is removed from the storage. If there is not such a review, redirects to the previous page.
+     */
     public static void deleteReviewsPage() {
         Scanner scanner = new Scanner(System.in);
         PageElements.printHeader();

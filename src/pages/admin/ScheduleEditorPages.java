@@ -15,7 +15,18 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ *  The ScheduleEditorPages class holds the functionality connected with the schedule editing pages for the admin.
+ *
+ * @author Kristiyan Cholakov (KrisCholakov02)
+ * @version 10/11/22
+ */
 public class ScheduleEditorPages {
+
+    /**
+     * The showtimeEditorPage method gives the opportunity to choose what the admin wants to do.
+     * If the choice is invalid asks for another. If it is valid redirects to the corresponding page.
+     */
     public static void showtimeEditorPage() {
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
@@ -72,6 +83,13 @@ public class ScheduleEditorPages {
         }
     }
 
+    /**
+     * The inputSchedule method the admin has to enter the schedule details.
+     *
+     * @param cineplex The cineplex the schedule is about.
+     * @param date The date of the schedule.
+     * @return Empty array list if invalid inputs. Array list with the new showtimes for the schedule.
+     */
     public static ArrayList<ShowTime> inputSchedule(Cineplex cineplex, LocalDate date) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter the number of showtimes for " + date.toString() + " ");
@@ -106,6 +124,11 @@ public class ScheduleEditorPages {
         return showTimes;
     }
 
+    /**
+     * The addSchedulePage method is used for adding a particular date schedule to a cineplex.
+     * If the cineplex exists and the schedule date is not taken, the new schedule will be added to the cineplex.
+     * Else, admin is returned to the previous page.
+     */
     public static void addSchedulePage() {
         PageElements.printHeader();
         Scanner sc = new Scanner(System.in);
@@ -128,6 +151,11 @@ public class ScheduleEditorPages {
         CineplexManager.updateCineplex(cineplex);
     }
 
+    /**
+     * The editSchedulePage method is used for editing a particular date schedule to a cineplex.
+     * If the cineplex exists and the schedule date exists too, the new schedule will be edited and cineplex update.
+     * Else, admin is returned to the previous page.
+     */
     public static void editSchedulePage() {
         PageElements.printHeader();
         Scanner sc = new Scanner(System.in);
@@ -150,6 +178,11 @@ public class ScheduleEditorPages {
         CineplexManager.updateCineplex(cineplex);
     }
 
+    /**
+     * The deleteSchedulePage method is used for deleting a particular date schedule to a cineplex.
+     * If the cineplex exists and the schedule date exists too, the new schedule will be deleted and cineplex update.
+     * Else, admin is returned to the previous page.
+     */
     public static void deleteSchedulePage() {
         PageElements.printHeader();
         Scanner sc = new Scanner(System.in);

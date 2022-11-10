@@ -1,21 +1,24 @@
 package pages.admin;
 
-import constants.Regexes;
-import data_managers.ActorManager;
 import data_managers.CineplexManager;
-import data_managers.DirectorManager;
-import data_managers.MovieManager;
 import models.cinemas.*;
-import models.movies.*;
 import pages.PageElements;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.util.*;
 
+/**
+ *  The CineplexEditorPages class holds the functionality connected with the cineplex editing pages for the admin.
+ *
+ * @author Kristiyan Cholakov (KrisCholakov02)
+ * @version 10/11/22
+ */
 public class CineplexEditorPages {
+
+    /**
+     * The cinemaEditorPage method gives the opportunity to choose what the admin wants to do.
+     * If the choice is invalid asks for another. If it is valid redirects to the corresponding page.
+     */
     public static void cinemaEditorPage() {
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
@@ -55,6 +58,10 @@ public class CineplexEditorPages {
 
     }
 
+    /**
+     * The cinemasInput method accepts the cinema values entered from the admin.
+     * @return Array list of cinemas if all fields are filled validly. Empty array list if invalid inputs.
+     */
     public static ArrayList<Cinema> cinemasInput() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Number of Cinemas: ");
@@ -125,6 +132,11 @@ public class CineplexEditorPages {
         return cinemas;
     }
 
+    /**
+     * The addCineplex method allows the admin to add a new cineplex to the storage.
+     * Checks if the cineplex exists and if it does, goes back to the previous page (already created).
+     * If all fields are filled correctly the cineplex will be added to the storage. If not, will go back to previous page.
+     */
     public static void addCineplex() {
         PageElements.printHeader();
         Scanner sc = new Scanner(System.in);
@@ -150,6 +162,11 @@ public class CineplexEditorPages {
     }
 
 
+    /**
+     * The editCineplex method allows the admin to edit a cineplex based on its name and update it in the storage.
+     * Checks if the cineplex exists and if it doesn't, goes back to the previous page (not existing cineplex).
+     * If all fields are filled correctly the cineplex will be updated in the storage. If not, will go back to previous page.
+     */
     public static void editCineplex() {
         Scanner scanner = new Scanner(System.in);
         PageElements.printHeader();
@@ -204,6 +221,11 @@ public class CineplexEditorPages {
         CineplexManager.updateCineplex(cineplex);
     }
 
+    /**
+     * The deleteCineplex method allows the admin to delete a specific cineplex based on the cineplex name.
+     * If the cineplex doesn't exist goes back to the previous page.
+     * If it does deletes the record from the storage.
+     */
     public static void deleteCineplex() {
         Scanner scanner = new Scanner(System.in);
         PageElements.printHeader();

@@ -13,7 +13,18 @@ import java.util.Collections;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ *  The MovieEditorPages class holds the functionality connected with the movie editing pages for the admin.
+ *
+ * @author Kristiyan Cholakov (KrisCholakov02)
+ * @version 10/11/22
+ */
 public class MovieEditorPages {
+
+    /**
+     * The movieEditorPage method gives the opportunity to choose what the admin wants to do.
+     * If the choice is invalid asks for another. If it is valid redirects to the corresponding page.
+     */
     public static void movieEditorPage() {
         Scanner scanner = new Scanner(System.in);
         PageElements.printHeader();
@@ -61,6 +72,11 @@ public class MovieEditorPages {
         }
     }
 
+    /**
+     * The addMoviePage is used for adding new movie records to the storage.
+     * If all the required fields are filled correctly the record will be created.
+     * Otherwise, the admin is redirected to the previous page.
+     */
     public static void addMoviePage() {
         Scanner scanner = new Scanner(System.in);
         PageElements.printHeader();
@@ -191,6 +207,12 @@ public class MovieEditorPages {
         MovieManager.writeMovie(movie);
     }
 
+    /**
+     * The editMoviePage method is used for editing already existing record in the storage based on the movie title.
+     * If the record doesn't exist, the admin is redirected to the previous page.
+     * If thw record exists and later all the required input fields are filled according to the requirement, the movie
+     * record is updated with the new data.
+     */
     public static void editMoviePage() {
         Scanner scanner = new Scanner(System.in);
         PageElements.printHeader();
@@ -391,6 +413,11 @@ public class MovieEditorPages {
         }
     }
 
+    /**
+     * The deleteMoviePage method is used for deleting an already existing movie record based on its movie title.
+     * If the movie doesn't exist, redirects to the previous page.
+     * If the movie exists, the movie record will be removed from the storage.
+     */
     public static void deleteMoviePage() {
         Scanner scanner = new Scanner(System.in);
         PageElements.printHeader();

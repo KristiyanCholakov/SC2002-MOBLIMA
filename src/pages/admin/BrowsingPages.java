@@ -14,7 +14,18 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ *  The BrowsingPages class holds the functionality connected with the browsing pages for the admin.
+ *
+ * @author Kristiyan Cholakov (KrisCholakov02)
+ * @version 10/11/22
+ */
 public class BrowsingPages {
+
+    /**
+     * The showMoviesPage method prints all the movies available in the storage.
+     * Waits for the admin to type "end" to return to the previous page.
+     */
     public static void showMoviesPage() {
         Scanner scanner = new Scanner(System.in);
         PageElements.printHeader();
@@ -31,6 +42,10 @@ public class BrowsingPages {
         }
     }
 
+    /**
+     * The showCineplexesPage method prints all the cineplexes available in the storage.
+     * Waits for the admin to type "end" to return to the previous page.
+     */
     public static void showCineplexesPage() {
         Scanner scanner = new Scanner(System.in);
         PageElements.printHeader();
@@ -47,6 +62,12 @@ public class BrowsingPages {
         }
     }
 
+    /**
+     * The showSchedules method prints all the schedules available in the storage for a given cineplex.
+     * The admin is expected to enter a cineplex name.
+     * If valid, shows the schedules. If not, returns to previous page
+     * Waits for the admin to type "end" to return to the previous page.
+     */
     public static void showSchedules() {
         Scanner scanner = new Scanner(System.in);
         PageElements.printHeader();
@@ -65,9 +86,19 @@ public class BrowsingPages {
                 System.out.println(showTime.toString()+"\n");
             }
         };
+        boolean running = true;
+        while (running) {
+            System.out.println("Type 'end' to return to Browsing Page");
+            if (scanner.nextLine().equals("end")) running = false;
+        }
     }
 
+    /**
+     * The showReviewsPage prints all the reviews for the corresponding movies in the storage.
+     * Waits for the admin to type "end" to return to the previous page.
+     */
     public static void showReviewsPage() {
+        Scanner scanner = new Scanner(System.in);
         PageElements.printHeader();
         ArrayList<Movie> movies = MovieManager.readMovies();
         for (int i = 0; i < movies.size(); i++) {
@@ -79,9 +110,19 @@ public class BrowsingPages {
             }
             PageElements.printLine();
         }
+        boolean running = true;
+        while (running) {
+            System.out.println("Type 'end' to return to Browsing Page");
+            if (scanner.nextLine().equals("end")) running = false;
+        }
     }
 
+    /**
+     * The showHolidaysPage prints all the holidays in the storage.
+     * Waits for the admin to type "end" to return to the previous page.
+     */
     public static void showHolidaysPage() {
+        Scanner scanner = new Scanner(System.in);
         PageElements.printHeader();
         ArrayList<Holiday> holidays = HolidayManager.readHolidays();
         for (int i = 0; i < holidays.size(); i++) {
@@ -89,6 +130,11 @@ public class BrowsingPages {
             System.out.println("From " + holidays.get(i).getStartDate().toString() + ", To " + holidays.get(i).getEndDate());
             System.out.println("Added Price: " + holidays.get(i).getAdditionalPrice());
             PageElements.printLine();
+        }
+        boolean running = true;
+        while (running) {
+            System.out.println("Type 'end' to return to Browsing Page");
+            if (scanner.nextLine().equals("end")) running = false;
         }
     }
 }

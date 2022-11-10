@@ -10,8 +10,18 @@ import java.time.LocalDate;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ *  The UserPages class holds the functionality connected with the user pages.
+ *
+ * @author Kristiyan Cholakov (KrisCholakov02)
+ * @version 10/11/22
+ */
 public class UserPages {
 
+    /**
+     * The userPage method gives the opportunity to choose what the user wants to do.
+     * If the choice is invalid asks for another. If it is valid redirects to the corresponding page.
+     */
     public static void userPage() {
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
@@ -56,6 +66,11 @@ public class UserPages {
         }
     }
 
+    /**
+     * The userLoginPage method represents the login for the users.
+     * Checks if the user exists based on the entered password and username/email.
+     * If exists then redirects to userPage, go back to mainPage if not.
+     */
     public static void userLoginPage() {
         Scanner scanner = new Scanner(System.in);
         PageElements.printHeader();
@@ -73,6 +88,11 @@ public class UserPages {
         }
     }
 
+    /**
+     * The userRegisterPage method allows new users to register their accounts.
+     * If all fields of the registration are filled correctly. The new account is added to the storage.
+     * Else, the user is redirected to the main page.
+     */
     public static void userRegisterPage() {
         Scanner scanner = new Scanner(System.in);
         PageElements.printHeader();

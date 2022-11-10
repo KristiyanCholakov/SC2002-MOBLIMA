@@ -9,7 +9,18 @@ import java.time.format.DateTimeParseException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ *  The HolidayEditorPages class holds the functionality connected with the holiday editing pages for the admin.
+ *
+ * @author Kristiyan Cholakov (KrisCholakov02)
+ * @version 10/11/22
+ */
 public class HolidayEditorPages {
+
+    /**
+     * The holidayEditorPage method gives the opportunity to choose what the admin wants to do.
+     * If the choice is invalid asks for another. If it is valid redirects to the corresponding page.
+     */
     public static void holidayEditorPage() {
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
@@ -51,6 +62,11 @@ public class HolidayEditorPages {
         }
     }
 
+    /**
+     * The addHolidayPage allows the admin to add a new holiday record to the storage.
+     * If the holiday already exists or the fields are filled invalidly, returns to the previous page.
+     * Else the holiday record is added.
+     */
     public static void addHolidayPage() {
         Scanner scanner = new Scanner(System.in);
         PageElements.printHeader();
@@ -70,6 +86,10 @@ public class HolidayEditorPages {
         HolidayManager.writeHoliday(holiday);
     }
 
+    /**
+     * The deleteHolidayPage method is used for deleting a holiday record in the storage based on the holiday name.
+     * If the holiday exists in the storage, its record is deleted. Else, returns to the previous page.
+     */
     public static void deleteHolidayPage() {
         Scanner scanner = new Scanner(System.in);
         PageElements.printHeader();

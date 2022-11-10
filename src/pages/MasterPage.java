@@ -7,9 +7,22 @@ import models.accounts.Admin;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ *  The MasterPage class holds the functionality connected with the master pages.
+ *
+ * @author Kristiyan Cholakov (KrisCholakov02)
+ * @version 10/11/22
+ */
 public class MasterPage {
+    /**
+     * An attribute holding the master code the user has to type to enter the master portal.
+     */
     private static String masterCode = "master111";
 
+    /**
+     * The masterLoginPage checks if the master code is the wanted one and redirects the user to the master portal, if so.
+     * If not returns them to the main page.
+     */
     public static void masterLoginPage() {
         Scanner scanner = new Scanner(System.in);
         PageElements.printHeader();
@@ -20,6 +33,10 @@ public class MasterPage {
         else masterPage();
     }
 
+    /**
+     * The masterPage method gives the opportunity to choose what the master wants to do.
+     * If the choice is invalid asks for another. If it is valid redirects to the corresponding page.
+     */
     public static void masterPage() {
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
@@ -49,6 +66,11 @@ public class MasterPage {
         }
     }
 
+    /**
+     * The createAdminPage method allows the master to create a new admin.
+     * If all the wanted fields are correct the admin is added to the storage.
+     * If not returns to the master portal page.
+     */
     public static void createAdminPage() {
         Scanner scanner = new Scanner(System.in);
         PageElements.printHeader();
@@ -97,6 +119,9 @@ public class MasterPage {
         }
     }
 
+    /**
+     * The showAdminsPage method prints all the admins so the master can see which admins are in the storage.
+     */
     public static void showAdminsPage() {
         PageElements.printHeader();
         System.out.println("SHOW ADMINS\n");
