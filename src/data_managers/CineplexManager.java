@@ -67,7 +67,7 @@ public class CineplexManager {
     }
 
     /**
-     * The getCineplex function searches for a cineplex with the same name in the storage and providing their record.
+     * The getCineplex function searches for a cineplex with the same name in the storage and provides their record.
      *
      * @param name The name of the cineplex that we search
      * @return The record of the cineplex with the same name. null if a cineplex with this name does not exist.
