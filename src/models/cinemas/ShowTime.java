@@ -203,7 +203,7 @@ public class ShowTime implements Serializable {
          *
          * @param o1 the first showtime to be compared.
          * @param o2 the second showtime to be compared.
-         * @return negative integer if first showtime start time is before the second one. positive if greater. 0 for equal
+         * @return Negative integer if first showtime start time is before the second one. Positive if greater. 0 for equal
          */
         @Override
         public int compare(ShowTime o1, ShowTime o2) {
