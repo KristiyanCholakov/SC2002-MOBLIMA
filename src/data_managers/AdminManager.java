@@ -6,10 +6,25 @@ import pages.PageElements;
 import java.io.*;
 import java.util.ArrayList;
 
+/**
+ * The AdminManager class takes care of interacting with the file where the admin accounts are stored.
+ * It performs writing, updating, reading and searching in the admins' storage.
+ *
+ * @author Kristiyan Cholakov (KrisCholakov02)
+ * @version 10/11/22
+ */
 public class AdminManager {
 
+    /**
+     * The ADMINS_PATH constant points to the file where admins are stored.
+     */
     public static final String ADMINS_PATH = "src/data/admins.txt";
 
+    /**
+     * The readAdmins function reads all admin records from the admins' storage.
+     *
+     * @return An array list of the admin records from the storage. Empty array list if not any.
+     */
     public static ArrayList<Admin> readAdmins () {
         try {
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream(ADMINS_PATH));
@@ -26,15 +41,12 @@ public class AdminManager {
         return new ArrayList<Admin>();
     }
 
-    public static void showAdmins() {
-        ArrayList<Admin> allAdmins = readAdmins();
-        for (int i = 0; i < allAdmins.size(); i++) {
-            Admin currentAdmin = allAdmins.get(i);
-            System.out.print("*");
-            System.out.println(currentAdmin.toString());
-        }
-    }
-
+    /**
+     * The ifAdminExists function checks if an admin record exists in the admins' storage.
+     *
+     * @param admin The admin record to be checked for existence in the storage.
+     * @return true if the admin exists in the storage. false if not.
+     */
     public static boolean ifAdminExists(Admin admin) {
         ArrayList<Admin> allAdmins = readAdmins();
         for (int i = 0; i < allAdmins.size(); i++) {
@@ -46,6 +58,12 @@ public class AdminManager {
         return false;
     }
 
+    /**
+     * The writeAdmin function adds an admin record to the admins' storage.
+     *
+     * @param admin The admin record to be written in the storage.
+     * @return true if the admin record is added successfully. false if writing failed.
+     */
     public static void writeAdmin (Admin admin) {
         File file = new File(ADMINS_PATH);
         ArrayList<Admin> allAdmins = readAdmins();
@@ -62,6 +80,13 @@ public class AdminManager {
         }
     }
 
+    /**
+     * The checkCredentials function checks if there exists an admin account with the given username/email and password.
+     *
+     * @param username Either the username or the email with which the admin tries to log in.
+     * @param password The password of the admin trying to log in.
+     * @return The admin record if there exists one with the corresponding email and password. null if it doesn't exist.
+     */
     public static Admin checkCredentials(String username, String password) {
         ArrayList<Admin> allAdmins = readAdmins();
         for (int i = 0; i < allAdmins.size(); i++) {

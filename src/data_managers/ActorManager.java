@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class ActorManager {
 
     /**
-     * The ACTOR_PATH constant points to the file where actors are stored.
+     * The ACTORS_PATH constant points to the file where actors are stored.
      */
     private static final String ACTORS_PATH = "src/data/actors.txt";
 
