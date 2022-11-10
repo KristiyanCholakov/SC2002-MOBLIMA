@@ -19,20 +19,20 @@ public class ShowTime implements Serializable {
 
     private HashMap<Character, ArrayList<Seat>> configuration(Cinema cinema) {
         HashMap<Character, ArrayList<Seat>> configuration = new HashMap<Character, ArrayList<Seat>>();
-        if (cinema.seatConfiguration.isWithPandC()) {
+        if (cinema.getSeatConfiguration().isWithPandC()) {
             for (int i = 65; i < 65 + cinema.getSeatConfiguration().getRows(); i++) {
                 char row = (char) i;
                 ArrayList<Seat> rowSeats = new ArrayList<>();
                 if (i > 65 + cinema.getSeatConfiguration().getRows() - 3) {
-                    for (int j = 0; j < cinema.seatConfiguration.getColumns()/2; j++) {
+                    for (int j = 0; j < cinema.getSeatConfiguration().getColumns()/2; j++) {
                         rowSeats.add(new Seat(row, j + 1, false, SeatEnums.SeatType.COUPLE));
                     }
                 } else if (i == 65 + cinema.getSeatConfiguration().getRows() - 3) {
-                    for (int j = 0; j < cinema.seatConfiguration.getColumns(); j++) {
+                    for (int j = 0; j < cinema.getSeatConfiguration().getColumns(); j++) {
                         rowSeats.add(new Seat(row, j + 1, false, SeatEnums.SeatType.DELUXE));
                     }
                 } else {
-                    for (int j = 0; j < cinema.seatConfiguration.getColumns(); j++) {
+                    for (int j = 0; j < cinema.getSeatConfiguration().getColumns(); j++) {
                         rowSeats.add(new Seat(row, j + 1, false, SeatEnums.SeatType.NORMAL));
                     }
                 }
@@ -44,7 +44,7 @@ public class ShowTime implements Serializable {
                 for (int i = 65; i < 65 + cinema.getSeatConfiguration().getRows(); i++) {
                     char row = (char) i;
                     ArrayList<Seat> rowSeats = new ArrayList<>();
-                    for (int j = 0; j < cinema.seatConfiguration.getColumns(); j++) {
+                    for (int j = 0; j < cinema.getSeatConfiguration().getColumns(); j++) {
                         rowSeats.add(new Seat(row, j + 1, false, SeatEnums.SeatType.NORMAL));
                     }
                     configuration.put(row, rowSeats);
@@ -54,7 +54,7 @@ public class ShowTime implements Serializable {
                 for (int i = 65; i < 65 + cinema.getSeatConfiguration().getRows(); i++) {
                     char row = (char) i;
                     ArrayList<Seat> rowSeats = new ArrayList<>();
-                    for (int j = 0; j < cinema.seatConfiguration.getColumns(); j++) {
+                    for (int j = 0; j < cinema.getSeatConfiguration().getColumns(); j++) {
                         rowSeats.add(new Seat(row, j + 1, false, SeatEnums.SeatType.DELUXE));
                     }
                     configuration.put(row, rowSeats);
