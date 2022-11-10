@@ -70,9 +70,9 @@ public class ActorManager {
      * The getActor function searches for an actor with the same first and last name in the storage and providing their
      * record.
      *
-     * @param fName The first name of an actor
-     * @param lName The last name of an actor
-     * @return The record of an actor with the same first and last name. null if an actor with these names does not exist.
+     * @param fName The first name of an actor that we search
+     * @param lName The last name of an actor that we search
+     * @return The record of the actor with the same first and last name. null if an actor with these names does not exist.
      */
     public static Actor getActor (String fName, String lName) {
         ArrayList<Actor> allActors = readActors();
