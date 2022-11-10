@@ -1,15 +1,30 @@
 package data_managers;
 
-import models.Holiday;
 import models.Prices;
 import pages.PageElements;
 
 import java.io.*;
 import java.util.ArrayList;
 
+/**
+ * The PricesManager class takes care of interacting with the file where the prices are stored.
+ * It performs writing, reading and searching in the prices' storage.
+ *
+ * @author Kristiyan Cholakov (KrisCholakov02)
+ * @version 10/11/22
+ */
 public class PricesManager {
+
+    /**
+     * The PRICES_PATH constant points to the file where prices are stored.
+     */
     private static final String PRICES_PATH = "src/data/prices.txt";
 
+    /**
+     * The readPrices function reads all prices records from the prices' storage.
+     *
+     * @return An array list of the prices from the storage. Empty array list if not any.
+     */
     public static ArrayList<Prices> readPrices() {
         try {
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream(PRICES_PATH));
@@ -26,6 +41,12 @@ public class PricesManager {
         return new ArrayList<Prices>();
     }
 
+    /**
+     * The writePrices function adds a prices record to the prices' storage.
+     *
+     * @param prices The prices record to be written in the storage.
+     * @return true if the prices record is added successfully. false if writing failed.
+     */
     public static boolean writePrices (Prices prices) {
         File file = new File(PRICES_PATH);
         ArrayList<Prices> allPrices = readPrices();
@@ -46,6 +67,11 @@ public class PricesManager {
         }
     }
 
+    /**
+     * The deletePrices function deletes the prices record.
+     *
+     * @return true if the prices record is deleted successfully. false if deletion failed.
+     */
     public static boolean deletePrices() {
         ArrayList<Prices> allPrices = readPrices();
         if (allPrices.size() > 0) {
