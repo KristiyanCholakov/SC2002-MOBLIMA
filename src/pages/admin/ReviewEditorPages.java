@@ -58,6 +58,7 @@ public class ReviewEditorPages {
         User user = UserManager.getUser(username);
         if (user == null) {
             PageElements.printConsoleMessage("The user doesn't exits.");
+            return;
         }
         ArrayList<Review> reviews = movie.getReviews();
         Review reviewToDelete = null;
