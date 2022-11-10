@@ -23,11 +23,11 @@ public class ShowTime implements Serializable {
             for (int i = 65; i < 65 + cinema.getSeatConfiguration().getRows(); i++) {
                 char row = (char) i;
                 ArrayList<Seat> rowSeats = new ArrayList<>();
-                if (i < 67) {
+                if (i > 65 + cinema.getSeatConfiguration().getRows() - 3) {
                     for (int j = 0; j < cinema.seatConfiguration.getColumns()/2; j++) {
                         rowSeats.add(new Seat(row, j + 1, false, SeatEnums.SeatType.COUPLE));
                     }
-                } else if (i == 67) {
+                } else if (i == 65 + cinema.getSeatConfiguration().getRows() - 3) {
                     for (int j = 0; j < cinema.seatConfiguration.getColumns(); j++) {
                         rowSeats.add(new Seat(row, j + 1, false, SeatEnums.SeatType.DELUXE));
                     }

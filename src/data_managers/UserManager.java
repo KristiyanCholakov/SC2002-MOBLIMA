@@ -44,7 +44,7 @@ public class UserManager {
     /**
      * The writeUser function adds a user record to the users' storage.
      *
-     * @param user
+     * @param user The user record to be written in the storage.
      */
     public static void writeUser (User user) {
         File file = new File(USERS_PATH);
@@ -57,13 +57,16 @@ public class UserManager {
             out.flush();
             out.close();
             PageElements.printConsoleMessage("User successfully registered!");
-//            return;
         } catch (IOException e) {
             PageElements.printConsoleMessage("Error: Invalid Path! User is not saved to the database.");
-//            return;
         }
     }
 
+    /**
+     * The ifUserExists function checks if the user exists in the users' storage.
+     *
+     * @param user The user record to be checked if exists in the storage.
+     */
     public static boolean ifUserExists(User user) {
         ArrayList<User> allUsers = readUsers();
         for (int i = 0; i < allUsers.size(); i++) {
