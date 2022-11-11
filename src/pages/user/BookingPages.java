@@ -240,6 +240,7 @@ public class BookingPages {
         }
         searchByMoviePage(moviesWanted);
     }
+
     /**
      * The makeBooking method allows user to make a booking after selecting the movie, cineplex and timeslot.
      * If the user inputs are invalid, the corresponding exception messages will be displayed. If they are valid, users will be able to make a booking.
