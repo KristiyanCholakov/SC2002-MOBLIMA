@@ -235,9 +235,15 @@ public class ExplorePages {
             String directorName = director.getFName()+ " " + director.getLName();
             System.out.println("Director: " + directorName);
             ArrayList<Actor> actors = movie.getCast();
-            String ActorName1 = actors.get(0).getFName() + " " + actors.get(0).getLName();
-            String ActorName2 = actors.get(1).getFName() + " " + actors.get(1).getLName();
-            System.out.println("Actors: " + ActorName1 + " ," + ActorName2 + " ...");
+            System.out.print("Actors: ");
+            for(int j=0; j< actors.size();j++){
+            String ActorName = actors.get(j).getFName() + " " + actors.get(j).getLName();
+            if (j == actors.size()-1)
+                System.out.print(ActorName);
+            else
+            System.out.print(ActorName+ ", ");
+            }
+            System.out.println();
             System.out.println("Rating: " + movie.getRating() + ", Number of Tickets Sold: " + movie.getTicketsSold());
             System.out.println("Status: " + movie.getStatus().getDescription());
             System.out.println("Type: " + movie.getType().getType()+"\n");
