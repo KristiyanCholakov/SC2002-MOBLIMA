@@ -118,6 +118,11 @@ public class ExplorePages {
         for (int i = 0; i < reviews.size(); i++) {
             reviews.get(i).printReview();
         }
+        boolean running = true;
+        while (running) {
+            System.out.println("Type 'end' to return to Browsing Page");
+            if (scanner.nextLine().equals("end")) running = false;
+        }
     }
 
     /**
@@ -140,6 +145,12 @@ public class ExplorePages {
             movies.get(i).printMovie();
             if (by.equals("Rating"))  System.out.println(by + ": " + movies.get(i).getRating());
             else System.out.println(by + ": " + movies.get(i).getTicketsSold());
+        }
+        Scanner scanner = new Scanner(System.in);
+        boolean running = true;
+        while (running) {
+            System.out.println("Type 'end' to return to Browsing Page");
+            if (scanner.nextLine().equals("end")) running = false;
         }
     }
 
@@ -179,6 +190,11 @@ public class ExplorePages {
             Actor  actor = actors.get(i);
             System.out.println((i+1) + ") " + actor.getFullName() + ", Oscars: " + actor.getNumberOfOscars() + " and Movies: " + actor.getNumberOfMovies());
         }
+        boolean running = true;
+        while (running) {
+            System.out.println("Type 'end' to return to Browsing Page");
+            if (scanner.nextLine().equals("end")) running = false;
+        }
     }
 
     /**
@@ -193,6 +209,12 @@ public class ExplorePages {
         for (int i = 0; i < directors.size(); i++) {
             Director actor = directors.get(i);
             System.out.println((i+1) + ") " + actor.getFullName() + ", Movies: " + actor.getNumberOfMovies());
+        }
+        Scanner scanner = new Scanner(System.in);
+        boolean running = true;
+        while (running) {
+            System.out.println("Type 'end' to return to Browsing Page");
+            if (scanner.nextLine().equals("end")) running = false;
         }
     }
 
@@ -211,6 +233,12 @@ public class ExplorePages {
             System.out.println("Rating: " + movie.getRating() + ", Tickets Sold: " + movie.getTicketsSold());
             System.out.println(movie.getStatus().getDescription());
             System.out.println(movie.getType().getType()+"\n");
+        }
+        Scanner scanner = new Scanner(System.in);
+        boolean running = true;
+        while (running) {
+            System.out.println("Type 'end' to return to Browsing Page");
+            if (scanner.nextLine().equals("end")) running = false;
         }
     }
 }
