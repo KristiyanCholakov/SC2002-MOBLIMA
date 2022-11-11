@@ -159,7 +159,7 @@ public class ScheduleEditorPages {
     public static void editSchedulePage() {
         PageElements.printHeader();
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter the name of the cineplex you whose schedule you want to change: ");
+        System.out.println("Enter the name of the cineplex whose schedule you want to change: ");
         String cineplexName = sc.nextLine();
         Cineplex cineplex = CineplexManager.getCineplex(cineplexName);
         if (cineplex == null) {
