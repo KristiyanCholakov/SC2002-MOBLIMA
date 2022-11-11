@@ -486,7 +486,7 @@ public class BookingPages {
             PageElements.printConsoleMessage("Error: The card expiry date is not in wanted format.");
             return false;
         }
-        LocalDate expiry = LocalDate.parse("20" + expiryDate.split("/")[1] + "-" + expiryDate.split("/")[1] + "-01");
+        LocalDate expiry = LocalDate.parse("20" + expiryDate.split("/")[1] + "-" + expiryDate.split("/")[0] + "-01");
         if (expiry.isBefore(LocalDate.now())) {
             PageElements.printConsoleMessage("Error: The card has expired.");
             return false;
