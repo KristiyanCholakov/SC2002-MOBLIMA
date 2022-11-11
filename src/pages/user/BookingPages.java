@@ -111,10 +111,15 @@ public class BookingPages {
         scheduleDates.addAll(cineplex.getSchedules().keySet());
         System.out.println("Available schedules:");
         for (int i = 0; i < scheduleDates.size(); i++) {
-            System.out.println("*" + scheduleDates.get(i).toString());
+            if (scheduleDates.get(i).isAfter(LocalDate.now()) || scheduleDates.get(i).equals(LocalDate.now())) {
+                System.out.println("*" + scheduleDates.get(i).toString());
+            }
         }
         System.out.println("Enter the date you want to check (yyyy-mm-dd):");
         LocalDate date = LocalDate.parse(scanner.nextLine());
+        if (date.isBefore(LocalDate.now())) {
+            PageElements.printConsoleMessage("You cannot book for past dates!");
+        }
         ArrayList<ShowTime> schedule = cineplex.getSchedules().get(date);
         if (schedule == null || schedule.size() == 0) {
             PageElements.printConsoleMessage("The cinema hasn't updated their schedule for the date you have selected!");
@@ -157,8 +162,11 @@ public class BookingPages {
         }
         System.out.println("Enter the date you want to watch the movie (yyyy-mm-dd):");
         LocalDate date = LocalDate.parse(scanner.nextLine());
+        if (date.isBefore(LocalDate.now())) {
+            PageElements.printConsoleMessage("You cannot book for past dates!");
+        }
         ArrayList<Cineplex> cineplexes = CineplexManager.readCineplexes();
-        System.out.println("Available projections for that date");
+        System.out.println("Available projections for " + date.toString());
         HashMap<Cineplex, ArrayList<ShowTime>> availableOptions = new HashMap<>();
         for (int i = 0; i < cineplexes.size(); i++) {
             Cineplex cineplex = cineplexes.get(i);
