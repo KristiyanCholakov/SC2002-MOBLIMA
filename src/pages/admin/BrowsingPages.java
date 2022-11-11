@@ -106,6 +106,7 @@ public class BrowsingPages {
             ArrayList<Review> reviews = movies.get(i).getReviews();
             for (int j = 0; j < reviews.size(); j++) {
                 reviews.get(j).printReview();
+                System.out.println(reviews.get(i).getPublisher().getEmail());
                 System.out.println("");
             }
             PageElements.printLine();

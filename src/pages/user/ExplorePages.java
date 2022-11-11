@@ -15,7 +15,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
- *  The explorePages class holds the functionality connected with the explore pages.
+ *  The explorePages class holds the functionality connected with the exploring pages.
  *
  * @author Kristiyan Cholakov (KrisCholakov02)
  * @version 10/11/22
@@ -37,7 +37,8 @@ public class ExplorePages {
                     "       3 - Top 5 Movies by Ticket Sales\n" +
                     "       4 - See Actors\n" +
                     "       5 - See Directors\n" +
-                    "       6 - Back to User Portal");
+                    "       6 - See Movies\n" +
+                    "       7 - Back to User Portal");
             System.out.print("Choice: ");
             int choice;
             try {
@@ -64,6 +65,9 @@ public class ExplorePages {
                     exploreDirectors();
                     break;
                 case 6:
+                    exploreMovies();
+                    break;
+                case 7:
                     running = false;
                     break;
                 default:
@@ -189,6 +193,24 @@ public class ExplorePages {
         for (int i = 0; i < directors.size(); i++) {
             Director actor = directors.get(i);
             System.out.println((i+1) + ") " + actor.getFullName() + ", Movies: " + actor.getNumberOfMovies());
+        }
+    }
+
+    /**
+     * The exploreMovies method allows users to look through all the movies in the storage.
+     */
+    public static void exploreMovies() {
+        PageElements.printHeader();
+        ArrayList<Movie> movies = MovieManager.readMovies();
+        System.out.println("MOVIES:\n");
+        for (int i = 0; i < movies.size(); i++) {
+            Movie movie = movies.get(i);
+            System.out.println(movie.getTitle());
+            System.out.println(movie.genresToString());
+            System.out.println(movie.getSynopsis());
+            System.out.println("Rating: " + movie.getRating() + ", Tickets Sold: " + movie.getTicketsSold());
+            System.out.println(movie.getStatus().getDescription());
+            System.out.println(movie.getType().getType()+"\n");
         }
     }
 }
