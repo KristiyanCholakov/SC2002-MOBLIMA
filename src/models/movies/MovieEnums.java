@@ -166,6 +166,11 @@ public class MovieEnums implements Serializable {
         PREVIEW("Movie is available for preview."),
 
         /**
+         * End Showing movie status.
+         */
+        END_SHOWING("Movie's showing has ended."),
+
+        /**
          * Now Showing movie status.
          */
         NOW_SHOWING("Movie can be seen at the cinemas.");

@@ -96,7 +96,7 @@ public class MovieEditorPages {
             return;
         }
         LocalTime duration = LocalTime.parse(durationStr);
-        System.out.print("Status (CS, P, NS): ");
+        System.out.print("Status (CS, P, NS, ED): ");
         String statusStr = scanner.nextLine();
         MovieEnums.MovieStatus status;
         switch (statusStr) {
@@ -108,6 +108,9 @@ public class MovieEditorPages {
                 break;
             case "NS":
                 status = MovieEnums.MovieStatus.NOW_SHOWING;
+                break;
+            case "ED":
+                status = MovieEnums.MovieStatus.END_SHOWING;
                 break;
             default:
                 PageElements.printConsoleMessage("Error: The status is not in wanted format.");
@@ -268,7 +271,7 @@ public class MovieEditorPages {
                     movie.setDuration(duration);
                     break;
                 case 3:
-                    System.out.print("Status (CS, P, NS): ");
+                    System.out.print("Status (CS, P, NS, ED): ");
                     String statusStr = scanner.nextLine();
                     MovieEnums.MovieStatus status;
                     switch (statusStr) {
@@ -280,6 +283,9 @@ public class MovieEditorPages {
                             break;
                         case "NS":
                             status = MovieEnums.MovieStatus.NOW_SHOWING;
+                            break;
+                        case "ED":
+                            status = MovieEnums.MovieStatus.END_SHOWING;
                             break;
                         default:
                             PageElements.printConsoleMessage("Error: The status is not in wanted format.");
