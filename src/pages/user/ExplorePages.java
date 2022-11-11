@@ -227,12 +227,26 @@ public class ExplorePages {
         System.out.println("MOVIES:\n");
         for (int i = 0; i < movies.size(); i++) {
             Movie movie = movies.get(i);
-            System.out.println(movie.getTitle());
-            System.out.println(movie.genresToString());
-            System.out.println(movie.getSynopsis());
-            System.out.println("Rating: " + movie.getRating() + ", Tickets Sold: " + movie.getTicketsSold());
-            System.out.println(movie.getStatus().getDescription());
-            System.out.println(movie.getType().getType()+"\n");
+            System.out.println("Movie " + (i+1) + ":");
+            System.out.println("Title: " + movie.getTitle());
+            System.out.println("Genre: " + movie.genresToString());
+            System.out.println("Synopsis: " + movie.getSynopsis());
+            Director director = movie.getDirector();
+            String directorName = director.getFName()+ " " + director.getLName();
+            System.out.println("Director: " + directorName);
+            ArrayList<Actor> actors = movie.getCast();
+            System.out.print("Actors: ");
+            for(int j=0; j< actors.size();j++){
+            String ActorName = actors.get(j).getFName() + " " + actors.get(j).getLName();
+            if (j == actors.size()-1)
+                System.out.print(ActorName);
+            else
+            System.out.print(ActorName+ ", ");
+            }
+            System.out.println();
+            System.out.println("Rating: " + movie.getRating() + ", Number of Tickets Sold: " + movie.getTicketsSold());
+            System.out.println("Status: " + movie.getStatus().getDescription());
+            System.out.println("Type: " + movie.getType().getType()+"\n");
         }
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
