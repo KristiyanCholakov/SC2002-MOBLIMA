@@ -486,13 +486,18 @@ public class BookingPages {
             PageElements.printConsoleMessage("Error: The card expiry date is not in wanted format.");
             return false;
         }
+        LocalDate expiry = LocalDate.parse("20" + expiryDate.split("/")[1] + "-" + expiryDate.split("/")[1] + "-01");
+        if (expiry.isBefore(LocalDate.now())) {
+            PageElements.printConsoleMessage("Error: The card has expired.");
+            return false;
+        }
         System.out.println("Enter the CVV of the card in the format mm/yy:");
         String ccv = scanner.nextLine();
         if (!ccv.matches(Regexes.CARD_CCV_REGEX)) {
             PageElements.printConsoleMessage("Error: The card CCV is not in wanted format.");
             return false;
         }
-        PageElements.printConsoleMessage("Error: The payment is valid.");
+        PageElements.printConsoleMessage("The payment is valid.");
         return true;
     }
 }
