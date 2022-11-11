@@ -119,6 +119,7 @@ public class BookingPages {
         LocalDate date = LocalDate.parse(scanner.nextLine());
         if (date.isBefore(LocalDate.now())) {
             PageElements.printConsoleMessage("You cannot book for past dates!");
+            return;
         }
         ArrayList<ShowTime> schedule = cineplex.getSchedules().get(date);
         if (schedule == null || schedule.size() == 0) {
@@ -164,6 +165,7 @@ public class BookingPages {
         LocalDate date = LocalDate.parse(scanner.nextLine());
         if (date.isBefore(LocalDate.now())) {
             PageElements.printConsoleMessage("You cannot book for past dates!");
+            return;
         }
         ArrayList<Cineplex> cineplexes = CineplexManager.readCineplexes();
         System.out.println("Available projections for " + date.toString());

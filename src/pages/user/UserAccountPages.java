@@ -11,6 +11,7 @@ import models.movies.Review;
 import pages.MainPage;
 import pages.PageElements;
 
+import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -112,6 +113,10 @@ public class UserAccountPages {
             return;
         }
         Booking canceled = bookings.get(bookingIdx);
+        if (canceled.getDate().isBefore(LocalDate.now())) {
+            PageElements.printConsoleMessage("You cannot cancel bookings that have already passed!");
+            return;
+        }
         user.removeBooking(canceled);
         Cineplex cineplex = CineplexManager.getCineplex(canceled.getCineplex().getName());
         if (cineplex.cancelBooking(canceled.getDate(), canceled.getShowTime(), canceled.getSeat())) {
