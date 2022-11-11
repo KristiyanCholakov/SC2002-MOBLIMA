@@ -487,7 +487,6 @@ public class BookingPages {
             return false;
         }
         LocalDate expiry = LocalDate.parse("20" + expiryDate.split("/")[1] + "-" + expiryDate.split("/")[0] + "-01");
-        System.out.println("PASSSS");
         if (expiry.isBefore(LocalDate.now())) {
             PageElements.printConsoleMessage("Error: The card has expired.");
             return false;
