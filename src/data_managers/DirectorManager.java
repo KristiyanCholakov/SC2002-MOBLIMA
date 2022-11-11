@@ -35,7 +35,6 @@ public class DirectorManager {
         } catch (FileNotFoundException e) {
             PageElements.printConsoleMessage("Error: Invalid Path! Directors can't be read!");
         } catch (EOFException e) {
-            PageElements.printConsoleMessage("File is empty. This will be the first Director.");
         } catch (IOException | ClassNotFoundException e) {
             PageElements.printConsoleMessage("Error!");
         }

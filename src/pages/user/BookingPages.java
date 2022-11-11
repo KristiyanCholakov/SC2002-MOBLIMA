@@ -254,6 +254,7 @@ public class BookingPages {
         Movie movie = showTime.getMovie();
         System.out.println("Title: " + movie.getTitle());
         System.out.println("Duration: " + movie.getDuration().toString());
+        System.out.println("Type: " + movie.getType().getType());
         System.out.println("Restriction: " + movie.getRestriction().getRestriction() + " - " + movie.getRestriction().getDescription());
         System.out.println("Status: " + movie.getStatus().getDescription());
         System.out.println("Genre: " + movie.genresToString());
@@ -491,7 +492,7 @@ public class BookingPages {
             PageElements.printConsoleMessage("Error: The card has expired.");
             return false;
         }
-        System.out.println("Enter the CVV of the card in the format mm/yy:");
+        System.out.println("Enter the CVV of the card:");
         String ccv = scanner.nextLine();
         if (!ccv.matches(Regexes.CARD_CCV_REGEX)) {
             PageElements.printConsoleMessage("Error: The card CCV is not in wanted format.");

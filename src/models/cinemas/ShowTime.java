@@ -164,10 +164,19 @@ public class ShowTime implements Serializable {
     }
 
     /**
+     * The setMovie changes the movie.
+     * @param movie The new movie.
+     */
+    public void setMovie(Movie movie) {
+        this.movie = movie;
+    }
+
+    /**
      * The getSeatOccupancy method to get the seat occupancy of the showtime.
      *
      * @return Array lists of the seats in the rows accessed by the row character.
      */
+
     public HashMap<Character, ArrayList<Seat>> getSeatOccupancy() {
         return seatOccupancy;
     }

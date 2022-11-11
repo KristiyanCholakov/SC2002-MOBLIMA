@@ -1,10 +1,14 @@
 package data_managers;
 
+import models.cinemas.Cineplex;
+import models.cinemas.ShowTime;
 import models.movies.Movie;
 import pages.PageElements;
 
 import java.io.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * The MovieManager class takes care of interacting with the file where the movies are stored.
@@ -34,7 +38,6 @@ public class MovieManager {
         } catch (FileNotFoundException e) {
             PageElements.printConsoleMessage("Error: Invalid Path! Movies can't be read!");
         } catch (EOFException e) {
-            PageElements.printConsoleMessage("File was empty. This is the first item in it.");
         } catch (IOException | ClassNotFoundException e) {
             PageElements.printConsoleMessage("Error!");
         }
@@ -95,6 +98,25 @@ public class MovieManager {
             PageElements.printConsoleMessage("No such movie!");
             return false;
         } else {
+            ArrayList<Cineplex> cineplexes = CineplexManager.readCineplexes();
+            for (int i=0; i < cineplexes.size(); i++) {
+                Cineplex cineplex = cineplexes.get(i);
+                ArrayList<LocalDate> scheduleDates = new ArrayList<>();
+                scheduleDates.addAll(cineplex.getSchedules().keySet());
+                for (int j = 0; j < scheduleDates.size(); j++) {
+                    ArrayList<ShowTime> showTimes = cineplex.getSchedules().get(scheduleDates.get(j));
+                    for (int z = 0; z < showTimes.size(); z++) {
+                        ShowTime showTime = showTimes.get(z);
+                        if (showTime.getMovie().equals(movieToUpdated)) {
+                            showTimes.get(z).setMovie(movieToUpdated);
+                            HashMap<LocalDate, ArrayList<ShowTime>> schedules = cineplex.getSchedules();
+                            schedules.put(scheduleDates.get(j), showTimes);
+                            cineplex.setSchedules(schedules);
+                            CineplexManager.updateCineplex(cineplex);
+                        }
+                    }
+                }
+            }
             allMovies.remove(movieToUpdated);
             allMovies.add(movie);
             File file = new File(MOVIES_PATH);
@@ -126,6 +148,25 @@ public class MovieManager {
             PageElements.printConsoleMessage("No such movie!");
             return false;
         } else {
+            ArrayList<Cineplex> cineplexes = CineplexManager.readCineplexes();
+            for (int i=0; i < cineplexes.size(); i++) {
+                Cineplex cineplex = cineplexes.get(i);
+                ArrayList<LocalDate> scheduleDates = new ArrayList<>();
+                scheduleDates.addAll(cineplex.getSchedules().keySet());
+                for (int j = 0; j < scheduleDates.size(); j++) {
+                    ArrayList<ShowTime> showTimes = cineplex.getSchedules().get(scheduleDates.get(j));
+                    for (int z = 0; z < showTimes.size(); z++) {
+                        ShowTime showTime =  showTimes.get(z);
+                        if (showTime.getMovie().equals(movieToUpdated)) {
+                            showTimes.remove(z);
+                            HashMap<LocalDate, ArrayList<ShowTime>> schedules = cineplex.getSchedules();
+                            schedules.put(scheduleDates.get(j), showTimes);
+                            cineplex.setSchedules(schedules);
+                            CineplexManager.updateCineplex(cineplex);
+                        }
+                    }
+                }
+            }
             allMovies.remove(movieToUpdated);
             File file = new File(MOVIES_PATH);
             if(file.exists()) file.delete();

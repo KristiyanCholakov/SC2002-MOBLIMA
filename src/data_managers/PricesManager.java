@@ -34,7 +34,6 @@ public class PricesManager {
         } catch (FileNotFoundException e) {
             PageElements.printConsoleMessage("Error: Invalid Path! Prices can't be read!");
         } catch (EOFException e) {
-            PageElements.printConsoleMessage("File was empty. This is the first item in it.");
         } catch (IOException | ClassNotFoundException e) {
             PageElements.printConsoleMessage("Error!");
         }
