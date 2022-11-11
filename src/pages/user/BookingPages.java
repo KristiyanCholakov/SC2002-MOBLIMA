@@ -1,5 +1,6 @@
 package pages.user;
 
+import constants.Regexes;
 import data_managers.*;
 import models.Holiday;
 import models.Prices;
@@ -454,5 +455,35 @@ public class BookingPages {
             }
         }
         return null;
+    }
+
+    /**
+     * The ifPaymentValid method is to input the payment details and check if they are valid.
+     * If any of the payment details is invalid it will show a console massage that it is not in the wanted format.
+     *
+     * @return true if all details are valid. false if there is any invalid.
+     */
+    public boolean ifPaymentValid() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the card number in the format 1234-1234-1234-1234:");
+        String cardNumber = scanner.nextLine();
+        if (!cardNumber.matches(Regexes.CARD_NUMBER_REGEX)) {
+            PageElements.printConsoleMessage("Error: The card number is not in wanted format.");
+            return false;
+        }
+        System.out.println("Enter the expiry date of the card in the format mm/yy:");
+        String expiryDate = scanner.nextLine();
+        if (!expiryDate.matches(Regexes.CARD_EXPIRY_REGEX)) {
+            PageElements.printConsoleMessage("Error: The card expiry date is not in wanted format.");
+            return false;
+        }
+        System.out.println("Enter the CVV of the card in the format mm/yy:");
+        String ccv = scanner.nextLine();
+        if (!ccv.matches(Regexes.CARD_CCV_REGEX)) {
+            PageElements.printConsoleMessage("Error: The card CCV is not in wanted format.");
+            return false;
+        }
+        PageElements.printConsoleMessage("Error: The payment is valid.");
+        return true;
     }
 }

@@ -27,4 +27,16 @@ public class Regexes {
      * A regular expression of the duration time format.
      */
     public static final String DURATION_REGEX = "^\\d{2}:\\d{2}:\\d{2}$";
+    /**
+     * A regular expression of the number of the debit/credit card.
+     */
+    public static final String CARD_NUMBER_REGEX = "^\\d{4}-\\d{4}-\\d{4}-\\d{4}$";
+    /**
+     * A regular expression of the expiry date of the debit/credit card.
+     */
+    public static final String CARD_EXPIRY_REGEX = "^\\d{2}[\\/]\\d{2}$";
+    /**
+     * A regular expression of the CCV of the debit/credit card.
+     */
+    public static final String CARD_CCV_REGEX = "^\\d{3}$";
 }
