@@ -368,7 +368,6 @@ public class BookingPages {
      * This method will compute the price and display ticket prices when users are making a booking.
      */
     public static double getPrice(ShowTime showTime, LocalDate date, User user, Seat seat) {
-        //todo determine the price
         System.out.println("Your price is based on: ");
         System.out.println("*The movie is " + showTime.getMovie().getType().getType());
         Prices prices = PricesManager.readPrices().get(0);
