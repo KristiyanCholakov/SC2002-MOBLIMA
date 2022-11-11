@@ -277,7 +277,13 @@ public class BookingPages {
         System.out.print("Column: ");
         int column = scanner.nextInt() - 1;
         scanner.nextLine();
-        Seat selectedSeat = showTime.getSeatOccupancy().get(row).get(column);
+        Seat selectedSeat;
+        try {
+            selectedSeat = showTime.getSeatOccupancy().get(row).get(column);
+        } catch (NullPointerException e) {
+            PageElements.printConsoleMessage("The seat is not in the cinema's range!");
+            return;
+        }
         double price = getPrice(showTime, date, MainPage.getCurrentUser(), selectedSeat);
         if (selectedSeat.getType() == SeatEnums.SeatType.COUPLE) {
             price *= 2;
@@ -293,6 +299,9 @@ public class BookingPages {
         scanner.nextLine();
         if (!yes) return;
         if (selectedSeat.bookSeat()) {
+            if (!paymentIfValid()) {
+                return;
+            }
             PageElements.printConsoleMessage("You have successfully booked the seat.");
             HashMap<LocalDate, ArrayList<ShowTime>> schedules = cineplex.getSchedules();
             ArrayList<ShowTime> schedule = schedules.get(date);
@@ -463,7 +472,7 @@ public class BookingPages {
      *
      * @return true if all details are valid. false if there is any invalid.
      */
-    public boolean ifPaymentValid() {
+    public static boolean paymentIfValid() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the card number in the format 1234-1234-1234-1234:");
         String cardNumber = scanner.nextLine();
