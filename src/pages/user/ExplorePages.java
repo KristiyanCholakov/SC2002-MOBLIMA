@@ -14,7 +14,17 @@ import java.util.Collections;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ *  The explorePages class holds the functionality connected with the explore pages.
+ *
+ * @author Kristiyan Cholakov (KrisCholakov02)
+ * @version 10/11/22
+ */
 public class ExplorePages {
+    /**
+     * The explorePages method gives the opportunity to choose what the user wants to do.
+     * If the choice is invalid asks for another. If it is valid redirects to the corresponding page.
+     */
     public static void explorePages () {
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
@@ -62,6 +72,10 @@ public class ExplorePages {
         }
     }
 
+    /**
+     * The movieReviewsPage method allows users to look through reviews about a movie.
+     * Users have a choice to sort reviews based on their ratings as well as how recent the reviews were made.
+     */
     public static void movieReviewsPage() {
         Scanner scanner = new Scanner(System.in);
         PageElements.printHeader();
@@ -102,6 +116,10 @@ public class ExplorePages {
         }
     }
 
+    /**
+     * The top5MoviesPage method allows users to explore movies based on ratings made by other users.
+     * the top 5 movies with the highest ratings will be displayed.
+     */
     public static void top5MoviesPage(String by) {
         PageElements.printHeader();
         ArrayList<Movie> movies = MovieManager.readMovies();
@@ -121,11 +139,14 @@ public class ExplorePages {
         }
     }
 
+    /**
+     * The exploreActors method allows users to look through actors based on the number of movies they acted in and number of oscars they received.
+     */
     public static void exploreActors() {
         PageElements.printHeader();
         Scanner scanner = new Scanner(System.in);
         ArrayList<Actor> actors = ActorManager.readActors();
-        System.out.println("Select the sorting of the reviews:\n" +
+        System.out.println("Select the sorting of the actors:\n" +
                 "(Type the number of the choice)\n" +
                 "       1 - Descending By Number of Movies\n" +
                 "       2 - Descending By Number of Oscars\n");
@@ -156,6 +177,10 @@ public class ExplorePages {
         }
     }
 
+    /**
+     * The exploreDirectors method allows users to look through reviews about a movie.
+     * Users have a choice to sort reviews based on their ratings as well as how recent the reviews were made.
+     */
     public static void exploreDirectors() {
         PageElements.printHeader();
         ArrayList<Director> directors = DirectorManager.readDirectors();

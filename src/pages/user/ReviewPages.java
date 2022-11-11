@@ -12,8 +12,19 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ *  The ReviewPage class holds the functionality connected with the review pages.
+ *
+ * @author Kristiyan Cholakov (KrisCholakov02)
+ * @version 10/11/22
+ */
 public class ReviewPages {
 
+    /**
+     * The reviewPage method allows users to review a movie.
+     * Checks if the user already made a review for the specified movie based on the current reviews for that movie.
+     * If user already made a review, they have the choice to delete the old review or overwrite the old review.
+     */
     public static void reviewPage() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the title of movie you want to review");
@@ -74,7 +85,10 @@ public class ReviewPages {
         MovieManager.updateMovie(movie);
     }
 
-
+    /**
+     * The reviewInput method represents the required format the users should input when making a review.
+     * It returns a copy of the review if it is successfully made, else it returns null
+     */
     public static Review reviewInput(Movie movie) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the your rating about the movie: ");

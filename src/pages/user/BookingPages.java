@@ -19,7 +19,18 @@ import java.time.Period;
 import java.time.format.DateTimeParseException;
 import java.util.*;
 
+/**
+ *  The AdminPages class holds the functionality connected with the booking pages.
+ *
+ * @author Kristiyan Cholakov (KrisCholakov02)
+ * @version 10/11/22
+ */
 public class BookingPages {
+    /**
+     * The bookingPage method represents the actions users can take when booking a movie.
+     * Users can make a booking through searching by 3 different choices, movie, cinema and genre.
+     * If the choice is invalid, users will be re-directed to UserPages.
+     */
     public static void bookingPage() {
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
@@ -76,7 +87,10 @@ public class BookingPages {
             }
         }
     }
-
+    /**
+     * The searchByCineplexPage method allows user to make a booking through searching of available cineplexes.
+     * If the user inputs are invalid, the corresponding exception messages will be displayed. If they are valid, users will be able to make a booking.
+     */
     public static void searchByCineplexPage() {
         Scanner scanner = new Scanner(System.in);
         PageElements.printHeader();
@@ -120,7 +134,10 @@ public class BookingPages {
         makeBooking(schedule.get(showtimeChoice - 1), cineplex, date);
 
     }
-
+    /**
+     * The searchByMoviePage method allows user to make a booking through searching of available movies.
+     * If the user inputs are invalid, the corresponding exception messages will be displayed. If they are valid, users will be able to make a booking.
+     */
     public static void searchByMoviePage(ArrayList<Movie> movies) {
         Scanner scanner = new Scanner(System.in);
         PageElements.printHeader();
@@ -190,7 +207,10 @@ public class BookingPages {
         }
         makeBooking(option, CineplexManager.getCineplex(cName), date);
     }
-
+    /**
+     * The searchByGenrePage method allows user to make a booking through searching of available genres.
+     * If the user inputs are invalid, the corresponding exception messages will be displayed. If they are valid, users will be able to make a booking.
+     */
     public static void searchByGenrePage() {
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
@@ -209,7 +229,13 @@ public class BookingPages {
         }
         searchByMoviePage(moviesWanted);
     }
-
+    /**
+     * The makeBooking method allows user to make a booking after selecting the movie, cineplex and timeslot.
+     * If the user inputs are invalid, the corresponding exception messages will be displayed. If they are valid, users will be able to make a booking.
+     * The function will also check if the user is old enough to watch certain movies due to the movies' ratings, based on their date of birth which is entered when creating an user account.
+     * The user will be able to select their seats in this method, as long as the seats are not occupied.
+     * After a successful booking, a "successful booking" message will be displayed as acknowledgement.
+     */
     public static void makeBooking(ShowTime showTime, Cineplex cineplex, LocalDate date) {
         Scanner scanner = new Scanner(System.in);
         PageElements.printHeader();
@@ -280,6 +306,10 @@ public class BookingPages {
         }
     }
 
+    /**
+     * The printSeatOccupation method displays the seats in the cinema.
+     * Users will be able to see the type of seats (normal, deluxe, couple) and the occupation status of the seats.
+     */
     public static void printSeatOccupation(ShowTime showTime) {
         Cinema cinema = showTime.getCinema();
         int columns = cinema.getSeatConfiguration().getColumns();
@@ -312,7 +342,10 @@ public class BookingPages {
         }
         System.out.println();
     }
-
+    /**
+     * The getPrice method displays the ticket prices based on the day, time, type of seats as well as type of movie.
+     * This method will compute the price and display ticket prices when users are making a booking.
+     */
     public static double getPrice(ShowTime showTime, LocalDate date, User user, Seat seat) {
         //todo determine the price
         System.out.println("Your price is based on: ");
@@ -398,7 +431,10 @@ public class BookingPages {
             }
         }
     }
-
+    /**
+     * The isHoliday method checks if a day is a holiday or not.
+     * If it is, the name of the holiday will be returned. Else, it will return NULL.
+     */
     public static Holiday isHoliday (LocalDate date) {
         ArrayList<Holiday> holidays = HolidayManager.readHolidays();
         for (int i = 0; i < holidays.size(); i++) {

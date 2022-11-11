@@ -16,7 +16,17 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ *  The UserAccountPages class holds the functionality connected with the user account pages.
+ *
+ * @author Kristiyan Cholakov (KrisCholakov02)
+ * @version 10/11/22
+ */
 public class UserAccountPages {
+    /**
+     * The myAccountPage method gives the opportunity to choose what the user wants to do.
+     * If the choice is invalid asks for another. If it is valid redirects to the corresponding page.
+     */
     public static void myAccountPage() {
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
@@ -73,7 +83,10 @@ public class UserAccountPages {
             }
         }
     }
-
+    /**
+     * The userBookingsPage method allows users to view their current bookings and they also have the option of cancelling a booking.
+     * If the user selects -1, no bookings will be cancelled. Else, they can specify which booking they want to be cancelled.
+     */
     public static void userBookingsPage () {
         Scanner scanner = new Scanner(System.in);
         User user = MainPage.getCurrentUser();
@@ -113,7 +126,10 @@ public class UserAccountPages {
         CineplexManager.updateCineplex(cineplex);
         UserManager.updateUser(user);
     }
-
+    /**
+     * The userReviewsPage method allows users to view their current reviews and they also have the option of deleting a review.
+     * If the user selects -1, no reviews will be cancelled. Else, they can specify which review they want to be cancelled.
+     */
     public static void userReviewsPage () {
         Scanner scanner = new Scanner(System.in);
         User user = MainPage.getCurrentUser();
@@ -146,7 +162,11 @@ public class UserAccountPages {
         MovieManager.updateMovie(movie);
         UserManager.updateUser(user);
     }
-
+    /**
+     * The changePasswordPage method allows users to change their current password.
+     * Users must enter their old password before changing their password.
+     * New password must also follow the required format specified.
+     */
     public static void changePasswordPage() {
         PageElements.printHeader();
         Scanner scanner = new Scanner(System.in);
