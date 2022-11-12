@@ -110,7 +110,7 @@ public class MovieManager {
                     for (int z = 0; z < showTimes.size(); z++) {
                         ShowTime showTime = showTimes.get(z);
                         if (showTime.getMovie().equals(movieToUpdated)) {
-                            showTimes.get(z).setMovie(movie);
+                            showTimes.get(z).setMovieTitle(movie.getTitle());
                             HashMap<LocalDate, ArrayList<ShowTime>> schedules = cineplex.getSchedules();
                             schedules.put(scheduleDates.get(j), showTimes);
                             cineplex.setSchedules(schedules);
