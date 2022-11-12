@@ -31,7 +31,7 @@ public class BrowsingPages {
         PageElements.printHeader();
         System.out.println("MOVIES:");
         ArrayList<Movie> movies = MovieManager.readMovies();
-        System.out.print("TOTAL NUMBER OF MOVIES: " + movies.size());
+        System.out.println("TOTAL NUMBER OF MOVIES: " + movies.size());
         for (int i = 0; i < movies.size(); i++) {
             System.out.println(movies.get(i).toString()+"\n");
         }
@@ -106,7 +106,7 @@ public class BrowsingPages {
             ArrayList<Review> reviews = movies.get(i).getReviews();
             for (int j = 0; j < reviews.size(); j++) {
                 reviews.get(j).printReview();
-                System.out.println(reviews.get(i).getPublisher().getEmail());
+                System.out.println(reviews.get(j).getPublisher().getEmail());
                 System.out.println("");
             }
             PageElements.printLine();

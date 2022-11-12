@@ -75,7 +75,7 @@ public class CinemaEnums {
         /**
          * The enum of big cinema with couple and deluxe seats.
          */
-        BIG_CINEMA_C_D("Big Room with Couple and Deluxe seats", 10, 16, true),
+        BIG_CINEMA_C_D("Big Room with Couple and Deluxe seats", 15, 24, true),
 
         /**
          * The enum of big cinema without couple and deluxe seats.

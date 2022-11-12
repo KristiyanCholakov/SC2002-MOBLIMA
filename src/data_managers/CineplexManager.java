@@ -1,6 +1,7 @@
 package data_managers;
 
 import models.cinemas.Cineplex;
+import pages.MainPage;
 import pages.PageElements;
 
 import java.io.*;
@@ -105,7 +106,7 @@ public class CineplexManager {
             out.writeObject(allCineplexes);
             out.flush();
             out.close();
-            PageElements.printConsoleMessage("Cineplex Updated!");
+            if (MainPage.getCurrentUser() == null) PageElements.printConsoleMessage("Cineplex Updated!");
             return true;
         } catch (IOException e) {
             PageElements.printConsoleMessage("Error: Invalid Path! Cineplex is not updated to the database.");
@@ -135,7 +136,7 @@ public class CineplexManager {
             out.writeObject(allCineplexes);
             out.flush();
             out.close();
-            PageElements.printConsoleMessage("Cineplex Updated!");
+            if (MainPage.getCurrentUser() == null) PageElements.printConsoleMessage("Cineplex Deleted!");
             return true;
         } catch (IOException e) {
             PageElements.printConsoleMessage("Error: Invalid Path! Cineplex is not updated to the database.");

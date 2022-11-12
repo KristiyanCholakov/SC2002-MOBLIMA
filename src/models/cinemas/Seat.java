@@ -116,7 +116,10 @@ public class Seat implements Serializable {
         switch (this.type) {
             case COUPLE:
                 if (this.occupied) return "[XXXX]";
-                else return "[    ]";
+                else {
+                    String place = "" + this.row + this.column;
+                    return "[" + place + (" ".repeat((4-place.length()))) + "]";
+                }
             case DELUXE:
                 if (this.occupied) return "{X}";
                 else return "{ }";

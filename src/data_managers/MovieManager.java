@@ -3,6 +3,8 @@ package data_managers;
 import models.cinemas.Cineplex;
 import models.cinemas.ShowTime;
 import models.movies.Movie;
+import models.movies.Review;
+import pages.MainPage;
 import pages.PageElements;
 
 import java.io.*;
@@ -108,7 +110,7 @@ public class MovieManager {
                     for (int z = 0; z < showTimes.size(); z++) {
                         ShowTime showTime = showTimes.get(z);
                         if (showTime.getMovie().equals(movieToUpdated)) {
-                            showTimes.get(z).setMovie(movieToUpdated);
+                            showTimes.get(z).setMovie(movie);
                             HashMap<LocalDate, ArrayList<ShowTime>> schedules = cineplex.getSchedules();
                             schedules.put(scheduleDates.get(j), showTimes);
                             cineplex.setSchedules(schedules);
@@ -116,6 +118,9 @@ public class MovieManager {
                         }
                     }
                 }
+            }
+            for (int i = 0; i < movie.getReviews().size(); i++) {
+                movie.getReviews().get(i).setMovie(movie);
             }
             allMovies.remove(movieToUpdated);
             allMovies.add(movie);
@@ -127,7 +132,7 @@ public class MovieManager {
             out.writeObject(allMovies);
             out.flush();
             out.close();
-            PageElements.printConsoleMessage("Movie Updated!");
+            if (MainPage.getCurrentUser() == null) PageElements.printConsoleMessage("Movie Updated!");
             return true;
         } catch (IOException e) {
             PageElements.printConsoleMessage("Error: Invalid Path! Movie is not updated to the database.");

@@ -162,6 +162,10 @@ public class BookingPages {
             PageElements.printConsoleMessage("The movie doesn't exist!");
             return;
         }
+        if (movie.getStatus() == MovieEnums.MovieStatus.COMING_SOON || movie.getStatus() == MovieEnums.MovieStatus.END_SHOWING) {
+            PageElements.printConsoleMessage("The movie is not available for watching!");
+            return;
+        }
         System.out.println("Enter the date you want to watch the movie (yyyy-mm-dd):");
         LocalDate date = LocalDate.parse(scanner.nextLine());
         if (date.isBefore(LocalDate.now())) {
@@ -285,6 +289,9 @@ public class BookingPages {
         } catch (NullPointerException e) {
             PageElements.printConsoleMessage("The seat is not in the cinema's range!");
             return;
+        } catch (IndexOutOfBoundsException e) {
+            PageElements.printConsoleMessage("The row doesn't have that many seats!");
+            return;
         }
         double price = getPrice(showTime, date, MainPage.getCurrentUser(), selectedSeat);
         if (selectedSeat.getType() == SeatEnums.SeatType.COUPLE) {
@@ -336,7 +343,7 @@ public class BookingPages {
         Cinema cinema = showTime.getCinema();
         int columns = cinema.getSeatConfiguration().getColumns();
         int breakAt;
-        if (cinema.getSeatConfiguration() == CinemaEnums.SeatConfiguration.BIG_CINEMA)
+        if (cinema.getSeatConfiguration() == CinemaEnums.SeatConfiguration.BIG_CINEMA || cinema.getSeatConfiguration() == CinemaEnums.SeatConfiguration.BIG_CINEMA_C_D)
             breakAt = CinemaEnums.SeatConfiguration.BIG_CINEMA.getColumns() / 3;
         else breakAt = cinema.getSeatConfiguration().getColumns() / 2;
         int alignLength = columns * 3 + 8 - "Screen".length() + (columns - 1) / breakAt * 2;

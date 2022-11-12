@@ -1,6 +1,7 @@
 package data_managers;
 
 import models.accounts.User;
+import pages.MainPage;
 import pages.PageElements;
 
 import java.io.*;
@@ -118,7 +119,7 @@ public class UserManager {
             out.writeObject(allUsers);
             out.flush();
             out.close();
-            PageElements.printConsoleMessage("User Updated!");
+            if (MainPage.getCurrentUser() == null) PageElements.printConsoleMessage("User Updated!");
             return true;
         } catch (IOException e) {
             PageElements.printConsoleMessage("Error: Invalid Path! User is not updated to the database.");

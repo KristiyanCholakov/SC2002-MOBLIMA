@@ -93,12 +93,21 @@ public class Review implements Serializable {
     }
 
     /**
-     * The getMovie gets the movie the review is about.
+     * The getMovie method gets the movie the review is about.
      *
      * @return The movie record the review is about.
      */
     public Movie getMovie() {
         return movie;
+    }
+
+    /**
+     * The setMovie method changes the movie.
+     *
+     * @param movie The new movie.
+     */
+    public void setMovie(Movie movie) {
+        this.movie = movie;
     }
 
     /**
