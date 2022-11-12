@@ -40,7 +40,7 @@ public class BookingPages {
             System.out.println("Select the action you want:\n" +
                     "(Type the number of the choice)\n" +
                     "       1 - Search by Movie\n" +
-                    "       2 - Search by Cinema\n" +
+                    "       2 - Search by Cineplex\n" +
                     "       3 - Search by Genre\n" +
                     "       4 - Back to User Portal");
             System.out.print("Choice: ");
