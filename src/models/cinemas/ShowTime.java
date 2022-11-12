@@ -1,5 +1,6 @@
 package models.cinemas;
 
+import data_managers.MovieManager;
 import models.movies.Movie;
 
 import java.io.Serializable;
@@ -38,9 +39,9 @@ public class ShowTime implements Serializable {
     private LocalTime endTime;
 
     /**
-     * An attribute of the movie of the showtime.
+     * An attribute of the movie title of the showtime.
      */
-    private Movie movie;
+    private String movieTitle;
 
     /**
      * An attribute of the seat occupancy of the showtime.
@@ -107,14 +108,14 @@ public class ShowTime implements Serializable {
      * @param cinema The cinema of the showtime.
      * @param startTime The start time of the showtime.
      * @param endTime The end time of the showtime.
-     * @param movie The movie of the showtime.
+     * @param movieTitle The movie title of the showtime.
      */
-    public ShowTime(LocalDate date, Cinema cinema, LocalTime startTime, LocalTime endTime, Movie movie) {
+    public ShowTime(LocalDate date, Cinema cinema, LocalTime startTime, LocalTime endTime, String movieTitle) {
         this.date = date;
         this.cinema = cinema;
         this.startTime = startTime;
         this.endTime = endTime;
-        this.movie = movie;
+        this.movieTitle = movieTitle;
         this.seatOccupancy = configuration(cinema);
     }
 
@@ -160,15 +161,15 @@ public class ShowTime implements Serializable {
      * @return The movie record of the showtime.
      */
     public Movie getMovie() {
-        return movie;
+        return MovieManager.getMovie(this.movieTitle);
     }
 
     /**
-     * The setMovie changes the movie.
-     * @param movie The new movie.
+     * The setMovieTitle changes the movie title.
+     * @param movieTitle The new movie title.
      */
-    public void setMovie(Movie movie) {
-        this.movie = movie;
+    public void setMovieTitle(String movieTitle) {
+        this.movieTitle = movieTitle;
     }
 
     /**
@@ -185,7 +186,7 @@ public class ShowTime implements Serializable {
      * The printShowTime method to print the simplified information of a showtime.
      */
     public void printShowTime() {
-        System.out.println("(" + this.startTime.toString() + " - " + this.endTime.toString() + ") " + this.movie.getTitle());
+        System.out.println("(" + this.startTime.toString() + " - " + this.endTime.toString() + ") " + this.movieTitle);
     }
 
     /**
@@ -196,7 +197,7 @@ public class ShowTime implements Serializable {
     @Override
     public String toString() {
         return "Showtime:\n" +
-                "Movie=" + this.movie.getTitle() + "\n" +
+                "Movie=" + this.movieTitle + "\n" +
                 "Cinema Number=" + this.getCinema().getNumber() + "\n" +
                 "Start Time=" + this.getStartTime() + "\n" +
                 "End Time=" + this.getEndTime();

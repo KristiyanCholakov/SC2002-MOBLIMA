@@ -118,7 +118,7 @@ public class ScheduleEditorPages {
             LocalTime startTime= LocalTime.parse(sc.nextLine() + ":00");
             LocalTime duration =  movie.getDuration();
             LocalTime endTime = startTime.plusHours(duration.getHour()).plusMinutes(duration.getMinute());
-            ShowTime showTime = new ShowTime(date, cinema, startTime, endTime, movie);
+            ShowTime showTime = new ShowTime(date, cinema, startTime, endTime, movieTitle);
             showTimes.add(showTime);
         }
         return showTimes;
