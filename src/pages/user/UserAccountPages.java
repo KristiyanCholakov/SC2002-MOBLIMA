@@ -146,7 +146,9 @@ public class UserAccountPages {
         for (int i = 0; i < reviews.size(); i++) {
             Review review = reviews.get(i);
             System.out.println((i+1) + ")");
-            review.printReview();
+            System.out.println("Movie: " + review.getMovie().getTitle());
+            System.out.println("Rating: " + review.getRating());
+            System.out.println("Comment:\n" + review.getComment() + "\n");
         }
         PageElements.printLine();
         System.out.println("Enter the review you want to delete: (enter -1 if you don't want to cancel any)");
