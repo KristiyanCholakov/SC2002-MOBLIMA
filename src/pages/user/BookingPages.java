@@ -276,6 +276,9 @@ public class BookingPages {
             return;
         }
         PageElements.printLine();
+        System.out.println("Regular seat: [ ]");
+        System.out.println("Deluxe seat: { }");
+        System.out.println("Couple seat (book 2 seats at once): [    ]");
         printSeatOccupation(showTime);
         System.out.println("Select your seat:");
         System.out.print("Row: ");
