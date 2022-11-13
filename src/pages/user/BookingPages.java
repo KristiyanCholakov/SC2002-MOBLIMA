@@ -402,10 +402,10 @@ public class BookingPages {
                 }
                 System.out.println("*Your are a loyalty client tier 3 (more than 9 bookings)");
                 return prices.getRegularPrices().getLoyalTier3Price() + added;
-            } else if (user.getYears() < 18 && isHoliday(date) == null && (date.getDayOfWeek() != DayOfWeek.SATURDAY || date.getDayOfWeek() != DayOfWeek.SUNDAY) && showTime.getStartTime().isBefore(LocalTime.parse("18:00:00"))) {
+            } else if (user.getYears() < 18 && isHoliday(date) == null && (date.getDayOfWeek() != DayOfWeek.SATURDAY && date.getDayOfWeek() != DayOfWeek.SUNDAY) && showTime.getStartTime().isBefore(LocalTime.parse("18:00:00"))) {
                 System.out.println("*Your are a student");
                 return prices.getRegularPrices().getStudentPrice() + added;
-            } else if (user.getYears() >= 55  && isHoliday(date) == null  && (date.getDayOfWeek() != DayOfWeek.SATURDAY || date.getDayOfWeek() != DayOfWeek.SUNDAY) && showTime.getStartTime().isBefore(LocalTime.parse("18:00:00"))) {
+            } else if (user.getYears() >= 55  && isHoliday(date) == null  && (date.getDayOfWeek() != DayOfWeek.SATURDAY && date.getDayOfWeek() != DayOfWeek.SUNDAY) && showTime.getStartTime().isBefore(LocalTime.parse("18:00:00"))) {
                 System.out.println("*Your are a senior");
                 return prices.getRegularPrices().getSeniorPrice() + added;
             } else {
@@ -437,7 +437,7 @@ public class BookingPages {
             } else if (showTime.getMovie().getType() == MovieEnums.MovieType.IMAX) {
                 specialPrices = prices.getImaxPrices();
             }
-            if (user.getYears() < 18 && isHoliday(date) == null && (date.getDayOfWeek() != DayOfWeek.SATURDAY || date.getDayOfWeek() != DayOfWeek.SUNDAY) && showTime.getStartTime().isBefore(LocalTime.parse("18:00:00"))) {
+            if (user.getYears() < 18 && isHoliday(date) == null && (date.getDayOfWeek() != DayOfWeek.SATURDAY && date.getDayOfWeek() != DayOfWeek.SUNDAY) && showTime.getStartTime().isBefore(LocalTime.parse("18:00:00"))) {
                 System.out.println("*Your are a student");
                 return specialPrices.getStudentPrice() + added;
             } else {
