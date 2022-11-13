@@ -51,7 +51,7 @@ public class BrowsingPages {
         PageElements.printHeader();
         System.out.println("CINEPLEXES:");
         ArrayList<Cineplex> cineplexes = CineplexManager.readCineplexes();
-        System.out.print("TOTAL NUMBER OF CINEPLEXES: " + cineplexes.size());
+        System.out.println("TOTAL NUMBER OF CINEPLEXES: " + cineplexes.size());
         for (int i = 0; i < cineplexes.size(); i++) {
             System.out.println(cineplexes.get(i).toString());
         }
