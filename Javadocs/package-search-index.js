@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"constants"},{"l":"data_managers"},{"l":"models"},{"l":"models.accounts"},{"l":"models.cinemas"},{"l":"models.movies"},{"l":"pages"},{"l":"pages.admin"},{"l":"pages.user"}];updateSearchResults();
