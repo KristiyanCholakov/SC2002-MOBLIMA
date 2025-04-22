@@ -63,3 +63,6 @@ This project was developed as part of the SC2002 Object-Oriented Design and Prog
 - Denzyl David Peh (U2122190F)
 - Goh Kuan Wei, Eldrick (U2121107B)
 - Zhang Xiaoyang (U2121950J)
+
+## Demo
+[▶️ Watch the demo video on YouTube](https://youtu.be/FUokMTk_E2I)
